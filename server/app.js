@@ -30,9 +30,12 @@ if(!isProduction) {
   mongoose.connect('mongodb://localhost/us-dv');
 
 }else{
+  app.use(express.static('client/build'));
   mongoose.connect('mongodb+srv://developer:London2020@cluster0-8wbi3.mongodb.net/', {dbName: 'maldives-converter'});
 }
-
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 //Configure Mongoose
 //mongoose.connect('mongodb+srv://developer:London2020@cluster0-8wbi3.mongodb.net/', {dbName: 'maldives-converter'});
 
