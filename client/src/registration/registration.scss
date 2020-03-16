@@ -1,0 +1,24 @@
+.registration-container{
+    
+    .header{
+        background-color: #212b51;
+        border-style: solid;
+        border-color: #a10532;
+        border-top-width: 3px;
+        transition-duration: 0.4s;
+        transition-property: background-color, border-color;
+        padding: 0;
+        margin: 0;
+        border-bottom: 0;
+        border-right: 0;
+        color: white;
+        border-left: 0;
+        position: 'relative';
+        margin-bottom: 50px;
+    }
+    .register-body{
+        // width:70%;
+        // margin:auto;
+        padding: 10%;
+    }
+}
