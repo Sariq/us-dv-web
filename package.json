@@ -1,29 +1,31 @@
 {
     "name": "us-dv",
     "version": "1.0.0",
-    "description": "",
-    "dependencies": {
-     
-    },
-    "devDependencies": {
-        "concurrently": "3.1.0",
-		"eslint": "^3.19.0",
-		"eslint-config-airbnb": "14.1.0",
-		"eslint-plugin-import": "2.2.0",
-		"eslint-plugin-jsx-a11y": "4.0.0",
-        "eslint-plugin-react": "6.9.0"
-        
+    "description": "us-dv",
+    "engines": {
+      "node": "10.x"
     },
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "cd server && npm install && npm run start",
-      "heroku-postbuild": "cd client && npm install && npm run build"
+      "start": "node server",
+      "build": "cd client/ && npm install && npm run build"
     },
-    "engines": {
-      "node": "12.x"
+    "cacheDirectories": [
+      "node_modules",
+      "client/node_modules"
+    ],
+    "dependencies": {
+      "express": "^4.16.4"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/mars/heroku-cra-node.git"
+    },
+    "keywords": [
+      "node",
+      "heroku",
+      "create-react-app",
+      "react"
+    ],
+    "license": "MIT",
+    "devDependencies": {}
   }
-  
