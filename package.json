@@ -31,7 +31,7 @@
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "start": "concurrently \"npm run server\" \"npm run client\"",
-		"server": "node app.js",
+		"server": "nodemon app.js",
 		"client": "node scripts/build.js",
 		"dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1",
 		"lint": "eslint ."
