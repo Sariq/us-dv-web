@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+//const session = require('express-session');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const errorHandler = require('errorhandler');
@@ -23,14 +23,13 @@ app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
+//app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 console.log(process.env.NODE_ENV);
 if(!isProduction) {
   app.use(errorHandler());
   mongoose.connect('mongodb://localhost/us-dv');
 
 }else{
-  app.use(express.static(path.resolve(__dirname, '../client/build')));
   mongoose.connect('mongodb+srv://developer:London2020@cluster0-8wbi3.mongodb.net/', {dbName: 'maldives-converter'});
 }
 app.use(express.static(path.join(__dirname, '../client/build')))
