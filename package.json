@@ -1,0 +1,46 @@
+{
+    "name": "us-dv",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "dependencies": {
+      "@material-ui/core": "^4.9.5",
+      "aws-sdk": "^2.604.0",
+      "body-parser": "^1.18.3",
+      "cors": "^2.8.4",
+      "email-templates": "^6.1.1",
+      "errorhandler": "^1.5.0",
+      "expo-font": "^8.0.0",
+      "express": "^4.16.3",
+      "express-jwt": "^5.3.1",
+      "express-session": "^1.15.6",
+      "jsonwebtoken": "^8.2.2",
+      "mongodb": "^3.4.1",
+      "mongoose": "^5.1.3",
+      "morgan": "^1.9.0",
+      "multer": "^1.4.2",
+      "nodemailer": "^6.4.2",
+      "passport": "^0.4.0",
+      "passport-local": "^1.0.0",
+      "path": "^0.12.7",
+      "randomatic": "^3.1.1"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.2"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "concurrently \"npm run server\" \"npm run client\"",
+		"server": "node server.js",
+		"client": "node start-client.js",
+		"dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1",
+		"lint": "eslint ."
+    },
+    "engines": {
+      "node": "12.x"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+  
