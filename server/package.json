@@ -4,7 +4,6 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "@material-ui/core": "^4.9.5",
     "aws-sdk": "^2.604.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
