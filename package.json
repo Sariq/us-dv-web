@@ -6,8 +6,7 @@
       "node": "10.x"
     },
     "scripts": {
-      "start": "node server",
-      "build": "cd client/ && npm install && npm run build"
+      "start": "node server"
     },
     "cacheDirectories": [
       "node_modules",
