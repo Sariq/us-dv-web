@@ -2,7 +2,6 @@
     "name": "us-dv",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
     "dependencies": {
      
     },
@@ -17,7 +16,7 @@
     },
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "cd server && nodemon app.js",
+      "start": "cd server && npm install && npm run start nodemon",
       "heroku-postbuild": "cd client && npm install && npm run build"
     },
     "engines": {
