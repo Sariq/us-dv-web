@@ -7,7 +7,7 @@
     },
     "scripts": {
       "start": "node server",
-      "heroku-postbuild": "node server"
+      "heroku-postbuild": "npm start"
     },
     "cacheDirectories": [
       "node_modules",
