@@ -6,7 +6,8 @@
       "node": "10.x"
     },
     "scripts": {
-      "start": "node server"
+      "start": "node server",
+      "heroku-postbuild": "node server"
     },
     "cacheDirectories": [
       "node_modules",
