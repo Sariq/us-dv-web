@@ -27,9 +27,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 console.log(process.env.NODE_ENV);
 if(!isProduction) {
   app.use(errorHandler());
-  mongoose.connect('mongodb://localhost/us-dv');
+  //mongoose.connect('mongodb://localhost/us-dv');
+  mongoose.connect('mongodb+srv://developer:Paris2020!@cluster0-e6pdk.mongodb.net/', {dbName: 'test'});
+
 }else{
-  mongoose.connect('mongodb+srv://developer:Paris2020!@cluster0-e6pdk.mongodb.net/', {dbName: 'us-dv'});
+  mongoose.connect('mongodb+srv://developer:Paris2020!@cluster0-e6pdk.mongodb.net/', {dbName: 'test'});
 }
 app.use(express.static(path.join(__dirname, '/client/build')))
 
