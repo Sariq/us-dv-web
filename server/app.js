@@ -32,7 +32,7 @@ if(!isProduction) {
 }else{
   mongoose.connect('mongodb+srv://developer:London2020@cluster0-8wbi3.mongodb.net/', {dbName: 'maldives-converter'});
 }
-app.use(express.static(path.join(__dirname, '../client/build')))
+app.use(express.static(path.join(__dirname, '/client/build')))
 
 // app.get('*', function(request, response) {
 //   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
@@ -53,7 +53,7 @@ require('./models/Converters');
 require('./config/passport');
 app.use(require('./routes'));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
 })
 //Error handlers & middlewares
 if(!isProduction) {

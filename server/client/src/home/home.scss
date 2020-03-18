@@ -1,0 +1,154 @@
+@import "../variables";
+.home-container {
+  .info-container {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+  .header {
+    background-color: #212b51;
+    border-style: solid;
+    border-color: #a10532;
+    border-top-width: 3px;
+    transition-duration: 0.4s;
+    transition-property: background-color, border-color;
+    padding: 0;
+    margin: 0;
+    border-bottom: 0;
+    border-right: 0;
+    color: white;
+    border-left: 0;
+    position: "relative";
+    margin-bottom: 50px;
+  }
+  .info-section {
+    // @include setGrid(1fr 1fr, 0, null, null, 'columns');
+    // align-items: center;
+    .MuiSvgIcon-root {
+      color: $bordo;
+      font-size: $font_xxxxxxxl;
+    }
+  }
+  .consultation-section {
+    background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-header-bg.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+    width: 100%;
+    color: $white;
+    font-weight: bold;
+
+    .consulation-container {
+      padding: 20px;
+      .text {
+        text-align: left !important;
+        color: $white;
+      }
+    }
+    .card {
+      color: $white;
+      background-color: rgba(33, 43, 81, 0.7);
+      transition-duration: 0.4s;
+      transition-property: background-color, border-color;
+    }
+  }
+  button {
+    width: 100%;
+    background-color: $bordo;
+    font-weight: bold;
+    margin-top: 10px;
+    height: 50px;
+  }
+  button:hover {
+    background-color: $white !important;
+    color: $bordo !important;
+    border: solid 2px $bordo;
+  }
+  .visa-categories-title-container {
+    margin-bottom: 20px;
+    .text {
+      font-size: 35px !important;
+    }
+  }
+  .categories-cards-container {
+    margin-top: 40px;
+    .text {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+    .sub-text {
+      margin-top: 10px;
+      font-size: 15px;
+      opacity: 0.6;
+    }
+    .more-info {
+      width: 100%;
+      color: $bordo;
+      margin-bottom: 20px;
+      font-weight: bolder;
+    }
+    .more-info:after {
+      content: "\2794";
+      transition: 0.3s;
+      margin-left: 5px;
+    }
+    .icon-container {
+      height: 50px;
+      width: 50px;
+      background: $bordo;
+      border-radius: 50px;
+      margin: auto;
+      display: flex;
+
+      align-items: center;
+
+      .MuiSvgIcon-root {
+        margin: auto;
+        color: white;
+      }
+    }
+  }
+  .about-us-container {
+    height: 600px;
+    background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-parallax1.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 40px;
+    width: 100%;
+    position: relative;
+    .text-container {
+      color: white;
+      text-align: left;
+      position: absolute;
+      padding: 50px;
+      background-color: #212b51;
+      transition-duration: 0.4s;
+      transition-property: background-color, border-color;
+      width: 50%;
+      margin: 50px;
+      .sub-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+      .body {
+        margin-bottom: 15px;
+      }
+      .footer{
+          .need{
+              font-size: 20px;
+              font-weight: bolder;
+              margin-right: 5px;
+          }
+          font-size: 16px;
+
+      }
+    }
+  }
+  .data-divider{
+      height: 100px;
+      background: $bordo;
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+}

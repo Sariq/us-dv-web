@@ -1,0 +1,23 @@
+.addressForm {
+    .bd-container{
+        margin-top: 0px;
+    }
+  .react-tel-input input[type="tel"] {
+    width: 100%;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+  }
+  .country-list {
+    text-align: left;
+  }
+  .react-tel-input {
+      margin-top: 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    .flag-dropdown {
+      border: 0;
+      background: unset;
+    }
+  }
+ 
+}
