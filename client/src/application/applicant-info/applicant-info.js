@@ -36,7 +36,7 @@ class ApllicantInfo extends Component {
     }
     onCountryChange = (value) => {
         this.setState({currentYear:value})
-        this.props.registrationStore.handleDataChange("country", value)
+        this.props.registrationStore.handleDataChange("country", value, this.props.obj)
     }
     componentDidUpdate(){
         if(this.props.AuthStore.authData && this.props.AuthStore.authData.user.token){

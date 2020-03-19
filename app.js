@@ -52,7 +52,16 @@ require('./models/Converters');
 require('./config/passport');
 app.use(require('./routes'));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
+  console.log(req.originalUrl)
+  console.log("XXXXX")
+
+  if(req.originalUrl.includes("ImmiEx") || req.originalUrl === "/"){
+    res.sendFile(path.join(__dirname, req.originalUrl))
+
+  }else{
+    res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
+
+  }
 })
 //Error handlers & middlewares
 if(!isProduction) {
