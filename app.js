@@ -31,7 +31,7 @@ if(!isProduction) {
 }else{
   mongoose.connect('mongodb+srv://developer:Paris2020!@cluster0-e6pdk.mongodb.net/', {dbName: 'us-dv'});
 }
-app.use(express.static(path.join(__dirname, '/client/build')))
+app.use(express.static(path.join(__dirname, '/client/build', 'index.html')))
 
 // app.get('*', function(request, response) {
 //   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
@@ -53,9 +53,7 @@ require('./config/passport');
 app.use(require('./routes'));
 app.get('*', (req, res) => {
   console.log(req.originalUrl)
-  console.log("XXXXX")
-
-  if(req.originalUrl.includes("ImmiEx") || req.originalUrl === "/"){
+  if(req.originalUrl.includes("ImmiEx")){
     res.sendFile(path.join(__dirname, req.originalUrl))
 
   }else{
