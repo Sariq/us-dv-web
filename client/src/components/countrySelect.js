@@ -24,7 +24,10 @@ const useStyles = makeStyles({
 
 export default function CountrySelect(props) {
   const classes = useStyles();
-
+  const defaultCountryIndex = countries[countries.findIndex((c)=> c.label === props.selectedCountry)];
+  // if(!defaultCountryIndex){
+  //   return <div></div>
+  // }
   return (
     <Autocomplete
       id="country-select-demo"
@@ -33,6 +36,8 @@ export default function CountrySelect(props) {
           console.log(newValue)
         props.onChange(newValue.label);
       }}
+      defaultValue={defaultCountryIndex}
+
       autoHighlight
       getOptionLabel={option => option.label}
       renderOption={option => (
@@ -47,7 +52,6 @@ export default function CountrySelect(props) {
           label={props.placeHolder ? props.placeHolder : "Choose a country"}
           inputProps={{
             ...params.inputProps,
-            autoComplete: 'new-password', // disable autocomplete and autofill
           }}
         />
       )}

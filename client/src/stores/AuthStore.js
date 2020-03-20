@@ -37,7 +37,6 @@ const apis = {
               Accept: 'application/json',
               'Content-Type': 'application/json',
               'Authorization': 'Token ' + data.token
-
             },
             body: JSON.stringify({
               "user": data
@@ -103,9 +102,7 @@ class AuthStore {
             };
         }
         localStorage.setItem('authData', JSON.stringify(data));
-        this.authData = data;
-       
-        console.log(this.authData)
+        this.authData = data;       
     };
     @action initLogin () {
         this.authData = JSON.parse(localStorage.getItem('authData'));

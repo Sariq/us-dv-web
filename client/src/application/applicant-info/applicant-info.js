@@ -31,7 +31,7 @@ class ApllicantInfo extends Component {
         maritalStatus: null,
         currentYear:  new Date().getFullYear() - 18
     }
-    handleGenderChange(event) {
+    handleGenderChange= (event) =>  {
         this.props.registrationStore.handleDataChange("gender", event.target.value, this.props.obj)
     }
     onCountryChange = (value) => {
@@ -45,6 +45,7 @@ class ApllicantInfo extends Component {
     }
     render(){
         const { classes } = this.props;
+//            { (Object.keys(this.props.registrationStore.applicationData[this.props.obj]).length === 0 ||  Object.keys(this.props.registrationStore.applicationData[this.props.obj]).length > 0) && <div className="applicant-info-container">
 
     return (
         <React.Fragment >
@@ -97,7 +98,7 @@ class ApllicantInfo extends Component {
                         </Grid>
                       
                         <Grid item xs={12} sm={6}>
-                            <CountrySelect placeHolder="Country Of Birth" onChange={this.onCountryChange} />
+                            <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj].country}  placeHolder="Country Of Birth" onChange={this.onCountryChange} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -113,7 +114,7 @@ class ApllicantInfo extends Component {
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <CountrySelect placeHolder="Country Of Residence" onChange={this.onCountryChange} />
+                            <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].country} placeHolder="Country Of Residence" onChange={this.onCountryChange} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -134,10 +135,10 @@ class ApllicantInfo extends Component {
                                     labelId="maritalStatus"
                                     id="maritalStatus"
                                   
-                                    value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].maritalStatus}
+                                    value={this.props.registrationStore.applicationData[this.props.obj].maritalStatus}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("maritalStatus", event.target.value, this.props.obj)}
                                 >
-                                    <MenuItem value="single">Single</MenuItem>
+                                    <MenuItem value={"single"}>Single</MenuItem>
                                     <MenuItem value="married">Married</MenuItem>
                                     <MenuItem value="divorced">Divorced</MenuItem>
                                     <MenuItem value="Widowed">Widowed</MenuItem>

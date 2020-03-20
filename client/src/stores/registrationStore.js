@@ -74,6 +74,8 @@ class registrationStore {
         personalDetails:{},
         paymentData:{}
     };
+    @observable isLoadingApplicationData= true;
+
     @observable applicationData= new applicationData();
     @observable registerInProgress=false;
     @action registerUser() {
@@ -95,7 +97,9 @@ class registrationStore {
         this.applicationData[obj][attr] = value;
     }
     @action initApplicationData(){
-        this.applicationData = AuthStore.authData.user.userData.applicationData
+        this.applicationData = AuthStore.authData.user.userData.applicationData;
+        this.isLoadingApplicationData = false;
+
     }
 }
 //export default registrationStore;

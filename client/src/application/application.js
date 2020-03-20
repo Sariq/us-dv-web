@@ -36,7 +36,7 @@ const useStyles = (theme => ({
     backdrop: {
         zIndex: theme.zIndex.drawer + 1,
         color: '#fff',
-      }
+    }
 }));
 
 function getSteps() {
@@ -123,25 +123,30 @@ class VerticalLinearStepper extends Component {
 
     render() {
         const { classes } = this.props;
-        if(!this.props.AuthStore.authData){
-            return <div>xx</div>
+        if (!this.props.AuthStore.authData || this.props.registrationStore.isLoadingApplicationData) {
+            return <div></div>
         }
         return (
             <>
                 <div className="header-container">
                     <AppBar position="absolute" color="default" className="header">
                         <Toolbar>
-                            <Typography variant="h6" color="inherit" noWrap>
-                                USA-DV    {this.props.AuthStore.authData && this.props.AuthStore.authData.user.userData.registrationData.firstName}
-                                {/* {JSON.stringify(this.props.registrationStore.registrationData)} */}
-                                <div><Button
-                                    onClick={() => this.logOut()}
-                                    className={classes.button}
-                                >
-                                    Logout
+                            
+                                <div className="header-content-container">
+                                <Typography variant="h6" color="inherit" noWrap>
+                                    <div>USA-DV    {this.props.AuthStore.authData && this.props.AuthStore.authData.user.userData.registrationData.firstName}</div>
+                                    {/* {JSON.stringify(this.props.registrationStore.registrationData)} */}
+                                    </Typography>
+                                    <div>
+
+                                        <Button
+                                        onClick={() => this.logOut()}
+                                        variant="contained" color="primary"
+                                    >
+                                        Logout
                                 </Button>
+                                    </div>
                                 </div>
-                            </Typography>
                         </Toolbar>
                     </AppBar>
                 </div>
@@ -149,7 +154,7 @@ class VerticalLinearStepper extends Component {
                     {this.props.registrationStore.registerInProgress && <Backdrop className={classes.backdrop} open={true}>
                         <CircularProgress color="inherit" />
                     </Backdrop>}
-                    {JSON.stringify(this.props.registrationStore.applicationData)}
+                    {/* {JSON.stringify(this.props.registrationStore.applicationData)} */}
 
                     <Stepper activeStep={this.state.activeStep} orientation="vertical">
                         {this.steps.map((step, index) => (

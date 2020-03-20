@@ -135,7 +135,7 @@ function AddressContact({handleDataChange, props}) {
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <ReactPhoneInput defaultCountry={'us'} onChange={handleOnChange} />
+                            <ReactPhoneInput   value={props && props.registrationStore.applicationData.addressContact.phone} defaultCountry={'us'} onChange={handleOnChange} />
                         </Grid>
                     </Grid>
                 </div>
