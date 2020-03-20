@@ -21,7 +21,7 @@ class Layout extends Component {
   render() {
     if (!this.props.AuthStore.getUserDataLocal() && window.location.pathname !== "/login-page" &&  !window.location.pathname.includes("/ImmiEx")) {
       //return <Redirect push to="/login-page" />;
-      window.location.href = window.location.origin + "/ImmiEx/HTML/website/demo-1.html";
+      window.location.href = window.location.origin + "/ImmiEx/HTML/website/index.html";
 
     }
     return (

@@ -22,7 +22,7 @@ app.use(cors());
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/client/build')));
 //app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 console.log(process.env.NODE_ENV);
 if(!isProduction) {
@@ -31,7 +31,6 @@ if(!isProduction) {
 }else{
   mongoose.connect('mongodb+srv://developer:Paris2020!@cluster0-e6pdk.mongodb.net/', {dbName: 'us-dv'});
 }
-app.use(express.static(path.join(__dirname, '/client/build', 'index.html')))
 
 // app.get('*', function(request, response) {
 //   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
@@ -52,11 +51,19 @@ require('./models/Converters');
 require('./config/passport');
 app.use(require('./routes'));
 app.get('*', (req, res) => {
-  console.log(req.originalUrl)
-  if(req.originalUrl.includes("ImmiEx")){
+  console.log(req)
+
+  console.log("xxxxxxx3")
+  if(req.originalUrl.includes("ImmiEx") || req.originalUrl === "/" || req.originalUrl === undefined){
+    app.use(express.static(path.join(__dirname, '/immiEx/HTML/website', 'index.html')))
+
     res.sendFile(path.join(__dirname, req.originalUrl))
 
   }else{
+      console.log("xxxxxxx2")
+
+    app.use(express.static(path.join(__dirname, '/client/build', 'index.html')))
+
     res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
 
   }
