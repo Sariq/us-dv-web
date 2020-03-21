@@ -100,10 +100,10 @@ class LoginPage extends Component {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
+              id="userName"
+              label="User Name"
               name="email"
-              autoComplete="email"
+              autoComplete="userName"
               autoFocus
               value={this.state.userName}
               onChange={(event) => this.setState({userName:event.target.value})}
