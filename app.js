@@ -43,7 +43,7 @@ if(!isProduction) {
 //mongoose.connect('mongodb://developer:London2020@cluster0-8wbi3.mongodb.net/maldives-converter?retryWrites=true&w=majority');
 
 mongoose.set('debug', true);
-
+console.log("xx");
 //Models & routes
 require('./models/Payments');
 
