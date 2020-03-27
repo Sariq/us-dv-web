@@ -44,6 +44,7 @@ if(!isProduction) {
 
 mongoose.set('debug', true);
 console.log("xx");
+console.log("xx2")
 //Models & routes
 require('./models/Payments');
 
