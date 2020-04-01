@@ -83,8 +83,9 @@ class AuthStore {
             });
     };
     @action getUserDataLocal () {
-        this.authData = JSON.parse(localStorage.getItem('authData'));
-        return this.authData;
+        //this.authData = this.authDataJSON.parse(localStorage.getItem('authData'));
+        //const authData = this.authDataJSON.parse(localStorage.getItem('authData'));
+        return JSON.parse(localStorage.getItem('authData'))
     };
     @action setUserDataLocal (data) {
         if(!data.user.userData.registrationData){

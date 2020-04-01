@@ -269,8 +269,56 @@ router.post('/email-confirm', (req, res, next) => {
     });
 });
 
+router.get('/users-page/:page', async (req, res, next) => {
+  // Declaring variable
+  const resPerPage = 100; // results per page
+  const page = req.params.page || 1; // Page 
+  try {
+    var foundPConverters = [];
+    var numOfConverters = 0;
+    if (req.query.search) {
+      // Declaring query based/search variables
+      const searchQuery = req.query.search,
+        regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      // Find Demanded Products - Skipping page values, limit results       per page
+      foundPConverters = await Users.find({ name: regex })
+        .skip((resPerPage * page) - resPerPage)
+        .limit(resPerPage);
+      numOfConverters = await Users.count({ name: regex });
 
+    } else {
+      searchQuery = null;
+      foundPConverters = await Users.find({})
+        .skip((resPerPage * page) - resPerPage)
+        .limit(resPerPage);
+      numOfConverters = await Users.count();
 
+    }
+    // Count how many products were found
+    // Renders The Page
+
+    return res.json({
+      users: foundPConverters,
+      currentPage: page,
+      pages: Math.ceil(numOfConverters / resPerPage),
+      searchVal: req.query.search,
+      numOfResults: numOfConverters
+    })
+
+  } catch (err) {
+    throw new Error(err);
+  }
+});
+router.get('/getUserById/:userId', (req, res, next) => {
+  const userId = req.params.userId;
+  return Users.findById(userId)
+  .then((user) => {
+    if (!user) {
+      return res.sendStatus(400);
+    }
+    return res.json({ user: user.toAuthJSON() });
+  });
+});
 
 
 module.exports = router;

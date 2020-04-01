@@ -48,6 +48,8 @@ export default function CountrySelect(props) {
       )}
       renderInput={params => (
         <TextField
+        error ={props.isValid}
+
           {...params}
           label={props.placeHolder ? props.placeHolder : "Choose a country"}
           inputProps={{

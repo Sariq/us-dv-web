@@ -19,6 +19,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import EditIcon from '@material-ui/icons/Edit';
 const useStyles = (theme => ({
     root: {
         width: '70%',
@@ -44,7 +45,7 @@ function getSteps() {
 }
 
 
-@inject('registrationStore', 'AuthStore')
+@inject('registrationStore', 'AuthStore','UsersStore')
 @observer
 class VerticalLinearStepper extends Component {
     //steps = getSteps();
@@ -57,7 +58,7 @@ class VerticalLinearStepper extends Component {
             if (this.props.registrationStore.applicationData.applicantInfo.childrenNumber > 0) {
                 Array.from(new Array(parseInt(this.props.registrationStore.applicationData.applicantInfo.childrenNumber, 10)), (v, i) => {
                     this.props.registrationStore.applicationData.childrenInfo.push({})
-                    this.childrenTabs.push({ title: `Child ${i + 1}`, cmp: <ChildrenInfo handleDataChange={(attr, val, index) => this.handleChildrenDataChange(attr, val, index)} props={this.props} index={i} /> })
+                    this.childrenTabs.push({ title: `Child ${i + 1}`, cmp: <ChildrenInfo obj="childrenInfo" handleDataChange={(attr, val, index) => this.handleChildrenDataChange(attr, val, index)} props={this.props} index={i} /> })
                 });
                 this.steps.push({
                     title: 'Children Info', cmp: <ScrollableTabsButtonAuto
@@ -97,7 +98,13 @@ class VerticalLinearStepper extends Component {
         this.props.registrationStore.applicationData.childrenInfo[index][attr] = value;
     }
     componentDidMount() {
-        this.props.registrationStore.initApplicationData()
+        if(this.props.match.params.userId){
+            this.props.UsersStore.getUserById(this.props.match.params.userId).then(rest=>{
+                this.props.registrationStore.initApplicationData()
+            });
+        }else{
+            this.props.registrationStore.initApplicationData()
+        }
     }
     logOut() {
         this.props.AuthStore.logOut().then(() => this.props.history.push('/login-page'))
@@ -123,8 +130,10 @@ class VerticalLinearStepper extends Component {
 
     render() {
         const { classes } = this.props;
-        if (!this.props.AuthStore.authData || this.props.registrationStore.isLoadingApplicationData) {
-            return <div></div>
+        if (!this.props.AuthStore.authData || this.props.registrationStore.isLoadingApplicationData || this.props.UsersStore.loadingUser) {
+            return <Backdrop className={classes.backdrop} open={true}>
+            <CircularProgress color="inherit" />
+        </Backdrop>
         }
         return (
             <>
@@ -176,6 +185,7 @@ class VerticalLinearStepper extends Component {
                                                 color="primary"
                                                 onClick={this.handleNext}
                                                 className={classes.button}
+                                                //disabled={this.props.registrationStore.isFormInValid}
                                             >
                                                 {this.state.activeStep === this.steps.length - 1 ? 'Finish' : 'Next'}
                                             </Button>

@@ -74,7 +74,11 @@ class LoginPage extends Component {
         password: this.state.password
      }
      this.props.AuthStore.login(data).then((res)=>{
+       if(this.props.AuthStore.authData && this.props.AuthStore.authData.user.admin){
+        this.props.history.push('/users-list');
+       }else{
         this.props.history.push('/application');
+       }
     })
    
 

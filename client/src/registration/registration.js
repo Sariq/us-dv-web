@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -103,6 +102,8 @@ class Register extends Component {
   steps = ['Personal Details', 'Complete Registration', 'Payment details', 'Review your order'];
   handleRegisterDataChange(attr, value, obj) {
     this.props.registrationStore.registrationData[obj][attr] = value;
+    this.props.registrationStore.errors[attr] = true;
+    console.log(this.props.registrationStore.errors)
   };
 
 
@@ -164,6 +165,7 @@ class Register extends Component {
                           color="primary"
                           onClick={this.handleNext}
                           className={classes.button}
+                          disabled={this.props.registrationStore.isFormInValid}
                         >
                           {this.state.activeStep === this.steps.length - 1 ? 'Place order' : this.state.activeStep === 1  ? 'Apply': 'Next'}
                         </Button>

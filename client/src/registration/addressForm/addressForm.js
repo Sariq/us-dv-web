@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -7,10 +7,11 @@ import ReactPhoneInput from 'react-phone-input-2';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import CountrySelect from '../../components/countrySelect'
+import { inject, observer } from "mobx-react";
 
 import { TextField, withStyles, InputLabel, Select, MenuItem } from '@material-ui/core';
 import "./addressForm.scss"
-const useStyles = makeStyles(theme => ({
+const useStyles = (theme => ({
     formControl: {
         minWidth: 120,
     },
@@ -18,24 +19,21 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(2),
     },
 }));
+@inject('registrationStore')
+@observer
+class AddressForm extends Component {
+// function AddressForm({ handleDataChange, props, obj }) {
 
-function AddressForm({ handleDataChange, props, obj }) {
-    const classes = useStyles();
-    const [day, setDay] = useState(null);
-    const [month, setMonth] = useState(null);
-    const [year, setYear] = useState(null);
-    const [country, setCountry] = useState(null);
-    const handleChannelChange = (attr, value) => {
-        this.props.handleDataChange(attr, value);
-    };
-    function handleOnChange(value) {
-        handleDataChange("phone", value, obj)
+    handleOnChange = (value) => {
+        this.props.registrationStore.handleRegisterDataChange("phone", value, this.props.obj)
     }
-    const onCountryChange = (value) => {
-        setCountry(value);
-        handleDataChange("country", value, obj)
+        onCountryChange = (value) => {
+        this.props.registrationStore.handleRegisterDataChange("country", value, this.props.obj)
     }
-    const currentYear = new Date().getFullYear() - 18;
+  
+    currentYear = new Date().getFullYear() - 18;
+    render (){
+        const { classes } = this.props;
 
     return (
         <React.Fragment >
@@ -49,45 +47,48 @@ function AddressForm({ handleDataChange, props, obj }) {
                     <Grid item xs={12} sm={6}>
                         <TextField
                             required
+                            error ={this.props.registrationStore.errors.firstName}
                             id="firstName"
                             name="firstName"
                             label="First name"
                             fullWidth
                             autoComplete="fname"
-                            value={props && props.registrationStore.registrationData.personalDetails.firstName}
-                            onChange={(event) => handleDataChange("firstName", event.target.value, obj)}
+                            value={this.props && this.props.registrationStore.registrationData.personalDetails.firstName}
+                            onChange={(event) => this.props.registrationStore.handleRegisterDataChange("firstName", event.target.value, this.props.obj)}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             required
+                            error ={this.props.registrationStore.errors.lastName}
                             id="lastName"
                             name="lastName"
                             label="Last name"
                             fullWidth
                             autoComplete="lname"
-                            value={props && props.registrationStore.registrationData.personalDetails.lastName}
-                            onChange={(event) => handleDataChange("lastName", event.target.value, obj)}
+                            value={this.props && this.props.registrationStore.registrationData.personalDetails.lastName}
+                            onChange={(event) => this.props.registrationStore.handleRegisterDataChange("lastName", event.target.value, this.props.obj)}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             required
+                            error ={this.props.registrationStore.errors.email}
                             id="Email"
                             name="Email"
                             label="Email"
                             fullWidth
                             autoComplete="email"
-                            value={props && props.registrationStore.registrationData.personalDetails.email}
-                            onChange={(event) => handleDataChange("email", event.target.value, obj)}
+                            value={this.props && this.props.registrationStore.registrationData.personalDetails.email}
+                            onChange={(event) => this.props.registrationStore.handleRegisterDataChange("email", event.target.value, this.props.obj)}
                         />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <CountrySelect onChange={onCountryChange} />
+                        <CountrySelect isValid={this.props.registrationStore.errors.country} selectedCountry={this.props.registrationStore.registrationData.personalDetails.country}  placeHolder="Country Of Birth" onChange={this.onCountryChange}  />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <ReactPhoneInput value={props && props.registrationStore.registrationData.personalDetails.phone} defaultCountry={'us'} onChange={handleOnChange} />
+                        <ReactPhoneInput value={this.props && this.props.registrationStore.registrationData.personalDetails.phone} defaultCountry={'us'} onChange={this.handleOnChange} />
                     </Grid>
                 </Grid>
 
@@ -99,8 +100,8 @@ function AddressForm({ handleDataChange, props, obj }) {
                             <Select
                                 labelId="Day"
                                 id="Day"
-                                value={props.registrationStore.registrationData.personalDetails.day}
-                                onChange={(event) => handleDataChange("day", event.target.value, obj)}
+                                value={this.props.registrationStore.registrationData.personalDetails.day}
+                                onChange={(event) => this.props.registrationStore.handleRegisterDataChange("day", event.target.value, this.props.obj)}
                             >
                                 {Array.from(new Array(31), (v, i) =>
                                     <MenuItem value={i + 1}>{i + 1}</MenuItem>
@@ -113,8 +114,8 @@ function AddressForm({ handleDataChange, props, obj }) {
                             <InputLabel id="month">Month</InputLabel>
                             <Select
                                 labelId="Month"
-                                value={props.registrationStore.registrationData.personalDetails.month}
-                                onChange={(event) => handleDataChange("month", event.target.value, obj)}
+                                value={this.props.registrationStore.registrationData.personalDetails.month}
+                                onChange={(event) => this.props.registrationStore.handleRegisterDataChange("month", event.target.value, this.props.obj)}
                             >
                                 {Array.from(new Array(12), (v, i) =>
                                     <MenuItem value={i + 1}>{i + 1}</MenuItem>
@@ -129,11 +130,11 @@ function AddressForm({ handleDataChange, props, obj }) {
                             <Select
                                 labelId="year"
                                 id="year"
-                                value={props.registrationStore.registrationData.personalDetails.year}
-                                onChange={(event) => handleDataChange("year", event.target.value, obj)}
+                                value={this.props.registrationStore.registrationData.personalDetails.year}
+                                onChange={(event) => this.props.registrationStore.handleRegisterDataChange("year", event.target.value, this.props.obj)}
                             >
                                 {Array.from(new Array(90), (v, i) =>
-                                    <MenuItem value={currentYear - i}>{currentYear - i}</MenuItem>
+                                    <MenuItem value={this.currentYear - i}>{this.currentYear - i}</MenuItem>
 
                                 )}
                             </Select>
@@ -144,6 +145,6 @@ function AddressForm({ handleDataChange, props, obj }) {
 
             </div>
         </React.Fragment>
-    );
+    )};
 }
-export default (AddressForm);
+export default withStyles(useStyles)(AddressForm);

@@ -56,11 +56,14 @@ class ApllicantInfo extends Component {
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 required
+                                error ={this.props.registrationStore.errors.firstName}
                                 id="firstName"
                                 name="firstName"
                                 label="First name"
                                 fullWidth
                                 autoComplete="fname"
+                                helperText={this.props.registrationStore.errors.firstName ? "Invalid input" : null}
+
                                 // defaultValue={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].firstName}
                                 value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].firstName}
                                 onChange={(event) => this.props.registrationStore.handleDataChange("firstName", event.target.value, this.props.obj)}
