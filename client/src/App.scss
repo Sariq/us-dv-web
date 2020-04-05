@@ -40,3 +40,11 @@
   z-index: 1;
   color: #fff;
 }
+
+.layout-container{
+  display: flex;
+  .side-menu-container{
+    margin-top: 70px;
+    height: 100vh;
+  }
+}

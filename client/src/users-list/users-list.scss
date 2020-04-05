@@ -2,4 +2,10 @@
     width: 70%;
     margin: auto;
     margin-top: 50px;
+    .actions-container{
+        display: flex;
+        div{
+            padding: 0 5px;
+        }
+    }
 }

@@ -319,6 +319,19 @@ router.get('/getUserById/:userId', (req, res, next) => {
     return res.json({ user: user.toAuthJSON() });
   });
 });
+router.post('/deleteApplicationById', auth.optional, (req, res, next) => {
+  const userId = req.body.userId;
+
+  return Users.findById(userId)
+    .then((user) => {
+      if (!user) {
+        return res.sendStatus(400);
+      }
+      user.applicationData = null;
+      return user.save()
+        .then(() => res.json({ user: user.toAuthJSON() }));
+    });
+});
 
 
 module.exports = router;

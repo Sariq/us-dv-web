@@ -101,7 +101,7 @@ class registrationStore {
         this.applicationData.applicantInfo[attr] = value;
     }
     @action handleDataChange(attr, value, obj, index) {
-      if(index !== null){
+      if(index !== undefined){
         this.applicationData[obj][index][attr] = value;
       }else{
         this.applicationData[obj][attr] = value;
@@ -141,6 +141,9 @@ class registrationStore {
         case "textInput":
 
       }
+    }
+    @action emptyApplicationData(){
+      return new applicationData();
     }
 }
 //export default registrationStore;

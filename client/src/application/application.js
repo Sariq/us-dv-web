@@ -131,9 +131,9 @@ class VerticalLinearStepper extends Component {
     render() {
         const { classes } = this.props;
         if (!this.props.AuthStore.authData || this.props.registrationStore.isLoadingApplicationData || this.props.UsersStore.loadingUser) {
-            return <Backdrop className={classes.backdrop} open={true}>
+            return (<Backdrop className={classes.backdrop} open={true}>
             <CircularProgress color="inherit" />
-        </Backdrop>
+        </Backdrop>)
         }
         return (
             <>
@@ -167,6 +167,7 @@ class VerticalLinearStepper extends Component {
 
                     <Stepper activeStep={this.state.activeStep} orientation="vertical">
                         {this.steps.map((step, index) => (
+                            
                             <Step key={step.title}>
                                 <StepLabel>{step.title}</StepLabel>
                                 <StepContent>
