@@ -43,8 +43,9 @@
 
 .layout-container{
   display: flex;
+  margin-top: 100px;
   .side-menu-container{
-    margin-top: 70px;
     height: 100vh;
+    position: fixed;
   }
 }

@@ -26,7 +26,6 @@ const useStyles = theme => ({
     width: 'auto',
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
-    marginTop: 130,
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 800,
       marginLeft: 'auto',
@@ -38,7 +37,6 @@ const useStyles = theme => ({
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
       padding: theme.spacing(3),
     },
@@ -116,15 +114,6 @@ class Register extends Component {
 
         <React.Fragment>
           <CssBaseline />
-          <AppBar position="absolute" color="default" className="header">
-            <Toolbar>
-              <Typography variant="h6" color="inherit" noWrap>
-                USA-DV    {this.props.AuthStore.authData && this.props.AuthStore.authData.user.userData.registrationData.firstName}          
-                 {/* {JSON.stringify(this.props.registrationStore.registrationData)} */}
-
-              </Typography>
-            </Toolbar>
-          </AppBar>
           <main className={classes.layout}>
           { this.props.registrationStore.registerInProgress && <Backdrop className={classes.backdrop} open={true}>
                 <CircularProgress color="inherit" />

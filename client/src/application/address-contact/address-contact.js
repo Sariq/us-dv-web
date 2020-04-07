@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import ReactPhoneInput from 'react-phone-input-2';
-import { makeStyles } from '@material-ui/core/styles';
 import CountrySelect from '../../components/countrySelect'
 import { TextField, withStyles, InputLabel, Select, MenuItem } from '@material-ui/core';
 import "./address-contact.scss"
+import { inject, observer } from "mobx-react";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = (theme => ({
     formControl: {
         minWidth: 120,
     },
@@ -15,132 +15,137 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(2),
     },
 }));
-
-function AddressContact({handleDataChange, props}) {
-    const classes = useStyles();
-    const [day, setDay] = useState(null);
-    const [month, setMonth] = useState(null);
-    const [year, setYear] = useState(null);
-    const [maritalStatus, setMaritalStatus] = useState(null);
-    const [education, setEducation] = useState(null);
-    const [country, setCountry] = useState(null);
-    const [value, setValue] = React.useState('female');
-    const handleChange = event => {
-        setValue(event.target.value);
-    };
-    function handleOnChange(value) {
-        console.log(value)
-        handleDataChange("phone", value)
-
+@inject('registrationStore')
+@observer
+class AddressContact extends Component {
+    onCountryChange = (value) => {
+        this.props.registrationStore.handleDataChange("country", value, this.props.obj)
     }
-    const onCountryChange = (value) => {
-        setCountry(value);
-        handleDataChange("country", value)
-    }
-    const currentYear = new Date().getFullYear() - 18;
+    render(){
+        const { classes } = this.props;
+        return (
+            <React.Fragment >
+                <div className="applicant-info-container">
+                    <div className="addressForm">
+                        <Grid container spacing={5}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    error={this.props && this.props.registrationStore.errors.email}
+                                    helperText={this.props && this.props.registrationStore.errors.email ? "Invalid input" : null}
+                                    id="email"
+                                    name="email"
+                                    label="Email"
+                                    fullWidth
+                                    autoComplete="email"
+                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.email}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("email", event.target.value, this.props.obj)}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    error={this.props && this.props.registrationStore.errors.additionalEmail}
+                                    helperText={this.props && this.props.registrationStore.errors.additionalEmail ? "Invalid input" : null}
+                                    id="additionalEmail"
+                                    name="additionalEmail"
+                                    label="Additional Email"
+                                    fullWidth
+                                    autoComplete="additionalEmail"
+                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.additionalEmail}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("additionalEmail", event.target.value, this.props.obj)}
+                                />
+                            </Grid>
 
-    return (
-        <React.Fragment >
-            <div className="applicant-info-container">
-                <div className="addressForm">
-                    <Grid container spacing={5}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="email"
-                                name="email"
-                                label="Email"
-                                fullWidth
-                                autoComplete="email"
-                                value={props && props.registrationStore.applicationData.addressContact.email}
-                                onChange={(event) => handleDataChange("email", event.target.value)}
-                            />
+                            <Grid item xs={12} sm={6}>
+                            <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].country} placeHolder="Country Of Residence" onChange={this.onCountryChange} />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    error={this.props && this.props.registrationStore.errors.cityOfBirth}
+                                    helperText={this.props && this.props.registrationStore.errors.cityOfBirth ? "Invalid input" : null}
+                                    id="cityOfBirth"
+                                    name="cityOfBirth"
+                                    label="City of Birth"
+                                    fullWidth
+                                    autoComplete="cityOfBirth"
+                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.cityOfBirth}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("cityOfBirth", event.target.value, this.props.obj)}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    error={this.props && this.props.registrationStore.errors.street}
+                                    helperText={this.props && this.props.registrationStore.errors.street ? "Invalid input" : null}
+                                    id="street"
+                                    name="street"
+                                    label="Street"
+                                    fullWidth
+                                    autoComplete="street"
+                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.street}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("street", event.target.value, this.props.obj)}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    error={this.props && this.props.registrationStore.errors.houseNumber}
+                                    helperText={this.props && this.props.registrationStore.errors.houseNumber ? "Invalid input" : null}
+                                    id="houseNumber"
+                                    name="houseNumber"
+                                    label="House Number"
+                                    type="number"
+                                    fullWidth
+                                    autoComplete="houseNumber"
+                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.houseNumber}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("houseNumber", event.target.value, this.props.obj)}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    error={this.props && this.props.registrationStore.errors.postalCode}
+                                    helperText={this.props && this.props.registrationStore.errors.postalCode ? "Invalid input" : null}
+                                    id="postalCode"
+                                    name="postalCode"
+                                    label="Postal Code"
+                                    type="number"
+                                    fullWidth
+                                    autoComplete="postalCode"
+                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.postalCode}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("postalCode", event.target.value, this.props.obj)}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    error={this.props && this.props.registrationStore.errors.poBox}
+                                    helperText={this.props && this.props.registrationStore.errors.poBox ? "Invalid input" : null}
+                                    id="poBox"
+                                    name="poBox"
+                                    label="Po. box"
+                                    fullWidth
+                                    autoComplete="poBox"
+                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.poBox}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("poBox", event.target.value, this.props.obj)}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                
+                                <ReactPhoneInput
+                                
+                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.phone}
+                                    onChange={(value) => this.props.registrationStore.handleDataChange("phone", value, this.props.obj)}
+                                    defaultCountry={'us'}
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="additionalEmail"
-                                name="additionalEmail"
-                                label="Additional Email"
-                                fullWidth
-                                autoComplete="additionalEmail"
-                                value={props && props.registrationStore.applicationData.addressContact.additionalEmail}
-                                onChange={(event) => handleDataChange("additionalEmail", event.target.value)}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} sm={6}>
-                            <CountrySelect placeHolder="Country Of Birth" onChange={onCountryChange} />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="cityOfBirth"
-                                name="cityOfBirth"
-                                label="City of Birth"
-                                fullWidth
-                                autoComplete="cityOfBirth"
-                                value={props && props.registrationStore.applicationData.addressContact.cityOfBirth}
-                                onChange={(event) => handleDataChange("cityOfBirth", event.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="street"
-                                name="street"
-                                label="Street"
-                                fullWidth
-                                autoComplete="street"
-                                value={props && props.registrationStore.applicationData.addressContact.street}
-                                onChange={(event) => handleDataChange("street", event.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="houseNumber"
-                                name="houseNumber"
-                                label="House Number"
-                                type="number"
-                                fullWidth
-                                autoComplete="houseNumber"
-                                value={props && props.registrationStore.applicationData.addressContact.houseNumber}
-                                onChange={(event) => handleDataChange("houseNumber", event.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="postalCode"
-                                name="postalCode"
-                                label="Postal Code"
-                                type="number"
-                                fullWidth
-                                autoComplete="postalCode"
-                                value={props && props.registrationStore.applicationData.addressContact.postalCode}
-                                onChange={(event) => handleDataChange("postalCode", event.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="poBox"
-                                name="poBox"
-                                label="Po. box"
-                                fullWidth
-                                autoComplete="poBox"
-                                value={props && props.registrationStore.applicationData.addressContact.poBox}
-                                onChange={(event) => handleDataChange("poBox", event.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <ReactPhoneInput   value={props && props.registrationStore.applicationData.addressContact.phone} defaultCountry={'us'} onChange={handleOnChange} />
-                        </Grid>
-                    </Grid>
+                    </div>
                 </div>
-            </div>
-        </React.Fragment>
-    );
+            </React.Fragment>
+        )
+    };
 }
-export default (AddressContact);
+export default withStyles(useStyles)(AddressContact);

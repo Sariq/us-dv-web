@@ -1,5 +1,19 @@
-.spouse-info-container{
-    .image-upload-container{
-        margin-top: 50px;
+.spouse-info-container {
+  .image-upload-container {
+    .MuiGrid-grid-xs-4 {
+      flex-grow: 1;
+      max-width: 600px;
+      .PreviewList-smallPreviewImg-462 {
+        width: 100%;
+        height: 100%;
+      }
     }
+    margin-top: 50px;
+    .drop-zone-container {
+      .MuiGrid-item {
+        height: 600px;
+        width: 600px;
+      }
+    }
+  }
 }

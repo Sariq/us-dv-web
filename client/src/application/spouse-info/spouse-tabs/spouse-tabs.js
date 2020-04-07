@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -6,11 +6,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import SupouseInfo from "../spouse-info";
-import ApllicantInfo from "../../applicant-info/applicant-info"
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+import { inject, observer } from "mobx-react";
+import {withStyles} from '@material-ui/core';
 
+class TabPanel extends Component {
+
+  render(){
+    const { children, value, index, ...other } = this.props;
   return (
     <Typography
       component="div"
@@ -22,7 +24,7 @@ function TabPanel(props) {
     >
       {value === index && <Box p={3}>{children}</Box>}
     </Typography>
-  );
+  )};
 }
 
 TabPanel.propTypes = {
@@ -38,7 +40,7 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = (theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
@@ -46,45 +48,38 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ScrollableTabsButtonAuto({tabs}) {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+@inject('registrationStore')
+@observer
+class ScrollableTabsButtonAuto extends Component {
+  handleChange = (event, newValue) => {
+    this.props.registrationStore.spouseInfoActiveTab = newValue;
   };
+render(){
+  const { classes } = this.props;
 
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
-          value={value}
-          onChange={handleChange}
+          value={this.props.registrationStore.spouseInfoActiveTab}
+          onChange={this.handleChange}
           indicatorColor="primary"
           textColor="primary"
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          {tabs.map((tab,i)=> {
-       return <Tab label={tab.title} {...a11yProps(i)} />
-        })}
-          {/* <Tab label="Basic" {...a11yProps(0)} />
-          <Tab label="Passport and Photo" {...a11yProps(1)} /> */}
+          {this.props.tabs.map((tab, i) => {
+            return <Tab key={i} label={tab.title} {...a11yProps(i)} />
+          })}
         </Tabs>
       </AppBar>
-      {tabs.map((tab,i)=> {
-       return <TabPanel value={value} index={i}>
-        {tab.cmp}
+      {this.props.tabs.map((tab, i) => {
+        return <TabPanel key={i}  value={this.props.registrationStore.spouseInfoActiveTab} index={i}>
+          {tab.cmp}
         </TabPanel>
-        })}
-      {/* <TabPanel value={value} index={0}>
-        {tab1}
-          
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        {tab2}
-      </TabPanel> */}
+      })}
     </div>
-  );
+  )};
 }
+export default withStyles(useStyles)(ScrollableTabsButtonAuto);
