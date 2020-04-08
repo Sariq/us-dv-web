@@ -25,8 +25,8 @@ class SupouseInfo extends Component {
     state = {
         currentYear: new Date().getFullYear() - 18
     }
-    onCountryChange = (value) => {
-        this.props.registrationStore.handleDataChange("country", value, this.props.obj)
+    onCountryChange = (value, fieldName) => {
+        this.props.registrationStore.handleDataChange(fieldName, value, this.props.obj, null , this.props.subObj)
     }
     // const setSelectedImage = (files) => {
     //     // console.log(files)
@@ -48,8 +48,8 @@ class SupouseInfo extends Component {
                                     <Select
                                         labelId="passportStatus"
                                         id="passportStatus"
-                                        value={this.props && this.props.registrationStore.applicationData.spouseInfo.passportStatus}
-                                        onChange={(event) => this.props.registrationStore.handleDataChange("passportStatus", event.target.value, this.props.obj)}
+                                        value={this.props && this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].passportStatus}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("passportStatus", event.target.value, this.props.obj, null , this.props.subObj )}
                                     >
                                         <MenuItem value="valid">Valid</MenuItem>
                                         <MenuItem value="lostOrExpired">Lost or Expired</MenuItem>
@@ -68,8 +68,8 @@ class SupouseInfo extends Component {
                                     type="number"
                                     fullWidth
                                     autoComplete="passportNumber"
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.passportNumber}
-                                    onChange={(event) => this.props.registrationStore.handleDataChange("passportNumber", event.target.value, this.props.obj)}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].passportNumber}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("passportNumber", event.target.value, this.props.obj, null , this.props.subObj )}
                                 />
                             </Grid>
                             <Grid item className="bd-container" container direction="row"
@@ -81,8 +81,8 @@ class SupouseInfo extends Component {
                                         <Select
                                             labelId="Month"
                                             id="Month"
-                                            value={this.props && this.props.registrationStore.applicationData.spouseInfo.month}
-                                            onChange={(event) => this.props.registrationStore.handleDataChange("month", event.target.value, this.props.obj)}
+                                            value={this.props && this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].month}
+                                            onChange={(event) => this.props.registrationStore.handleDataChange("month", event.target.value, this.props.obj, null , this.props.subObj )}
                                         >
                                             {Array.from(new Array(12), (v, i) =>
                                                 <MenuItem key={i} value={i + 1}>{i + 1}</MenuItem>
@@ -97,8 +97,8 @@ class SupouseInfo extends Component {
                                         <Select
                                             labelId="year"
                                             id="year"
-                                            value={this.props && this.props.registrationStore.applicationData.spouseInfo.year}
-                                            onChange={(event) => this.props.registrationStore.handleDataChange("year", event.target.value, this.props.obj)}
+                                            value={this.props && this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].year}
+                                            onChange={(event) => this.props.registrationStore.handleDataChange("year", event.target.value, this.props.obj, null , this.props.subObj )}
                                         >
                                             {Array.from(new Array(90), (v, i) =>
                                                 <MenuItem key={i} value={this.state.currentYear - i}>{this.state.currentYear - i}</MenuItem>
@@ -110,7 +110,7 @@ class SupouseInfo extends Component {
 
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].country} placeHolder="Country Of Residence" onChange={this.onCountryChange} />
+                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].country} placeHolder="Issuing Country" onChange={(value) => this.onCountryChange(value,"issuingCountry")} />
                             </Grid>
 
                         </Grid>

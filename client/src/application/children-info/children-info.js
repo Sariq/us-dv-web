@@ -81,6 +81,8 @@ class ChildrenInfo extends Component {
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 required
+                                error={this.props && this.props.registrationStore.errors.firstName}
+                                helperText={this.props && this.props.registrationStore.errors.firstName ? "Invalid input" : null}
                                 id="firstName"
                                 name="firstName"
                                 label="First name"

@@ -50,50 +50,40 @@ function getSteps() {
 class VerticalLinearStepper extends Component {
     //steps = getSteps();
     state = {};
-    initState = () =>{
-        this.props.registrationStore.activeObj = this.steps[1].obj;
-        this.state.activeStep = 1;
-       
-
+    initState = () => {
+        this.props.registrationStore.activeObj = this.steps[0].obj;
+        this.state.activeStep = 0;
     }
-    constructor(props){
+    constructor(props) {
         super(props);
         this.initState();
-      
+
     }
-   
+
     handleNext = () => {
+        this.props.registrationStore.errors = {};
         if (this.state.activeStep === 0) {
-            if (this.props.registrationStore.applicationData.applicantInfo.childrenNumber > 0) {
-                Array.from(new Array(parseInt(this.props.registrationStore.applicationData.applicantInfo.childrenNumber, 10)), (v, i) => {
-                    this.props.registrationStore.applicationData.childrenInfo.push({})
-                    this.childrenTabs.push({ title: `Child ${i + 1}`, cmp: <ChildrenInfo obj="childrenInfo" handleDataChange={(attr, val, index) => this.handleChildrenDataChange(attr, val, index)} props={this.props} index={i} /> })
-                });
-                this.steps.push({
-                    title: 'Children Info', cmp: <ScrollableTabsButtonAuto
-                        tabs={this.childrenTabs}
-                        handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} />
-                })
-
-            }
+            this.initSpouseAndChildrenSteps();
         }
-       
-        //if (this.state.activeStep + 1 === this.steps.length) {
-        this.props.registrationStore.sendApplication().then(() => {
-            if (this.state.activeStep === 1 && this.props.registrationStore.spouseInfoActiveTab === 0) {
-                this.props.registrationStore.spouseInfoActiveTab = 1;
-            }else{
-                this.props.registrationStore.activeObj = this.steps[this.state.activeStep + 1].obj
-                this.setState({ activeStep: this.state.activeStep + 1 });
-            }
-        });
-        //}
-
+        console.log(this.props.registrationStore.activeObj)
+        if ((this.steps[this.state.activeStep].tabs === true) && this.props.registrationStore.spouseInfoActiveTab === 0) {
+            this.props.registrationStore.spouseInfoActiveTab = 1;
+            this.props.registrationStore.activeSubObj = "passportAndPhoto";
+        } else {
+            // if (this.state.activeStep + 1 <= this.steps.length - 1) {
+            //     this.props.registrationStore.activeObj = this.steps[this.state.activeStep + 1].obj
+            // }
+            this.setState({ activeStep: this.state.activeStep + 1 });
+            this.props.registrationStore.spouseInfoActiveTab = 0;
+            this.props.registrationStore.activeSubObj = "basic";
+        }
     };
     handleBack = () => {
         this.setState({ activeStep: this.state.activeStep - 1 });
     };
-
+    handleSave = () => {
+        this.props.registrationStore.sendApplication();
+    };
 
     handleReset = () => {
         this.setState({ activeStep: 0 });
@@ -114,41 +104,104 @@ class VerticalLinearStepper extends Component {
     componentDidMount() {
         if (this.props.match.params.userId) {
             this.props.UsersStore.getUserById(this.props.match.params.userId).then(rest => {
-                this.props.registrationStore.initApplicationData()
+                this.props.registrationStore.initApplicationData().then(() => {
+
+                });
             });
         } else {
-            this.props.registrationStore.initApplicationData()
+            this.props.registrationStore.initApplicationData();
+            this.initSpouseAndChildrenSteps();
+
         }
     }
-   
+    initSpouseAndChildrenSteps = () => {
+        if (this.props.registrationStore.applicationData.applicantInfo.basic.maritalStatus === "married") {
+            const result = this.steps.filter((step)=>{
+                return step.obj === "spouseInfo"
+            });
+            console.log(result)
+            if(!result || result.length === 0 ){
+                this.steps.push({
+                    title: 'Spouse Info',
+                    cmp: <ScrollableTabsButtonAuto
+                        tabs={this.spouseTabs}
+                    />,
+                    obj: "spouseInfo",
+                    tabs:true
+                })
+            }
+            
+        }
+        if (this.props.registrationStore.applicationData.applicantInfo.basic.childrenNumber > 0 && this.childrenTabs.length !== Number(this.props.registrationStore.applicationData.applicantInfo.basic.childrenNumber)) {
+            Array.from(new Array(parseInt(this.props.registrationStore.applicationData.applicantInfo.basic.childrenNumber, 10)), (v, i) => {
+                this.props.registrationStore.applicationData.childrenInfo.push({})
+                this.childrenTabs.push({ title: `Child ${i + 1}`, cmp: <ChildrenInfo obj="childrenInfo" handleDataChange={(attr, val, index) => this.handleChildrenDataChange(attr, val, index)} props={this.props} index={i} /> })
+            });
+            this.steps.push({
+                title: 'Children Info', cmp: <ScrollableTabsButtonAuto
+                    tabs={this.childrenTabs}
+                    handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} />,
+                    obj: "childrenInfo",
+                    tabs:true
+            })
+
+        }
+    }
+    applicatTabs = [
+        { title: "Basic", cmp: <ApllicantInfo obj="applicantInfo" subObj="basic" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={0} />, obj: "applicantInfo", subObj: "basic" },
+        { title: "Passport And Photo", cmp: <SupouseInfo obj="applicantInfo" subObj="passportAndPhoto" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={1} />, obj: "applicantInfo", subObj: "passportAndPhoto" }
+    ]
     spouseTabs = [
-        { title: "Basic", cmp: <ApllicantInfo obj="spouseInfo" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={0} /> , obj:"spouseInfo"},
-        { title: "Passport And Photo", cmp: <SupouseInfo obj="spouseInfo" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={1} /> , obj:"spouseInfo" }
+        { title: "Basic", cmp: <ApllicantInfo obj="spouseInfo" subObj="basic" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={0} />, obj: "spouseInfo", subObj: "basic" },
+        { title: "Passport And Photo", cmp: <SupouseInfo obj="spouseInfo" subObj="passportAndPhoto" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={1} />, obj: "spouseInfo", subObj: "passportAndPhoto" }
     ]
     childrenTabs = [
     ]
     steps = [
-        { title: 'Applicant Info', cmp: <ApllicantInfo obj="applicantInfo" />, obj:"applicantInfo" },
+        //{ title: 'Applicant Info', cmp: <ApllicantInfo obj="applicantInfo" />, obj:"applicantInfo" },
         {
-            title: 'Spouse Info', cmp: <ScrollableTabsButtonAuto 
-                tabs={this.spouseTabs}
+            title: 'Applicant Info', cmp: <ScrollableTabsButtonAuto
+                tabs={this.applicatTabs}
             />,
-            obj:"spouseInfo"
+            obj: "applicantInfo",
+            tabs:true
         },
-        { title: 'Address & Contact', cmp: <AddressContact obj="addressContact" handleDataChange={(attr, val) => this.handleAddressContactDataChange(attr, val)} props={this.props} />, obj:"addressContact" }
+
+        { title: 'Address & Contact', cmp: <AddressContact obj="addressContact" handleDataChange={(attr, val) => this.handleAddressContactDataChange(attr, val)} props={this.props} />, obj: "addressContact" }
     ]
     getStepContent(step) {
         return this.steps[step]
     }
     handleStep = (step) => {
-        this.props.registrationStore.activeObj = this.steps[step].obj
+        console.log(this.props.registrationStore.applicationData[this.props.registrationStore.activeObj].constructor === Object)
 
+        this.props.registrationStore.errors = {};
+        if (this.steps[step].obj === this.steps[this.state.activeStep].obj) {
+
+        }
         this.setState({ activeStep: step });
+        this.props.registrationStore.activeObj = this.steps[step].obj;
     };
+    disableNextStep = () => {
+        console.log(this.steps)
+        console.log(this.state.activeStep )
+        if(this.state.activeStep === this.steps.length - 1){
+            if(this.steps[this.state.activeStep].tabs === true ){
+                if(this.props.registrationStore.spouseInfoActiveTab === 1){
+                    return true
+                }else{
+                    return false;
+                }
+            }else{
+                return true
+            }
+        }
+        return false;
+    }
 
     render() {
         const { classes } = this.props;
-        if (!this.props.AuthStore.authData || this.props.registrationStore.isLoadingApplicationData || this.props.UsersStore.loadingUser) {
+        if (!this.props.AuthStore.authData || this.props.registrationStore.isLoadingApplicationData || this.props.UsersStore.loadingUser || this.props.registrationStore.registerInProgress) {
             return (<Backdrop className={classes.backdrop} open={true}>
                 <CircularProgress color="inherit" />
             </Backdrop>)
@@ -159,12 +212,12 @@ class VerticalLinearStepper extends Component {
                     {this.props.registrationStore.registerInProgress && <Backdrop className={classes.backdrop} open={true}>
                         <CircularProgress color="inherit" />
                     </Backdrop>}
-                    {/* {JSON.stringify(this.props.registrationStore.applicationData)} */}
+                    {JSON.stringify(this.props.registrationStore.applicationData)}
 
-                    <Stepper  activeStep={this.state.activeStep} >
+                    <Stepper activeStep={this.state.activeStep} >
                         {this.steps.map((step, index) => (
 
-                            <Step onClick={()=>this.handleStep(index)} key={step.title}>
+                            <Step onClick={() => this.handleStep(index)} key={step.title}>
                                 <StepLabel>{step.title}</StepLabel>
 
                             </Step>
@@ -189,9 +242,18 @@ class VerticalLinearStepper extends Component {
                                         color="primary"
                                         onClick={this.handleNext}
                                         className={classes.button}
-                                    disabled={this.props.registrationStore.checkFormInValid}
+                                    disabled={this.disableNextStep()}
                                     >
-                                        {this.state.activeStep === this.steps.length - 1 ? 'Finish' : 'Next'}
+                                        Next
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.handleSave}
+                                        className={classes.button}
+                                        disabled={this.props.registrationStore.checkFormInValid}
+                                    >
+                                        Save
                                     </Button>
                                 </div>
 

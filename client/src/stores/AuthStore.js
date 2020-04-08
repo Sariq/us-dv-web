@@ -1,5 +1,6 @@
 import { observable, action, computed} from "mobx";
 import ConfigStore from "./configStore"
+import registrationStore from "./registrationStore"
 
 const apis = {
     login(data){
@@ -95,12 +96,7 @@ class AuthStore {
             };
         }
         if(!data.user.userData.applicationData){
-            data.user.userData.applicationData = {
-                applicantInfo:{},
-                spouseInfo:{},
-                childrenInfo:[],
-                addressContact:{}
-            };
+            data.user.userData.applicationData = registrationStore.emptyApplicationData();
         }
         localStorage.setItem('authData', JSON.stringify(data));
         this.authData = data;       

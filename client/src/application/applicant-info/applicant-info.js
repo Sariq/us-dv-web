@@ -14,8 +14,10 @@ import FormLabel from '@material-ui/core/FormLabel';
 import { TextField, withStyles, InputLabel, Select, MenuItem } from '@material-ui/core';
 import "./applicant-info.scss"
 import { inject, observer } from "mobx-react";
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = (theme => ({
     formControl: {
         minWidth: 120,
     },
@@ -31,20 +33,25 @@ class ApllicantInfo extends Component {
         currentYear: new Date().getFullYear() - 18
     }
     handleGenderChange = (event) => {
-        this.props.registrationStore.handleDataChange("gender", event.target.value, this.props.obj)
+        this.props.registrationStore.handleDataChange("gender", event.target.value, this.props.obj, null , this.props.subObj)
     }
-    onCountryChange = (value) => {
-        this.props.registrationStore.handleDataChange("country", value, this.props.obj)
+    onCountryChange = (value, fieldName) => {
+        this.props.registrationStore.handleDataChange(fieldName, value, this.props.obj, null , this.props.subObj)
     }
     componentDidUpdate() {
+
         if (this.props.AuthStore.authData && !this.props.AuthStore.authData.user && this.props.AuthStore.authData.user.token) {
             this.props.AuthStore.getUserData();
         }
     }
     render() {
         const { classes } = this.props;
-        //            { (Object.keys(this.props.registrationStore.applicationData[this.props.obj]).length === 0 ||  Object.keys(this.props.registrationStore.applicationData[this.props.obj]).length > 0) && <div className="applicant-info-container">
-
+        //            { (Object.keys(this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].).length === 0 ||  Object.keys(this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].).length > 0) && <div className="applicant-info-container">
+        if(!this.props.registrationStore.applicationData[this.props.obj] && !this.props.registrationStore.applicationData[this.props.obj][this.props.subObj]){
+            return (<Backdrop className={classes.backdrop} open={true}>
+                <CircularProgress color="inherit" />
+            </Backdrop>)
+        }
         return (
             <React.Fragment >
                 <div className="applicant-info-container">
@@ -63,9 +70,8 @@ class ApllicantInfo extends Component {
                                     fullWidth
                                     autoComplete="fname"
 
-                                    // defaultValue={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].firstName}
-                                    value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].firstName}
-                                    onChange={(event) => this.props.registrationStore.handleDataChange("firstName", event.target.value, this.props.obj)}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].firstName}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("firstName", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
                             </Grid>
@@ -79,8 +85,8 @@ class ApllicantInfo extends Component {
                                     label="Last name"
                                     fullWidth
                                     autoComplete="lname"
-                                    value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].lastName}
-                                    onChange={(event) => this.props.registrationStore.handleDataChange("lastName", event.target.value, this.props.obj)}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].lastName}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("lastName", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
                             </Grid>
@@ -93,8 +99,8 @@ class ApllicantInfo extends Component {
                                     name="middleName"
                                     label="Middle Name"
                                     fullWidth
-                                    value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].middleName}
-                                    onChange={(event) => this.props.registrationStore.handleDataChange("middleName", event.target.value, this.props.obj)}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].middleName}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("middleName", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
                                 <FormControlLabel
@@ -104,7 +110,7 @@ class ApllicantInfo extends Component {
                             </Grid>
 
                             <Grid item xs={12} sm={6}>
-                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj].country} placeHolder="Country Of Birth" onChange={this.onCountryChange} />
+                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].country} placeHolder="Country Of Birth" onChange={(value)=>this.onCountryChange(value, "cob")} />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -116,13 +122,13 @@ class ApllicantInfo extends Component {
                                     label="City of Birth"
                                     fullWidth
                                     autoComplete="cityOfBirth"
-                                    value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].cityOfBirth}
-                                    onChange={(event) => this.props.registrationStore.handleDataChange("cityOfBirth", event.target.value, this.props.obj)}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].cityOfBirth}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("cityOfBirth", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].country} placeHolder="Country Of Residence" onChange={this.onCountryChange} />
+                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].country} placeHolder="Country Of Residence" onChange={(value)=>this.onCountryChange(value, "cor")}  />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -134,19 +140,19 @@ class ApllicantInfo extends Component {
                                     label="Nationality"
                                     fullWidth
                                     autoComplete="nationality"
-                                    value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].nationality}
-                                    onChange={(event) => this.props.registrationStore.handleDataChange("nationality", event.target.value, this.props.obj)}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].nationality}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("nationality", event.target.value, this.props.obj, null , this.props.subObj)}
                                 />
                             </Grid>
-                            <Grid container justify="flex-start" item xs={12} sm={6}>
+                            {this.props.obj !== "spouseInfo" && <Grid container justify="flex-start" item xs={12} sm={6}>
                                 <FormControl className={`select-input ${classes.formControl}`}>
                                     <InputLabel id="demo-simple-select-label">Marital Status</InputLabel>
                                     <Select
                                         labelId="maritalStatus"
                                         id="maritalStatus"
 
-                                        value={this.props.registrationStore.applicationData[this.props.obj].maritalStatus}
-                                        onChange={(event) => this.props.registrationStore.handleDataChange("maritalStatus", event.target.value, this.props.obj)}
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].maritalStatus || ""}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("maritalStatus", event.target.value, this.props.obj, null , this.props.subObj)}
                                     >
                                         <MenuItem value={"single"}>Single</MenuItem>
                                         <MenuItem value="married">Married</MenuItem>
@@ -155,12 +161,12 @@ class ApllicantInfo extends Component {
 
                                     </Select>
                                 </FormControl>
-                                {this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].maritalStatus === "married" && <FormControlLabel
+                                {this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].maritalStatus === "married" && <FormControlLabel
                                     control={<Checkbox color="primary" name="saveAddress" value="yes" />}
                                     label="My spouse in a U.S. Citizen"
                                 />}
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
+                            </Grid>}
+                            {this.props.obj !== "spouseInfo" && <Grid item xs={12} sm={6}>
                                 <TextField
                                     required
                                     error={this.props.registrationStore.errors.childrenNumber}
@@ -171,19 +177,19 @@ class ApllicantInfo extends Component {
                                     type="number"
                                     fullWidth
                                     autoComplete="childrenNumber"
-                                    value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].childrenNumber}
-                                    onChange={(event) => this.props.registrationStore.handleDataChange("childrenNumber", event.target.value, this.props.obj)}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].childrenNumber}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("childrenNumber", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
-                            </Grid>
+                            </Grid>}
                             <Grid container justify="flex-start" item xs={12} sm={6}>
                                 <FormControl className={`select-input ${classes.formControl}`}>
                                     <InputLabel id="demo-simple-select-label">Education</InputLabel>
                                     <Select
                                         labelId="education"
                                         id="education"
-                                        value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].education}
-                                        onChange={(event) => this.props.registrationStore.handleDataChange("education", event.target.value, this.props.obj)}
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].education  || ""}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("education", event.target.value, this.props.obj, null , this.props.subObj)}
                                     >
                                         <MenuItem value="highSchool">High School</MenuItem>
                                         <MenuItem value="diplomaIncomplete">Diploma Incomplete</MenuItem>
@@ -199,7 +205,7 @@ class ApllicantInfo extends Component {
                             <Grid container justify="flex-start" item xs={12} sm={6}>
                                 <FormControl component="fieldset" className={classes.formControl}>
                                     <FormLabel component="legend">Gender</FormLabel>
-                                    <RadioGroup aria-label="gender" name="gender1" value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].gender} onChange={this.handleGenderChange} row>
+                                    <RadioGroup aria-label="gender" name="gender1" value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].gender} onChange={this.handleGenderChange} row>
                                         <FormControlLabel value="female" control={<Radio color="primary" />} label="Female" />
                                         <FormControlLabel value="male" control={<Radio color="primary" />} label="Male" />
                                     </RadioGroup>
@@ -217,8 +223,8 @@ class ApllicantInfo extends Component {
                                     <Select
                                         labelId="Day"
                                         id="Day"
-                                        value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].day}
-                                        onChange={(event) => this.props.registrationStore.handleDataChange("day", event.target.value, this.props.obj)}
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].day}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("day", event.target.value, this.props.obj, null , this.props.subObj)}
                                     >
                                         {Array.from(new Array(31), (v, i) =>
                                             <MenuItem key={i} value={i + 1}>{i + 1}</MenuItem>
@@ -232,8 +238,8 @@ class ApllicantInfo extends Component {
                                     <Select
                                         labelId="Month"
                                         id="Month"
-                                        value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].month}
-                                        onChange={(event) => this.props.registrationStore.handleDataChange("month", event.target.value, this.props.obj)}
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].month}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("month", event.target.value, this.props.obj, null , this.props.subObj)}
                                     >
                                         {Array.from(new Array(12), (v, i) =>
                                             <MenuItem key={i} value={i + 1}>{i + 1}</MenuItem>
@@ -247,8 +253,8 @@ class ApllicantInfo extends Component {
                                     <Select
                                         labelId="year"
                                         id="year"
-                                        value={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].year}
-                                        onChange={(event) => this.props.registrationStore.handleDataChange("year", event.target.value, this.props.obj)}
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].year}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("year", event.target.value, this.props.obj, null , this.props.subObj)}
                                     >
                                         {Array.from(new Array(90), (v, i) =>
                                             <MenuItem key={i} value={this.state.currentYear - i}>{this.state.currentYear - i}</MenuItem>

@@ -38,7 +38,7 @@ class AddressContact extends Component {
                                     label="Email"
                                     fullWidth
                                     autoComplete="email"
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.email}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].email}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("email", event.target.value, this.props.obj)}
                                 />
                             </Grid>
@@ -52,7 +52,7 @@ class AddressContact extends Component {
                                     label="Additional Email"
                                     fullWidth
                                     autoComplete="additionalEmail"
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.additionalEmail}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].additionalEmail}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("additionalEmail", event.target.value, this.props.obj)}
                                 />
                             </Grid>
@@ -70,7 +70,7 @@ class AddressContact extends Component {
                                     label="City of Birth"
                                     fullWidth
                                     autoComplete="cityOfBirth"
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.cityOfBirth}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].cityOfBirth}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("cityOfBirth", event.target.value, this.props.obj)}
                                 />
                             </Grid>
@@ -84,7 +84,7 @@ class AddressContact extends Component {
                                     label="Street"
                                     fullWidth
                                     autoComplete="street"
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.street}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].street}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("street", event.target.value, this.props.obj)}
                                 />
                             </Grid>
@@ -99,7 +99,7 @@ class AddressContact extends Component {
                                     type="number"
                                     fullWidth
                                     autoComplete="houseNumber"
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.houseNumber}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].houseNumber}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("houseNumber", event.target.value, this.props.obj)}
                                 />
                             </Grid>
@@ -114,7 +114,7 @@ class AddressContact extends Component {
                                     type="number"
                                     fullWidth
                                     autoComplete="postalCode"
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.postalCode}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].postalCode}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("postalCode", event.target.value, this.props.obj)}
                                 />
                             </Grid>
@@ -128,7 +128,7 @@ class AddressContact extends Component {
                                     label="Po. box"
                                     fullWidth
                                     autoComplete="poBox"
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.poBox}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].poBox}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("poBox", event.target.value, this.props.obj)}
                                 />
                             </Grid>
@@ -136,7 +136,7 @@ class AddressContact extends Component {
                                 
                                 <ReactPhoneInput
                                 
-                                    value={this.props && this.props.registrationStore.applicationData.spouseInfo.phone}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].phone}
                                     onChange={(value) => this.props.registrationStore.handleDataChange("phone", value, this.props.obj)}
                                     defaultCountry={'us'}
                                 />

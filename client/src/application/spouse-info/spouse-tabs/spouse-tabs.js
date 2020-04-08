@@ -52,8 +52,15 @@ const useStyles = (theme => ({
 @observer
 class ScrollableTabsButtonAuto extends Component {
   handleChange = (event, newValue) => {
+    this.props.registrationStore.activeSubObj = this.props.tabs[newValue].subObj;
     this.props.registrationStore.spouseInfoActiveTab = newValue;
+    console.log(newValue)
+
   };
+  componentDidMount(){
+    console.log(this.props.registrationStore.spouseInfoActiveTab)
+    this.props.registrationStore.activeSubObj = this.props.tabs[this.props.registrationStore.spouseInfoActiveTab].subObj;
+  }
 render(){
   const { classes } = this.props;
 

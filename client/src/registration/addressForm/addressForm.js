@@ -27,8 +27,8 @@ class AddressForm extends Component {
     handleOnChange = (value) => {
         this.props.registrationStore.handleRegisterDataChange("phone", value, this.props.obj)
     }
-    onCountryChange = (value) => {
-        this.props.registrationStore.handleRegisterDataChange("country", value, this.props.obj)
+    onCountryChange = (value, fieldName) => {
+        this.props.registrationStore.handleRegisterDataChange(fieldName, value, this.props.obj)
     }
 
     currentYear = new Date().getFullYear() - 18;
@@ -53,7 +53,7 @@ class AddressForm extends Component {
                                 label="First name"
                                 fullWidth
                                 autoComplete="fname"
-                                value={this.props && this.props.registrationStore.registrationData.personalDetails.firstName}
+                                value={this.props.registrationStore.registrationData.personalDetails.firstName || ""}
                                 onChange={(event) => this.props.registrationStore.handleRegisterDataChange("firstName", event.target.value, this.props.obj)}
                             />
                         </Grid>
@@ -66,7 +66,7 @@ class AddressForm extends Component {
                                 label="Last name"
                                 fullWidth
                                 autoComplete="lname"
-                                value={this.props && this.props.registrationStore.registrationData.personalDetails.lastName}
+                                value={this.props.registrationStore.registrationData.personalDetails.lastName || ""}
                                 onChange={(event) => this.props.registrationStore.handleRegisterDataChange("lastName", event.target.value, this.props.obj)}
                             />
                         </Grid>
@@ -79,13 +79,13 @@ class AddressForm extends Component {
                                 label="Email"
                                 fullWidth
                                 autoComplete="email"
-                                value={this.props && this.props.registrationStore.registrationData.personalDetails.email}
+                                value={this.props.registrationStore.registrationData.personalDetails.email  || ""}
                                 onChange={(event) => this.props.registrationStore.handleRegisterDataChange("email", event.target.value, this.props.obj)}
                             />
                         </Grid>
 
                         <Grid item xs={12} sm={6}>
-                            <CountrySelect isValid={this.props.registrationStore.errors.country} selectedCountry={this.props.registrationStore.registrationData.personalDetails.country} placeHolder="Country Of Birth" onChange={this.onCountryChange} />
+                            <CountrySelect isValid={this.props.registrationStore.errors.country} placeHolder={this.props.registrationStore.registrationData.personalDetails.country} placeHolder="Country Of Birth" onChange={(value)=>this.onCountryChange(value, "cob")}  />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <ReactPhoneInput value={this.props && this.props.registrationStore.registrationData.personalDetails.phone} defaultCountry={'us'} onChange={this.handleOnChange} />
@@ -100,11 +100,11 @@ class AddressForm extends Component {
                                 <Select
                                     labelId="Day"
                                     id="Day"
-                                    value={this.props.registrationStore.registrationData.personalDetails.day}
+                                    value={this.props.registrationStore.registrationData.personalDetails.day  || ""}
                                     onChange={(event) => this.props.registrationStore.handleRegisterDataChange("day", event.target.value, this.props.obj)}
                                 >
                                     {Array.from(new Array(31), (v, i) =>
-                                        <MenuItem value={i + 1}>{i + 1}</MenuItem>
+                                        <MenuItem key={i} value={i + 1}>{i + 1}</MenuItem>
                                     )}
                                 </Select>
                             </FormControl>
@@ -114,11 +114,11 @@ class AddressForm extends Component {
                                 <InputLabel id="month">Month</InputLabel>
                                 <Select
                                     labelId="Month"
-                                    value={this.props.registrationStore.registrationData.personalDetails.month}
+                                    value={this.props.registrationStore.registrationData.personalDetails.month  || ""}
                                     onChange={(event) => this.props.registrationStore.handleRegisterDataChange("month", event.target.value, this.props.obj)}
                                 >
                                     {Array.from(new Array(12), (v, i) =>
-                                        <MenuItem value={i + 1}>{i + 1}</MenuItem>
+                                        <MenuItem key={i} value={i + 1}>{i + 1}</MenuItem>
 
                                     )}
                                 </Select>
@@ -130,11 +130,11 @@ class AddressForm extends Component {
                                 <Select
                                     labelId="year"
                                     id="year"
-                                    value={this.props.registrationStore.registrationData.personalDetails.year}
+                                    value={this.props.registrationStore.registrationData.personalDetails.year || ""}
                                     onChange={(event) => this.props.registrationStore.handleRegisterDataChange("year", event.target.value, this.props.obj)}
                                 >
                                     {Array.from(new Array(90), (v, i) =>
-                                        <MenuItem value={this.currentYear - i}>{this.currentYear - i}</MenuItem>
+                                        <MenuItem key={i} value={this.currentYear - i}>{this.currentYear - i}</MenuItem>
 
                                     )}
                                 </Select>
