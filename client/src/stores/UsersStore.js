@@ -4,8 +4,8 @@ import AuthStore from "./AuthStore"
 import registrationStore from "./registrationStore"
 
 const apis = {
-    getUsersList (){
-        return fetch(ConfigStore.configData.domain + 'api/users/users-page/'+ 1 + '?search=', {
+    getUsersList (currentPage, rowsPerPage, seacrh){
+        return fetch(ConfigStore.configData.domain + 'api/users/users-page/'+ currentPage +'/' +rowsPerPage+ '?search=' + seacrh, {
             method: 'GET',
             
           })
@@ -76,9 +76,10 @@ class UsersStore {
     @observable deletingUser = false;
 
     selectedUser
-    @action getUsersList () {
+    @action getUsersList (currentPage, rowsPerPage, seacrh) {
         this.loadingUsersList = true;
-        return apis.getUsersList().then((data)=>{
+        return apis.getUsersList(currentPage, rowsPerPage, seacrh).then((data)=>{
+          console.log(data)
             this.usersList=data;
         }).finally(()=>this.loadingUsersList = false);
     };
@@ -90,6 +91,7 @@ class UsersStore {
     @action getUserById (userId) {
         this.loadingUser = true;
         return apis.getUserById(userId).then((data)=>{
+          AuthStore.setUserDataLocal(data);
             registrationStore.applicationData = data.user.userData.applicationData ? data.user.userData.applicationData : registrationStore.emptyApplicationData();
         }).finally(()=>this.loadingUser = false);
     };

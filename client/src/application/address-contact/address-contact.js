@@ -18,8 +18,9 @@ const useStyles = (theme => ({
 @inject('registrationStore')
 @observer
 class AddressContact extends Component {
-    onCountryChange = (value) => {
-        this.props.registrationStore.handleDataChange("country", value, this.props.obj)
+
+    onCountryChange = (value, fieldName) => {
+        this.props.registrationStore.handleDataChange(fieldName, value, this.props.obj, null , this.props.subObj)
     }
     render(){
         const { classes } = this.props;
@@ -58,7 +59,7 @@ class AddressContact extends Component {
                             </Grid>
 
                             <Grid item xs={12} sm={6}>
-                            <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].country} placeHolder="Country Of Residence" onChange={this.onCountryChange} />
+                            <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].cor} placeHolder="Country Of Residence" onChange={(value)=>this.onCountryChange(value, "cor")} />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField

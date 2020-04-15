@@ -34,7 +34,10 @@ class AddressForm extends Component {
     currentYear = new Date().getFullYear() - 18;
     render() {
         const { classes } = this.props;
-
+        console.log(this.props.registrationStore)
+        if(!this.props.registrationStore.registrationData || !this.props.registrationStore.registrationData.personalDetails){
+            return <div></div>
+        }
         return (
             <React.Fragment >
 

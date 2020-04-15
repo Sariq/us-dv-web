@@ -24,17 +24,10 @@ const useStyles = (theme => ({
 @inject('registrationStore','AuthStore','AppStore')
 @observer
 class ChildrenInfo extends Component {
-//function ChildrenInfo({props,handleDataChange,index}) {
-    // const classes = useStyles();
 
-    // // const [image, setImage] = useState(Array);
-    // const [country, setCountry] = useState(null);
-    // const [value, setValue] = React.useState('female');
-    // const [imagePath, setImagePath] = useState(null);
-
-    // const handleChange = event => {
-    //     setValue(event.target.value);
-    // };
+    state = {
+        currentYear: new Date().getFullYear() - 18
+    }
     handleGenderChange = (event, index) => {
         this.props.registrationStore.handleDataChange("gender", event.target.value, this.props.obj, this.props.index)
 
@@ -42,8 +35,8 @@ class ChildrenInfo extends Component {
     // function handleOnChange(value) {
     //     console.log(value)
     // }
-    onCountryChange = (value, index) => {
-        this.props.registrationStore.handleDataChange("country", value, this.props.obj, this.props.index)
+    onCountryChange = (value,fieldName, index) => {
+        this.props.registrationStore.handleDataChange(fieldName, value, this.props.obj, this.props.index)
     }
     // const setSelectedImage = (files) => {
     //     console.log(files)
@@ -124,7 +117,7 @@ class ChildrenInfo extends Component {
                         </Grid>
                       
                         <Grid item xs={12} sm={6}>
-                            <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.index].country} placeHolder="Country Of Birth" onChange={(c)=>this.onCountryChange(c,this.props.index)} />
+                            <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.index].cob} placeHolder="Country Of Birth" onChange={(c)=>this.onCountryChange(c,"cob",this.props.index)} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -150,6 +143,58 @@ class ChildrenInfo extends Component {
                             </FormControl>
                         </Grid>
                     </Grid>
+
+
+                    <Grid className="bd-container" container direction="row"
+                            justify="flex-start" spacing={10}>
+                            <Grid direction="row" justify="flex-start" container item xs={12} sm={2}>
+                                <FormControl className={`select-input ${classes.formControl}`}>
+                                    <InputLabel id="demo-simple-select-label">Day</InputLabel>
+                                    <Select
+                                        labelId="Day"
+                                        id="Day"
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.index].day}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("day", event.target.value, this.props.obj, this.props.index , this.props.subObj)}
+                                    >
+                                        {Array.from(new Array(31), (v, i) =>
+                                            <MenuItem key={i} value={i + 1}>{i + 1}</MenuItem>
+                                        )}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid justify="flex-start" container item xs={12} sm={2}>
+                                <FormControl className={`select-input ${classes.formControl}`}>
+                                    <InputLabel id="month">Month</InputLabel>
+                                    <Select
+                                        labelId="Month"
+                                        id="Month"
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.index].month}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("month", event.target.value, this.props.obj, this.props.index , this.props.subObj)}
+                                    >
+                                        {Array.from(new Array(12), (v, i) =>
+                                            <MenuItem key={i} value={i + 1}>{i + 1}</MenuItem>
+                                        )}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid justify="flex-start" container item xs={12} sm={2}>
+                                <FormControl className={`select-input ${classes.formControl}`}>
+                                    <InputLabel id="year">Year</InputLabel>
+                                    <Select
+                                        labelId="year"
+                                        id="year"
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.index].year}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("year", event.target.value, this.props.obj, this.props.index , this.props.subObj)}
+                                    >
+                                        {Array.from(new Array(90), (v, i) =>
+                                            <MenuItem key={i} value={this.state.currentYear - i}>{this.state.currentYear - i}</MenuItem>
+
+                                        )}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            </Grid>
+
                     
                     { <Grid item  container  className="image-upload-container"
                         justify="flex-start" sm={2} >

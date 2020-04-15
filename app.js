@@ -26,6 +26,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/client/build')));
 //app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 console.log(process.env.NODE_ENV);
+
 if(!isProduction) {
   app.use(errorHandler());
   mongoose.connect('mongodb://localhost/us-dv');

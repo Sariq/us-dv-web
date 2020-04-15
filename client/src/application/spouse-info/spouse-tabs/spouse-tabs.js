@@ -58,8 +58,8 @@ class ScrollableTabsButtonAuto extends Component {
 
   };
   componentDidMount(){
-    console.log(this.props.registrationStore.spouseInfoActiveTab)
     this.props.registrationStore.activeSubObj = this.props.tabs[this.props.registrationStore.spouseInfoActiveTab].subObj;
+
   }
 render(){
   const { classes } = this.props;

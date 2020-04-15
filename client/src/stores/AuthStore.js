@@ -79,7 +79,7 @@ class AuthStore {
     @observable loadingUserData = false;
     @action login (data) {
         return apis.login(data).then((data)=>{
-            if(data){
+            if(data && data.user){
                 this.setUserDataLocal(data)};
             });
     };
@@ -108,6 +108,11 @@ class AuthStore {
         return apis.logOut(this.authData.user).then(()=>{
             localStorage.setItem('authData',null);
             this.authData = null;
+            registrationStore.applicationData =registrationStore.emptyApplicationData();
+            registrationStore.registrationData = {
+              personalDetails:{},
+              paymentData:{}
+          };
         });
     }
     @action getUserData(){

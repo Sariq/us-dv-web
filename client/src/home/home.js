@@ -187,7 +187,7 @@ class Home extends React.Component {
                                         <Typography gutterBottom variant="h5" component="h2">
                                             Need a Consultation?
                       </Typography>
-                                        <Button onClick={() => this.props.history.push('/application')} variant="contained" color="primary">
+                                        <Button onClick={() => this.props.history.push('/login-page')} variant="contained" color="primary">
                                             REQUEST A CALLBACK
                       </Button>
                                         <Button onClick={() => this.props.history.push('/register')} variant="contained" color="primary">

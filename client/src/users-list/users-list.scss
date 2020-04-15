@@ -1,6 +1,13 @@
 .users-list-container{
     width: 70%;
+    padding-top: 20px;
     margin: auto;
+    .completed{
+        color: green;
+    }
+    .pending{
+        color: orange;
+    }
     .actions-container{
         display: flex;
         div{

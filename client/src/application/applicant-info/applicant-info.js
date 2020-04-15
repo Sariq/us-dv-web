@@ -47,7 +47,7 @@ class ApllicantInfo extends Component {
     render() {
         const { classes } = this.props;
         //            { (Object.keys(this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].).length === 0 ||  Object.keys(this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].).length > 0) && <div className="applicant-info-container">
-        if(!this.props.registrationStore.applicationData[this.props.obj] && !this.props.registrationStore.applicationData[this.props.obj][this.props.subObj]){
+        if(!this.props.registrationStore.applicationData[this.props.obj] || !this.props.registrationStore.applicationData[this.props.obj][this.props.subObj]){
             return (<Backdrop className={classes.backdrop} open={true}>
                 <CircularProgress color="inherit" />
             </Backdrop>)
@@ -55,7 +55,8 @@ class ApllicantInfo extends Component {
         return (
             <React.Fragment >
                 <div className="applicant-info-container">
-
+                {/* {JSON.stringify(this.props.registrationStore.applicationData[this.props.obj][this.props.subObj])} */}
+                
                     <div className="addressForm">
                         <Grid container spacing={5}>
                             <Grid item xs={12} sm={6}>
@@ -63,14 +64,12 @@ class ApllicantInfo extends Component {
                                     required
                                     error={this.props.registrationStore.errors.firstName}
                                     helperText={this.props.registrationStore.errors.firstName ? "Invalid input" : null}
-
                                     id="firstName"
                                     name="firstName"
                                     label="First name"
                                     fullWidth
                                     autoComplete="fname"
-
-                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].firstName}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].firstName || ""}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("firstName", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
@@ -85,7 +84,7 @@ class ApllicantInfo extends Component {
                                     label="Last name"
                                     fullWidth
                                     autoComplete="lname"
-                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].lastName}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].lastName || ""}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("lastName", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
@@ -99,18 +98,21 @@ class ApllicantInfo extends Component {
                                     name="middleName"
                                     label="Middle Name"
                                     fullWidth
-                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].middleName}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].middleName || ""}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("middleName", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
                                 <FormControlLabel
-                                    control={<Checkbox color="primary" name="saveAddress" value="yes" />}
+                                    control={<Checkbox 
+                                        checked={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].noMiddleName}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("noMiddleName", event.target.checked, this.props.obj, null , this.props.subObj)}
+                                        color="primary" name="saveAddress" value="yes" />}
                                     label="Don't have middle name"
                                 />
                             </Grid>
 
                             <Grid item xs={12} sm={6}>
-                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].country} placeHolder="Country Of Birth" onChange={(value)=>this.onCountryChange(value, "cob")} />
+                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].cob} placeHolder="Country Of Birth" onChange={(value)=>this.onCountryChange(value, "cob")} />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -122,13 +124,13 @@ class ApllicantInfo extends Component {
                                     label="City of Birth"
                                     fullWidth
                                     autoComplete="cityOfBirth"
-                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].cityOfBirth}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].cityOfBirth || ""}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("cityOfBirth", event.target.value, this.props.obj, null , this.props.subObj)}
 
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].country} placeHolder="Country Of Residence" onChange={(value)=>this.onCountryChange(value, "cor")}  />
+                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].cor} placeHolder="Country Of Residence" onChange={(value)=>this.onCountryChange(value, "cor")}  />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -140,7 +142,7 @@ class ApllicantInfo extends Component {
                                     label="Nationality"
                                     fullWidth
                                     autoComplete="nationality"
-                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].nationality}
+                                    value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].nationality || ""}
                                     onChange={(event) => this.props.registrationStore.handleDataChange("nationality", event.target.value, this.props.obj, null , this.props.subObj)}
                                 />
                             </Grid>
@@ -162,7 +164,10 @@ class ApllicantInfo extends Component {
                                     </Select>
                                 </FormControl>
                                 {this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].maritalStatus === "married" && <FormControlLabel
-                                    control={<Checkbox color="primary" name="saveAddress" value="yes" />}
+                                    control={<Checkbox 
+                                        checked={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].isMaritalUSCitizen}
+                                        onChange={(event) => this.props.registrationStore.handleDataChange("isMaritalUSCitizen", event.target.checked, this.props.obj, null , this.props.subObj)}
+                                        color="primary" name="saveAddress" value="yes" />}
                                     label="My spouse in a U.S. Citizen"
                                 />}
                             </Grid>}

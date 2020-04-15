@@ -8,6 +8,7 @@ const ROLES = require('../../utils/roles');
 const getEmailTemplate = require('../../utils/email-template-helper');
 const sendMail = require('../../utils/email-config');
 const authService = require('../../utils/auth-service');
+const escapeRegex = require('../../utils/regex-escape');
 
 const randomize = require('randomatic');
 const EmailTemplate = require('email-templates').EmailTemplate;
@@ -70,6 +71,7 @@ router.post('/', auth.optional, async (req, res, next) => {
 
 
 });
+
 router.post('/applyApplication', auth.required, (req, res, next) => {
   // const applicationData = req.body;
   const { body: { applicationObj } } = req;
@@ -269,9 +271,9 @@ router.post('/email-confirm', (req, res, next) => {
     });
 });
 
-router.get('/users-page/:page', async (req, res, next) => {
+router.get('/users-page/:page/:rowsPerPage', async (req, res, next) => {
   // Declaring variable
-  const resPerPage = 100; // results per page
+  const resPerPage = Number(req.params.rowsPerPage) || 10; // results per page
   const page = req.params.page || 1; // Page 
   try {
     var foundPConverters = [];
@@ -281,10 +283,10 @@ router.get('/users-page/:page', async (req, res, next) => {
       const searchQuery = req.query.search,
         regex = new RegExp(escapeRegex(req.query.search), 'gi');
       // Find Demanded Products - Skipping page values, limit results       per page
-      foundPConverters = await Users.find({ name: regex })
+      foundPConverters = await Users.find( {'registrationData.firstName': regex })
         .skip((resPerPage * page) - resPerPage)
         .limit(resPerPage);
-      numOfConverters = await Users.count({ name: regex });
+      numOfConverters = await Users.count({'registrationData.firstName': regex });
 
     } else {
       searchQuery = null;
@@ -321,7 +323,6 @@ router.get('/getUserById/:userId', (req, res, next) => {
 });
 router.post('/deleteApplicationById', auth.optional, (req, res, next) => {
   const userId = req.body.userId;
-
   return Users.findById(userId)
     .then((user) => {
       if (!user) {

@@ -8,7 +8,7 @@ import Register from "./registration/registration"
 import VerticalLinearStepper from "./application/application"
 import { inject, observer } from "mobx-react";
 import LoginPage from "./loginPage/loginPage";
-import UsersList from "./users-list/users-list"
+import UsersList from "./users-list/users-list";
 import { Backdrop, Paper, MenuList, MenuItem, AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -25,7 +25,7 @@ class Layout extends Component {
   componentDidMount() {
 
     if (!this.props.AuthStore.getUserDataLocal() && window.location.pathname !== "/login-page" && !window.location.pathname.includes("/ImmiEx")) {
-      //window.location.href = window.location.origin + "/ImmiEx/HTML/website/index.html";
+      window.location.href = window.location.origin + "/ImmiEx/HTML/website/index.html";
     } else {
       if (!this.props.AuthStore.authData) {
         return <Backdrop className="backdrop" open={true}>
@@ -64,7 +64,7 @@ class Layout extends Component {
                 </Typography>
                 {this.props.AuthStore.authData && <div>
 
-                 <Button
+                  <Button
                     onClick={this.logOut}
                     variant="contained" color="primary"
                   >
@@ -77,18 +77,18 @@ class Layout extends Component {
         </div>
         <div className="layout-container">
           <Router>
-
           {this.props.AuthStore.authData && <div className="side-menu-container">
-              <Paper >
-                <MenuList>
-                  <MenuItem ><Link to="/users-list">Users List</Link></MenuItem>
+              <Paper className="menu-body">
+                <MenuList className="menu-list">
+                  <MenuItem ><Link className="link-item" to="/users-list">Users List</Link></MenuItem>
                   <MenuItem>My account</MenuItem>
                   <MenuItem>Logout</MenuItem>
                 </MenuList>
               </Paper>
             </div>}
+
             <Switch>
-              <Route exact path="/register" component={Register} />
+              <Route exact path="/catalog" component={Register} />
               <Route exact path="/application/:userId" component={VerticalLinearStepper} />
               <Route exact path="/application" component={VerticalLinearStepper} />
               <Route exact path="/users-list" component={UsersList} />
@@ -109,7 +109,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
-
+            <Route exact path="/home" component={Home} />
             <Route path="/login-page" component={LoginPage} />
             <Route path="/" component={Layout} />
           </Switch>

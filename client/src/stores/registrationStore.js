@@ -94,27 +94,88 @@ class registrationStore {
 
   personalDetailsFields = ["firstName", "lastName", "email", "phone", "cob", "day", "month", "year"];
   applicantInfoFields = {
-    basic: ["firstName", "lastName", "middleName", "cityOfBirth", "cob","cor", "gender", "day", "month", "year", "nationality", "maritalStatus", "childrenNumber", "education"],
+    basic: ["firstName", "lastName", "middleName", "cob","cor", "gender", "day", "month", "year", "nationality", "maritalStatus", "childrenNumber", "education"],
     passportAndPhoto: ["passportStatus", "passportNumber", "month", "year", "issuingCountry"]
   }
   spouseInfoFields = {
-    basic: ["firstName", "lastName", "middleName", "cityOfBirth", "cob","cor", "gender", "day", "month", "year", "nationality", "education"],
+    basic: ["firstName", "lastName", "middleName", "cob","cor", "gender", "day", "month", "year", "nationality", "education"],
     passportAndPhoto: ["passportStatus", "passportNumber", "month", "year", "issuingCountry"]
   }
-  childrenInfoFields = ["firstName", "lastName", "middleName", "cityOfBirth", "cob", "gender", "day", "month", "year"];
-  addressContactFields = ["email", "additionalEmail", "cityOfBirth", "cityOfBirth", "street", "houseNumber", "postalCode", "poBox", "phone"];
+  childrenInfoFields = ["firstName", "lastName", "middleName", "cob", "gender", "day", "month", "year"];
+  addressContactFields = ["email", "additionalEmail", "cob", "street", "houseNumber", "postalCode", "poBox", "phone"];
   @action registerUser() {
     this.registerInProgress = true;
     return apis.register(this.registrationData.personalDetails).then((data) => {
       return data;
     }).finally(() => this.registerInProgress = false);
   }
+  isApplicationCompleted = () =>{
+    let flag = false;
+
+    let fullFormFields = ["applicantInfo","addressContact"];
+    if(this.applicationData.childrenInfo){
+      fullFormFields.push("childrenInfo")
+    }
+    if(this.applicationData.spouseInfo){
+      fullFormFields.push("spouseInfo")
+    }
+    for (let activeObj of fullFormFields) {
+      if (this[activeObj + "Fields"]['basic']) {
+        for (let activeSubObj in this[activeObj + "Fields"]) {
+        if (activeSubObj) {
+          for (let field of this[activeObj + "Fields"][activeSubObj]) {
+            if (!this.applicationData[activeObj][activeSubObj][field] || this.errors[field]) {
+              flag = true;
+              break;
+            } else {
+              flag = false;
+            }
+          }
+        }
+      }
+      } else {
+        if(this.applicationData[activeObj].length > 0){
+          for (let index in this.applicationData[activeObj]) {
+          for (let field of this[activeObj + "Fields"]) {
+            if (!this.applicationData[activeObj][index][field] || this.errors[field]) {
+              flag = true;
+              break;
+            } else {
+              flag = false;
+            }
+          }
+        }
+        }else{
+          for (let field of this[activeObj + "Fields"]) {
+            if (!this.applicationData[activeObj][field] || this.errors[field]) {
+              flag = true;
+              break;
+            } else {
+              flag = false;
+            }
+          }
+        }
+      }
+
+      
+    }
+    console.log(flag)
+    return flag;
+  }
   @action sendApplication() {
+    console.log(this.applicationData.childrenInfo.length )
+    console.log(this.applicationData.applicantInfo.basic.childrenNumber)
     this.registerInProgress = true;
+    if(this.applicationData.applicantInfo.basic.childrenNumber && Number(this.applicationData.applicantInfo.basic.childrenNumber) -this.applicationData.childrenInfo.length > 0){
+      Array.from(new Array(Number(this.applicationData.applicantInfo.basic.childrenNumber) -this.applicationData.childrenInfo.length), (v, i) => {
+        this.applicationData.childrenInfo.push({});
+      })
+    }
+    this.applicationData.isApplicationCompleted = !this.isApplicationCompleted();
     return apis.applyApplication(this.applicationData).then((data) => {
       return data;
     }).finally(() => this.registerInProgress = false);
-  };
+  };x
   @action handleApplicantDataChange(attr, value) {
     this.applicationData.applicantInfo[attr] = value;
   }
@@ -151,6 +212,7 @@ class registrationStore {
 
   @action initApplicationData() {
     if (AuthStore.authData) {
+      console.log("initApplicationData")
       this.applicationData = AuthStore.authData.user.userData.applicationData;
       this.isLoadingApplicationData = false;
     }
