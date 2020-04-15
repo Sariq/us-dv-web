@@ -24,7 +24,7 @@ class Layout extends Component {
 
   componentDidMount() {
 
-    if (!this.props.AuthStore.getUserDataLocal() && window.location.pathname !== "/login-page" && !window.location.pathname.includes("/ImmiEx")) {
+    if (!this.props.AuthStore.getUserDataLocal() && window.location.pathname !== "/login-page" && !window.location.pathname.includes("/ImmiEx") && !window.location.pathname.includes("/register")) {
       window.location.href = window.location.origin + "/ImmiEx/HTML/website/index.html";
     } else {
       if (!this.props.AuthStore.authData) {
@@ -88,7 +88,7 @@ class Layout extends Component {
             </div>}
 
             <Switch>
-              <Route exact path="/catalog" component={Register} />
+              <Route exact path="/register" component={Register} />
               <Route exact path="/application/:userId" component={VerticalLinearStepper} />
               <Route exact path="/application" component={VerticalLinearStepper} />
               <Route exact path="/users-list" component={UsersList} />
