@@ -15,9 +15,10 @@ const UsersSchema = new Schema({
   loggedIn: Boolean,
   token: String,
   resetPasswordCode: Number,
-  signUpCode: Number,
+  signUpCode: String,
   hash: String,
-  salt: String
+  salt: String,
+  leadStatus: String
 },
   { timestamps: true });
 

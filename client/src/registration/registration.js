@@ -18,6 +18,7 @@ import { withStyles } from '@material-ui/core/styles';
 import './registration.scss'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import CONSTANT from '../infra/constants'
 const useStyles = theme => ({
   appBar: {
     position: 'relative',

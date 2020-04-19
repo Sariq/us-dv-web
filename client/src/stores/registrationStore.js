@@ -38,6 +38,7 @@ const apis = {
       });
   },
   register(data) {
+    data.leadStatus = "NEW";
     return fetch(ConfigStore.configData.domain + 'api/users/', {
       method: 'POST',
       headers: {

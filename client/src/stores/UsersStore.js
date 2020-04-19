@@ -2,10 +2,12 @@ import { observable, action, computed} from "mobx";
 import ConfigStore from "./configStore"
 import AuthStore from "./AuthStore"
 import registrationStore from "./registrationStore"
+import { act } from "@testing-library/react";
 
 const apis = {
     getUsersList (currentPage, rowsPerPage, seacrh){
-        return fetch(ConfigStore.configData.domain + 'api/users/users-page/'+ currentPage +'/' +rowsPerPage+ '?search=' + seacrh, {
+        let seacrhVal = seacrh || "";
+        return fetch(ConfigStore.configData.domain + 'api/users/users-page/'+ currentPage +'/' +rowsPerPage+ '?search=' + seacrhVal, {
             method: 'GET',
             
           })
@@ -64,7 +66,32 @@ const apis = {
         .catch((error) => {
           console.error(error);
         });
-  }
+  },
+  updateLeadStatusById(userId, status){
+    return fetch(ConfigStore.configData.domain + 'api/users/updateLeadStatusById/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "userId": userId,
+        "status": status
+      }),
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if(responseJson.user){
+          console.log(responseJson)
+        }else{
+         
+        }        
+        return responseJson;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+}
 }
 
 
@@ -101,7 +128,12 @@ class UsersStore {
           action(this.getUsersList());
       }).finally(()=>this.deletingUser = false);
   };
-    
+    @action handleLeadStatusChange(status, userId){
+      this.updateUser = true;
+      return apis.updateLeadStatusById(userId, status).then((data)=>{
+          action(this.getUsersList(this.usersList.currentPage, 10));
+      }).finally(()=>this.deletingUser = false);
+    }
     
 }
 export default new UsersStore();

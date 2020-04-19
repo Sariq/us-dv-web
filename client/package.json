@@ -36,6 +36,7 @@
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
+    "i18next": "^19.4.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
@@ -59,6 +60,7 @@
     "react-app-polyfill": "^1.0.6",
     "react-dev-utils": "^10.2.0",
     "react-dom": "^16.13.0",
+    "react-i18next": "^11.3.4",
     "react-phone-input-2": "^2.7.1",
     "react-phone-input-mui": "^2.9.4",
     "react-router-dom": "^5.1.2",
@@ -149,11 +151,17 @@
     ]
   },
   "babel": {
-    
     "presets": [
       "react-app"
     ],
-    "plugins": [ [ "@babel/plugin-proposal-decorators", { "legacy": true } ] ]
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ]
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.8.3",

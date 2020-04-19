@@ -9,6 +9,7 @@ const getEmailTemplate = require('../../utils/email-template-helper');
 const sendMail = require('../../utils/email-config');
 const authService = require('../../utils/auth-service');
 const escapeRegex = require('../../utils/regex-escape');
+const uniqueRandom = require('unique-random');
 
 const randomize = require('randomatic');
 const EmailTemplate = require('email-templates').EmailTemplate;
@@ -44,8 +45,10 @@ router.post('/', auth.optional, async (req, res, next) => {
         });;
       } else {
         const finalUser = new Users(user);
-        const secretCode = randomize('0000');
-        const userName = randomize('A0', 6)
+        const secretCode = randomize('A',3) + randomize('0',3);
+        const rndFun =  uniqueRandom(1, 999999)
+        const userName = rndFun();//randomize('A0', 6)
+
 
         finalUser.registrationData = user;
         finalUser.setPassword(secretCode);
@@ -283,10 +286,10 @@ router.get('/users-page/:page/:rowsPerPage', async (req, res, next) => {
       const searchQuery = req.query.search,
         regex = new RegExp(escapeRegex(req.query.search), 'gi');
       // Find Demanded Products - Skipping page values, limit results       per page
-      foundPConverters = await Users.find( {'registrationData.firstName': regex })
+      foundPConverters = await Users.find( {$or:[{'registrationData.firstName': regex },{'registrationData.lastName': regex }, {'userName': regex }]})
         .skip((resPerPage * page) - resPerPage)
         .limit(resPerPage);
-      numOfConverters = await Users.count({'registrationData.firstName': regex });
+      numOfConverters = await Users.count({$or:[{'registrationData.firstName': regex },{'registrationData.lastName': regex }, {'userName': regex }]});
 
     } else {
       searchQuery = null;
@@ -333,6 +336,21 @@ router.post('/deleteApplicationById', auth.optional, (req, res, next) => {
         .then(() => res.json({ user: user.toAuthJSON() }));
     });
 });
+router.post('/updateLeadStatusById', auth.optional, (req, res, next) => {
+  const userId = req.body.userId;
+  const status = req.body.status;
+
+  return Users.findById(userId)
+    .then((user) => {
+      if (!user) {
+        return res.sendStatus(400);
+      }
+      user.leadStatus = status;
+      return user.save()
+        .then(() => res.json({ user: user.toAuthJSON() }));
+    });
+});
+
 
 
 module.exports = router;

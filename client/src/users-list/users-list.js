@@ -9,17 +9,20 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import {CircularProgress, FormControl, MenuItem, Select} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Dialog, DialogActions, DialogContentText, DialogContent, DialogTitle, Button, TablePagination, Grid, TextField,Box } from '@material-ui/core';
-
-import "./users-list.scss"
+import { Dialog, DialogActions, DialogContentText, DialogContent, DialogTitle, Button, TablePagination, Grid, TextField, Box } from '@material-ui/core';
+import * as AppConstants from  "../infra/constants";
+import  "./users-list.scss"
 const useStyles = theme => ({
   table: {
     minWidth: 650,
-    marginTop:10
+    marginTop: 10
   },
+  formControl: {
+    minWidth: 120,
+}
 });
 
 
@@ -29,8 +32,7 @@ class UsersList extends Component {
   state = {
     selecteUserId: null,
     openDeleteApplicationDialog: false,
-    rowsPerPage: 10,
-    seacrh: ""
+    rowsPerPage: 10
   }
   componentDidMount() {
     this.props.UsersStore.getUsersList(1, this.state.rowsPerPage, this.state.seacrh);
@@ -60,6 +62,11 @@ class UsersList extends Component {
     this.props.UsersStore.getUsersList(1, this.state.rowsPerPage, value);
     this.setState({ search: value });
   };
+  handleLeadStatusChange = (value) => {
+    this.props.UsersStore.getUsersList(1, this.state.rowsPerPage, value);
+    this.setState({ search: value });
+  };
+  
   render() {
     const { classes } = this.props;
 
@@ -87,45 +94,66 @@ class UsersList extends Component {
             />
           </Grid>
         </Grid>
-          <TableContainer className={classes.table} component={Paper}>
-            <Table  aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>First Name</TableCell>
-                  <TableCell>Last Name</TableCell>
-                  <TableCell>Status</TableCell>
+        <TableContainer className={classes.table} component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>User Name</TableCell>
+                <TableCell>First Name</TableCell>
+                <TableCell>Last Name</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell>Lead Status</TableCell>
 
-                  <TableCell align="right">Actions</TableCell>
+                <TableCell align="right">Actions</TableCell>
 
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {this.props.UsersStore.usersList.users.map(row => (
-                  <TableRow key={row._id}>
-
-                    <TableCell >{row.registrationData.firstName}</TableCell>
-                    <TableCell >{row.registrationData.lastName}</TableCell>
-                    <TableCell className={row.applicationData && row.applicationData.isApplicationCompleted ? "completed" : "pending"}>{row.applicationData && row.applicationData.isApplicationCompleted ? "Completed" : "Pending"}</TableCell>
-
-                    <TableCell className="actions-container" align="right">
-                      <div onClick={() => this.editApplication(row._id)}><EditIcon color="primary" /></div>
-                      <div onClick={() => this.deleteApplication(row._id)}><DeleteIcon color="secondary" /></div>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.props.UsersStore.usersList.users.map(row => (
+                <TableRow key={row._id}>
+                  <TableCell >{row.userName}</TableCell>
+                  <TableCell >{row.registrationData.firstName}</TableCell>
+                  <TableCell >{row.registrationData.lastName}</TableCell>
+                  <TableCell className={row.applicationData && row.applicationData.isApplicationCompleted ? "completed" : "pending"}>{row.applicationData && row.applicationData.isApplicationCompleted ? "Completed" : "Pending"}</TableCell>
+                  <TableCell >
+                    <FormControl className={`select-input ${classes.formControl}`}>
+                                    <Select
+                                        labelId="leadStatus"
+                                        id="leadStatus"
+                                        value={row.leadStatus}
+                                        onChange={(event) => this.props.UsersStore.handleLeadStatusChange(event.target.value, row._id)}
+                                    >
+                                        <MenuItem value="NEW">New</MenuItem>
+                                        <MenuItem value="NEW_PAID">New Paid</MenuItem>
+                                        <MenuItem value="CALL_BACK">Call Back</MenuItem>
+                                        <MenuItem value="NOT_INTERESTED">Not Interested</MenuItem>
+                                        <MenuItem value="RECALL">Recall</MenuItem>
+                                        <MenuItem value="PAYMENT">Payment</MenuItem>
+                                        <MenuItem value="SUCCESSFUL">Successful</MenuItem>
+                                        <MenuItem value="COLLECTION">Collection</MenuItem>
+                                    </Select>
+                                </FormControl>
                     </TableCell>
 
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={this.props.UsersStore.usersList.numOfResults}
-            rowsPerPage={this.state.rowsPerPage}
-            page={Number(this.props.UsersStore.usersList.currentPage) - 1}
-            onChangePage={this.handleChangePage}
-            onChangeRowsPerPage={this.handleChangeRowsPerPage}
-          />
+                  <TableCell className="actions-container" align="right">
+                    <div onClick={() => this.editApplication(row._id)}><EditIcon color="primary" /></div>
+                    <div onClick={() => this.deleteApplication(row._id)}><DeleteIcon color="secondary" /></div>
+                  </TableCell>
+
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={this.props.UsersStore.usersList.numOfResults}
+          rowsPerPage={this.state.rowsPerPage}
+          page={Number(this.props.UsersStore.usersList.currentPage) - 1}
+          onChangePage={this.handleChangePage}
+          onChangeRowsPerPage={this.handleChangeRowsPerPage}
+        />
         {this.state.openDeleteApplicationDialog && <Dialog
           keepMounted aria-labelledby="simple-dialog-title" open={this.state.openDeleteApplicationDialog}
           onClose={() => this.setState({ openDeleteApplicationDialog: false })}
