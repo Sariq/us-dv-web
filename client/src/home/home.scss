@@ -33,7 +33,7 @@
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 1000px;
+    height: 700px;
     width: 100%;
     color: $white;
     font-weight: bold;
@@ -80,6 +80,7 @@
       margin-top: 10px;
       font-size: 15px;
       opacity: 0.6;
+      //text-align: left;
     }
     .more-info {
       width: 100%;
@@ -108,6 +109,11 @@
       }
     }
   }
+  .home-menu-grid{
+    border-top: 1px solid #dbdcdc;
+
+  }
+
   .about-us-container {
     height: 600px;
     background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-parallax1.jpg);
@@ -130,6 +136,7 @@
       .sub-title {
         font-size: 20px;
         margin-bottom: 15px;
+        font-weight: bold;
       }
       .body {
         margin-bottom: 15px;
@@ -150,5 +157,29 @@
       background: $bordo;
       margin-top: 20px;
       margin-bottom: 20px;
+  }
+
+  .live-work{
+    height: auto;
+
+    .about-us-container{
+      background-image: unset;
+         position: relative!important;
+         height: 450px!important;
+
+      .text-container{
+
+     
+        padding: 10px;
+        background-color: unset;
+      }
+  
+      .title{
+        font-size: 30px;
+      }
+      .body{
+        font-size: 20px;
+      }
+    }
   }
 }

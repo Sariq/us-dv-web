@@ -12,18 +12,24 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import PhoneIcon from '@material-ui/icons/Phone';
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core';
 import WorkIcon from '@material-ui/icons/Work';
 import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
+import HomeMenu from '../components/home-menu/home-menu';
+import MainPage from './main-page/main-page';
+import AboutUs from './about-us/about-us';
+import { Route, Link, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
+import AboutGreenCard from "./info/about-green-card/about-green-card";
+import FAQ from "./info/faq/faq";
+import StatisticsEligibleCountries from "./info/Statistics-eligible-countries/Statistics-eligible-countries";
 function Copyright() {
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
+        <Typography variant="body2"  align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
+            <Link  to="https://material-ui.com/">
                 Your Website
       </Link>{' '}
             {new Date().getFullYear()}
@@ -33,7 +39,7 @@ function Copyright() {
 }
 
 
-const useStyles = makeStyles(theme => ({
+const useStyles = (theme => ({
     icon: {
         marginRight: theme.spacing(2),
     },
@@ -61,8 +67,9 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
     },
     footer: {
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: '#272533',
         padding: theme.spacing(6),
+        color: 'white'
     },
 }));
 
@@ -99,11 +106,8 @@ const cards = [
     }
 ];
 class Home extends React.Component {
-
-
     render() {
         const { classes } = this.props;
-
 
         return (
             <div className="home-container">
@@ -171,98 +175,28 @@ class Home extends React.Component {
                                 </Grid>
                             </Container>
                         </div>
-
-                        <Grid className="consultation-section" container direction="row" justify="center" alignItems="center">
-                            <Grid container justify="center" item xs="12" sm="6">
-                                <Typography variant="h2" color="red" justify="flex-start" alignItems="flex-start" className="text" >
-                                    US Immigration Consultancy
-                        </Typography>
-                                <Typography variant="h2" color="red" className="text" >
-                                    & Visa Services
-                        </Typography>
-                            </Grid>
-                            <Grid item xs="12" sm="2">
-                                <Card className="card">
-                                    <CardContent >
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Need a Consultation?
-                      </Typography>
-                                        <Button onClick={() => this.props.history.push('/login-page')} variant="contained" color="primary">
-                                            REQUEST A CALLBACK
-                      </Button>
-                                        <Button onClick={() => this.props.history.push('/register')} variant="contained" color="primary">
-                                            CONTACT US
-                      </Button>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
+                        <Grid className="home-menu-grid">
+                            <HomeMenu goTo={(page) => { this.goTo(page) }} />
                         </Grid>
 
-                        <Container maxWidth="md">
-                            <div className="categories-cards-container">
-                                <div className="visa-categories-title-container">
-                                    <div className="text">
-                                        Visa Categories
-                                    </div>
-                                </div>
-                                {/* End hero unit */}
-                                <Grid container spacing={4}>
-                                    {cards.map(card => (
-                                        <Grid item key={card} xs={12} sm={6} md={4}>
-                                            <Card className={classes.card}>
-
-                                                <CardContent className={classes.cardContent}>
-                                                    <div className="icon-container">
-                                                        {card.icon}
-                                                    </div>
-                                                    <div className="text">
-                                                        {card.bodyText}
-                                                    </div>
-                                                    <div className="sub-text">
-                                                        {card.bodySubText}
-                                                    </div>
-                                                </CardContent>
-                                                <CardActions>
-                                                    <div className="more-info">
-                                                        MORE INFO
-                      </div>
-                                                </CardActions>
-                                            </Card>
-                                        </Grid>
-                                    ))}
-                                </Grid>
-                            </div>
-                        </Container>
-                        <div className="about-us-container">
-                            <div className="text-container">
-                                <h2 className="title">
-                                    About Us
-                                </h2>
-                                <div className="sub-title">
-                                    Welcome to Voyage Agency.
-                                </div>
-                                <div className="body">
-                                    Our Agency  was established in 2000, Voyage is a private immigration company with a team of highly experienced migration consultants for the Canada, USA, Europe and Australia clients from across the globe wishing to apply for a visa. Voyage Agency provides fee-based services in addition to the official government charges to advise, assist and represent our clients through the often-complex visa application process.
-                                </div>
-                                <div className="footer">
-                                    <span className="need">
-                                        Need a consultation?
-                                    </span>
-                                    <span>
-                                        Call us today 1-888-123-45678  or  e-mail us: info@demolink.org
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="data-divider"></div>
 
                     </main>
+                    <Switch>
+                        <Route exact path="/home" component={MainPage} />
+
+                        <Route exact path="/home/aboutus" component={AboutUs} />
+                        <Route exact path="/home/about-green-card" component={AboutGreenCard} />
+                        <Route exact path="/home/statistics-eligible-countries" component={StatisticsEligibleCountries} />
+                        <Route exact path="/home/faq" component={FAQ} />
+
+                        {/* <Route exact  path="/home/about-us" render={(props) => <AboutUs {...props} />} /> */}
+                    </Switch>
                     {/* Footer */}
                     <footer className={classes.footer}>
                         <Typography variant="h6" align="center" gutterBottom>
                             Footer
           </Typography>
-                        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                        <Typography variant="subtitle1" align="center"  component="p">
                             Something here to give the footer a purpose!
           </Typography>
                         <Copyright />

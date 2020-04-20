@@ -50,8 +50,6 @@ class Layout extends Component {
 
   }
   render() {
-
-
     return (
       <div>
         <div className="header-container">
@@ -77,7 +75,7 @@ class Layout extends Component {
         </div>
         <div className="layout-container">
           <Router>
-          {this.props.AuthStore.authData && <div className="side-menu-container">
+            {this.props.AuthStore.authData && <div className="side-menu-container">
               <Paper className="menu-body">
                 <MenuList className="menu-list">
                   <MenuItem ><Link className="link-item" to="/users-list">Users List</Link></MenuItem>
@@ -103,14 +101,16 @@ class Layout extends Component {
 Layout.diplayName = 'Layout';
 
 
+
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Router>
           <Switch>
-            <Route exact path="/home" component={Home} />
             <Route path="/login-page" component={LoginPage} />
+            <Route  path="/home" component={Home} />
             <Route path="/" component={Layout} />
           </Switch>
         </Router>

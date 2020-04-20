@@ -1,0 +1,27 @@
+@import "../../variables";
+
+.home-menu-container {
+  display: inline-flex;
+  div {
+    margin: 5px 10px;
+  }
+  .link-item {
+    text-decoration: none !important;
+    color: white !important;
+  }
+  .link-item:hover {
+    text-decoration: none;
+    color: $bordo !important;
+  }
+  button {
+    min-width: 200px;
+  }
+
+    .menu-item {
+      .link-item {
+        text-decoration: none;
+        color: white !important;
+      }
+   
+  }
+}

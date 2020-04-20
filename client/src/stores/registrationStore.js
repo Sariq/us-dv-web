@@ -172,6 +172,7 @@ class registrationStore {
         this.applicationData.childrenInfo.push({});
       })
     }
+    
     this.applicationData.isApplicationCompleted = !this.isApplicationCompleted();
     return apis.applyApplication(this.applicationData).then((data) => {
       return data;

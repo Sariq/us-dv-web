@@ -126,7 +126,6 @@ class VerticalLinearStepper extends Component {
             const result = this.steps.filter((step)=>{
                 return step.obj === "spouseInfo"
             });
-            console.log(result)
             if(!result || result.length === 0 ){
                 this.steps.push({
                     title: 'Spouse Info',
@@ -138,6 +137,11 @@ class VerticalLinearStepper extends Component {
                 })
             }
             
+        }else{
+            const result = this.steps.filter((step)=>{
+                return step.obj !== "spouseInfo"
+            });
+            this.steps = result;
         }
         console.log(this.childrenTabs.length)
         console.log(this.props.registrationStore.applicationData.applicantInfo.basic.childrenNumber)
@@ -156,8 +160,9 @@ class VerticalLinearStepper extends Component {
                     tabs:true
             })
             console.log(this.steps)
-            this.setState({cildrednUpdate:true})
         }
+        this.setState({cildrednUpdate:true})
+
     }
     applicatTabs = [
         { title: "Basic", cmp: <ApllicantInfo obj="applicantInfo" subObj="basic" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={0} />, obj: "applicantInfo", subObj: "basic" },
