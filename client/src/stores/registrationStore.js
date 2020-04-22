@@ -172,8 +172,8 @@ class registrationStore {
         this.applicationData.childrenInfo.push({});
       })
     }
-    
-    this.applicationData.isApplicationCompleted = !this.isApplicationCompleted();
+
+    this.applicationData.applicationStatus = !this.isApplicationCompleted() ? "COMPLETED" : "PENDING";
     return apis.applyApplication(this.applicationData).then((data) => {
       return data;
     }).finally(() => this.registerInProgress = false);

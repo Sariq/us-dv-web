@@ -75,12 +75,11 @@ class Layout extends Component {
         </div>
         <div className="layout-container">
           <Router>
-            {this.props.AuthStore.authData && <div className="side-menu-container">
+            {this.props.AuthStore.authData && this.props.AuthStore.authData.user.admin && <div className="side-menu-container">
               <Paper className="menu-body">
                 <MenuList className="menu-list">
                   <MenuItem ><Link className="link-item" to="/users-list">Users List</Link></MenuItem>
-                  <MenuItem>My account</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                
                 </MenuList>
               </Paper>
             </div>}

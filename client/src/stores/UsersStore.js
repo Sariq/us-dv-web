@@ -5,25 +5,57 @@ import registrationStore from "./registrationStore"
 import { act } from "@testing-library/react";
 
 const apis = {
-    getUsersList (currentPage, rowsPerPage, seacrh){
-        let seacrhVal = seacrh || "";
-        return fetch(ConfigStore.configData.domain + 'api/users/users-page/'+ currentPage +'/' +rowsPerPage+ '?search=' + seacrhVal, {
-            method: 'GET',
+    // getUsersList (currentPage, rowsPerPage, seacrh,filterData){
+    //     let seacrhVal = seacrh || "";
+    //     return fetch(ConfigStore.configData.domain + 'api/users/users-page/'+ currentPage +'/' +rowsPerPage+ '?search=' + seacrhVal, {
+    //         method: 'GET',
             
-          })
-          .then((response) => response.json())
-          .then((responseJson) => {
-            if(responseJson.user){
-              console.log(responseJson)
-            }else{
+    //       })
+    //       .then((response) => response.json())
+    //       .then((responseJson) => {
+    //         if(responseJson.user){
+    //           console.log(responseJson)
+    //         }else{
              
-            }        
-            return responseJson;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-    },
+    //         }        
+    //         return responseJson;
+    //       })
+    //       .catch((error) => {
+    //         console.error(error);
+    //       });
+    // },
+    getUsersList (currentPage, rowsPerPage, seacrh,filterData){
+      let seacrhVal = seacrh || "";
+      let data = {
+        page: currentPage,
+        rowsPerPage: rowsPerPage,
+        search: seacrhVal,
+        filterData : filterData
+      }
+      return fetch(ConfigStore.configData.domain + 'api/users/users-page/', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "data": data
+        }),
+          
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if(responseJson.user){
+            console.log(responseJson)
+          }else{
+           
+          }        
+          return responseJson;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+  },
     deleteApplicationById (userId){
       return fetch(ConfigStore.configData.domain + 'api/users/deleteApplicationById/', {
         method: 'POST',
@@ -103,9 +135,9 @@ class UsersStore {
     @observable deletingUser = false;
 
     selectedUser
-    @action getUsersList (currentPage, rowsPerPage, seacrh) {
+    @action getUsersList (currentPage, rowsPerPage, seacrh,filterData) {
         this.loadingUsersList = true;
-        return apis.getUsersList(currentPage, rowsPerPage, seacrh).then((data)=>{
+        return apis.getUsersList(currentPage, rowsPerPage, seacrh,filterData).then((data)=>{
           console.log(data)
             this.usersList=data;
         }).finally(()=>this.loadingUsersList = false);

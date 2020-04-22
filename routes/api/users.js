@@ -274,22 +274,77 @@ router.post('/email-confirm', (req, res, next) => {
     });
 });
 
-router.get('/users-page/:page/:rowsPerPage', async (req, res, next) => {
+// router.get('/users-page/:page/:rowsPerPage', async (req, res, next) => {
+//   // Declaring variable
+//   const resPerPage = Number(req.params.rowsPerPage) || 10; // results per page
+//   const page = req.params.page || 1; // Page 
+//   try {
+//     var foundPConverters = [];
+//     var numOfConverters = 0;
+//     if (req.query.search) {
+//       // Declaring query based/search variables
+//       const searchQuery = req.query.search,
+//         regex = new RegExp(escapeRegex(req.query.search), 'gi');
+//       // Find Demanded Products - Skipping page values, limit results       per page
+//       foundPConverters = await Users.find( {$or:[{'registrationData.firstName': regex },{'registrationData.lastName': regex }, {'userName': regex }]})
+//         .skip((resPerPage * page) - resPerPage)
+//         .limit(resPerPage);
+//       numOfConverters = await Users.count({$or:[{'registrationData.firstName': regex },{'registrationData.lastName': regex }, {'userName': regex }]});
+
+//     } else {
+//       searchQuery = null;
+//       foundPConverters = await Users.find({})
+//         .skip((resPerPage * page) - resPerPage)
+//         .limit(resPerPage);
+//       numOfConverters = await Users.count();
+
+//     }
+//     // Count how many products were found
+//     // Renders The Page
+
+//     return res.json({
+//       users: foundPConverters,
+//       currentPage: page,
+//       pages: Math.ceil(numOfConverters / resPerPage),
+//       searchVal: req.query.search,
+//       numOfResults: numOfConverters
+//     })
+
+//   } catch (err) {
+//     throw new Error(err);
+//   }
+// });
+router.post('/users-page', async (req, res, next) => {
   // Declaring variable
-  const resPerPage = Number(req.params.rowsPerPage) || 10; // results per page
-  const page = req.params.page || 1; // Page 
+  const { body } = req;
+  const resPerPage = Number(body.data.rowsPerPage) || 10; // results per page
+  const page = body.data.page || 1; // Page 
   try {
     var foundPConverters = [];
     var numOfConverters = 0;
-    if (req.query.search) {
+    if (body.data.search || body.data.filterData) {
       // Declaring query based/search variables
-      const searchQuery = req.query.search,
-        regex = new RegExp(escapeRegex(req.query.search), 'gi');
+   
+   
+      const searchQuery = body.data.search,
+        regex = new RegExp(escapeRegex(body.data.search), 'gi');
       // Find Demanded Products - Skipping page values, limit results       per page
-      foundPConverters = await Users.find( {$or:[{'registrationData.firstName': regex },{'registrationData.lastName': regex }, {'userName': regex }]})
+      let filterArray =[];
+      if(body.data.search){
+        filterArray = [{'registrationData.firstName': regex },{'registrationData.lastName': regex }, {'userName': regex }];
+      }
+      if(body.data.filterData){
+        Object.keys(body.data.filterData).forEach(function(key) {
+          var val = body.data.filterData[key];
+          filterArray.push({[key]:body.data.filterData[key]})
+          console.log(val)
+        });
+      }
+   
+      foundPConverters = await Users.find( filterArray.length > 0 ? {$or:filterArray} : {})
         .skip((resPerPage * page) - resPerPage)
         .limit(resPerPage);
-      numOfConverters = await Users.count({$or:[{'registrationData.firstName': regex },{'registrationData.lastName': regex }, {'userName': regex }]});
+      numOfConverters = await Users.count(filterArray.length > 0 ? {$or:filterArray} : {});
 
     } else {
       searchQuery = null;

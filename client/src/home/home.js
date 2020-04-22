@@ -27,9 +27,9 @@ import FAQ from "./info/faq/faq";
 import StatisticsEligibleCountries from "./info/Statistics-eligible-countries/Statistics-eligible-countries";
 function Copyright() {
     return (
-        <Typography variant="body2"  align="center">
+        <Typography variant="body2" align="center">
             {'Copyright © '}
-            <Link  to="https://material-ui.com/">
+            <Link to="https://material-ui.com/">
                 Your Website
       </Link>{' '}
             {new Date().getFullYear()}
@@ -73,39 +73,12 @@ const useStyles = (theme => ({
     },
 }));
 
-const cards = [
-    {
-        icon: <WorkIcon />,
-        bodyText: "Skilled Worker Visa",
-        bodySubText: "Migrate as a skilled worker"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Business Immigration Visa",
-        bodySubText: "Relocate or invest in a new business abroad"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Green Card",
-        bodySubText: "Migrate to the USA"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Family Visa",
-        bodySubText: "Join Your Family"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Visitor Visa",
-        bodySubText: "Travel abroad for business or vacation"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Work Permit",
-        bodySubText: "Work and live abroad"
-    }
-];
+
+
 class Home extends React.Component {
+    gotoLogin = () =>{
+        this.props.history.push('/login-page');
+    }
     render() {
         const { classes } = this.props;
 
@@ -114,13 +87,27 @@ class Home extends React.Component {
 
                 <React.Fragment>
                     <CssBaseline />
-                    <AppBar position="absolute" color="default" className="header">
-                        <Toolbar>
-                            <Typography variant="h6" color="inherit" noWrap>
-                                Welcome to our Agency
+
+                        <AppBar position="absolute" color="default" className="header">
+                            <Toolbar>
+                            <div className="header-content-container">
+                                <div>
+                                <Typography variant="h6" color="inherit" noWrap>
+                                    Welcome to our Agency
           </Typography>
-                        </Toolbar>
-                    </AppBar>
+          </div>
+          <div>
+                                <Button
+                                    onClick={this.gotoLogin}
+                                    variant="contained" color="primary"
+                                >
+                                    LogIn
+                  </Button>
+                  </div>
+                  </div>
+
+                            </Toolbar>
+                        </AppBar>
                     <main>
                         {/* Hero unit */}
                         <div className="info-container">
@@ -183,7 +170,6 @@ class Home extends React.Component {
                     </main>
                     <Switch>
                         <Route exact path="/home" component={MainPage} />
-
                         <Route exact path="/home/aboutus" component={AboutUs} />
                         <Route exact path="/home/about-green-card" component={AboutGreenCard} />
                         <Route exact path="/home/statistics-eligible-countries" component={StatisticsEligibleCountries} />
@@ -196,7 +182,7 @@ class Home extends React.Component {
                         <Typography variant="h6" align="center" gutterBottom>
                             Footer
           </Typography>
-                        <Typography variant="subtitle1" align="center"  component="p">
+                        <Typography variant="subtitle1" align="center" component="p">
                             Something here to give the footer a purpose!
           </Typography>
                         <Copyright />

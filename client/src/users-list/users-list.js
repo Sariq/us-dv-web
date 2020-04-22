@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Backdrop from '@material-ui/core/Backdrop';
-import {CircularProgress, FormControl, MenuItem, Select} from '@material-ui/core';
+import {CircularProgress, FormControl, MenuItem, Select, Checkbox, InputLabel} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Dialog, DialogActions, DialogContentText, DialogContent, DialogTitle, Button, TablePagination, Grid, TextField, Box } from '@material-ui/core';
@@ -21,7 +21,10 @@ const useStyles = theme => ({
     marginTop: 10
   },
   formControl: {
-    minWidth: 120,
+    minWidth: 160,
+},
+checkBox:{
+  marginTop: 16
 }
 });
 
@@ -32,7 +35,11 @@ class UsersList extends Component {
   state = {
     selecteUserId: null,
     openDeleteApplicationDialog: false,
-    rowsPerPage: 10
+    rowsPerPage: 10,
+    applicationStatusFilter: false,
+    leadStatusFilter: false,
+    "applicationData.applicationStatus": null,
+    leadStatus: null
   }
   componentDidMount() {
     this.props.UsersStore.getUsersList(1, this.state.rowsPerPage, this.state.seacrh);
@@ -62,11 +69,46 @@ class UsersList extends Component {
     this.props.UsersStore.getUsersList(1, this.state.rowsPerPage, value);
     this.setState({ search: value });
   };
-  handleLeadStatusChange = (value) => {
-    this.props.UsersStore.getUsersList(1, this.state.rowsPerPage, value);
-    this.setState({ search: value });
-  };
+  handleApplicationStatusFilter = (flag) =>{
+    if(!flag){
+      delete this.filterData["applicationData.applicationStatus"];
+    }
+    this.setState({applicationStatusFilter: flag});
+  }
+  handleApplicationFilterChange = (value) =>{
+    this.setState({"applicationData.applicationStatus": value});
+  }
   
+  handleLeadStatusFilter = (flag) =>{
+    console.log(flag)
+    if(!flag){
+      delete this.filterData.leadStatus;
+    }
+    this.setState({leadStatusFilter: flag});
+  }
+  handleLeadStatusFilterChange = (value) =>{
+    this.setState({leadStatus: value});
+  }
+  
+  filterData = {};
+  filterUsersList = () =>{
+    let applyFilterFlag = false;
+    if(this.state.applicationStatusFilter && this.state["applicationData.applicationStatus"]){
+      this.filterData["applicationData.applicationStatus"] = this.state["applicationData.applicationStatus"];
+      applyFilterFlag = true;
+    }
+    if(this.state.leadStatusFilter && this.state.leadStatus){
+      this.filterData.leadStatus = this.state.leadStatus;
+      applyFilterFlag = true;
+    }
+    //if(applyFilterFlag){
+      this.props.UsersStore.getUsersList(1, this.state.rowsPerPage, this.state.search,this.filterData);
+    //}
+
+  }
+  applyFilter = () =>{
+    this.filterUsersList();
+  }
   render() {
     const { classes } = this.props;
 
@@ -81,18 +123,66 @@ class UsersList extends Component {
     }
     return (
       <div className="users-list-container">
-        <Grid container justify="flex-start" m={2}
-          alignItems="flex-start" direction="row" spacing={5}>
-          <Grid item  >
+        <Grid container justify="flex-start" 
+            direction="row" spacing={5}>
+          <Grid item >
             <TextField
-
               id="search"
               name="search"
               label="Search"
               autoComplete="search"
               onChange={(event) => this.handleSearchChange(event.target.value)}
-            />
-          </Grid>
+            />          </Grid>
+
+            <Grid item  alignItems="flex-end" >
+              <Checkbox  className={classes.checkBox}
+                      onChange={(event) => this.handleLeadStatusFilter(event.target.checked)}
+                      checked={this.state.leadStatusFilter}
+                      color="primary" name="leadStatus" />
+
+            <FormControl className={`select-input ${classes.formControl}`}>
+            <InputLabel id="leadStatus">Lead Status</InputLabel>
+                                    <Select
+                                        labelId="leadStatus"
+                                        id="leadStatus"
+                                        onChange={(event) => this.handleLeadStatusFilterChange(event.target.value)}
+
+                                    >
+                                        <MenuItem value="NEW">New</MenuItem>
+                                        <MenuItem value="NEW_PAID">New Paid</MenuItem>
+                                        <MenuItem value="CALL_BACK">Call Back</MenuItem>
+                                        <MenuItem value="NOT_INTERESTED">Not Interested</MenuItem>
+                                        <MenuItem value="RECALL">Recall</MenuItem>
+                                        <MenuItem value="PAYMENT">Payment</MenuItem>
+                                        <MenuItem value="SUCCESSFUL">Successful</MenuItem>
+                                        <MenuItem value="COLLECTION">Collection</MenuItem>
+                                    </Select>
+                                </FormControl>
+            </Grid>
+            <Grid item  alignItems="flex-end" >
+              <Checkbox  className={classes.checkBox}
+                      onChange={(event) => this.handleApplicationStatusFilter(event.target.checked)}
+                      checked={this.state.applicationStatusFilter}
+                      color="primary" name="saveAddress" />
+            <FormControl className={`select-input ${classes.formControl}`}>
+            <InputLabel id="appluicationStatus">Application Status</InputLabel>
+
+                                    <Select
+                                        labelId="appluicationStatus"
+                                        id="appluicationStatus"
+                                        onChange={(event) => this.handleApplicationFilterChange(event.target.value)}
+
+                                    >
+                                        <MenuItem value="COMPLETED">Completed</MenuItem>
+                                        <MenuItem value="PENDING">Pending</MenuItem>
+                                    </Select>
+                                </FormControl>
+            </Grid>
+            <Grid  style={{alignSelf: 'center'}} item alignItems="flex-end">
+            <Button  variant="contained" onClick={this.applyFilter} color="primary">
+              Filter
+          </Button>
+            </Grid>
         </Grid>
         <TableContainer className={classes.table} component={Paper}>
           <Table aria-label="simple table">
@@ -114,7 +204,7 @@ class UsersList extends Component {
                   <TableCell >{row.userName}</TableCell>
                   <TableCell >{row.registrationData.firstName}</TableCell>
                   <TableCell >{row.registrationData.lastName}</TableCell>
-                  <TableCell className={row.applicationData && row.applicationData.isApplicationCompleted ? "completed" : "pending"}>{row.applicationData && row.applicationData.isApplicationCompleted ? "Completed" : "Pending"}</TableCell>
+                  <TableCell className={row.applicationData && row.applicationData.applicationStatus}>{row.applicationData && row.applicationData.applicationStatus}</TableCell>
                   <TableCell >
                     <FormControl className={`select-input ${classes.formControl}`}>
                                     <Select
