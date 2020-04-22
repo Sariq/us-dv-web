@@ -25,7 +25,8 @@ class Layout extends Component {
   componentDidMount() {
 
     if (!this.props.AuthStore.getUserDataLocal() && window.location.pathname !== "/login-page" && !window.location.pathname.includes("/ImmiEx") && !window.location.pathname.includes("/register")) {
-      window.location.href = window.location.origin + "/ImmiEx/HTML/website/index.html";
+      //window.location.href = window.location.origin + "/ImmiEx/HTML/website/index.html";
+      //return <Redirect  to="/home" />
     } else {
       if (!this.props.AuthStore.authData) {
         return <Backdrop className="backdrop" open={true}>
@@ -110,7 +111,10 @@ class App extends Component {
           <Switch>
             <Route path="/login-page" component={LoginPage} />
             <Route  path="/home" component={Home} />
-            <Route path="/" component={Layout} />
+            <Redirect exact from="/" to="home" />
+            <Route path="*" component={Layout} />
+
+            {/* <Route path="/" component={Layout} /> */}
           </Switch>
         </Router>
       </div>

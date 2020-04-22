@@ -376,7 +376,7 @@ router.get('/getUserById/:userId', (req, res, next) => {
     if (!user) {
       return res.sendStatus(400);
     }
-    return res.json({ user: user.toAuthJSON() });
+    return res.json({ user: user.getUserData() });
   });
 });
 router.post('/deleteApplicationById', auth.optional, (req, res, next) => {

@@ -55,19 +55,19 @@ app.get('*', (req, res) => {
   console.log(req)
 
   console.log("xxxxxxx3")
-  if(req.originalUrl.includes("ImmiEx") || req.originalUrl === "/" || req.originalUrl === undefined){
-    app.use(express.static(path.join(__dirname, '/immiEx/HTML/website', 'index.html')))
+  // if(req.originalUrl.includes("ImmiEx") || req.originalUrl === "/" || req.originalUrl === undefined){
+  //   app.use(express.static(path.join(__dirname, '/immiEx/HTML/website', 'index.html')))
 
-    res.sendFile(path.join(__dirname, req.originalUrl))
+  //   res.sendFile(path.join(__dirname, req.originalUrl))
 
-  }else{
-      console.log("xxxxxxx2")
+  // }else{
+  //     console.log("xxxxxxx2")
 
     app.use(express.static(path.join(__dirname, '/client/build', 'index.html')))
 
     res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
 
-  }
+  // }
 })
 //Error handlers & middlewares
 if(!isProduction) {

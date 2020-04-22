@@ -56,7 +56,14 @@ UsersSchema.methods.toAuthJSON = function () {
       applicationData: this.applicationData
     }
   }
-
 };
+UsersSchema.methods.getUserData = function () {
+  return {
+    registrationData: this.registrationData,
+    applicationData: this.applicationData
+
+  }
+}
+
 
 mongoose.model('Users', UsersSchema);

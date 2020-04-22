@@ -259,6 +259,7 @@ class registrationStore {
     }
     return flag;
   }
+
 }
 //export default registrationStore;
 export default new registrationStore();
