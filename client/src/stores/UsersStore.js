@@ -149,13 +149,13 @@ class UsersStore {
     // }
     @action getUserById (userId) {
         this.loadingUser = true;
-        return apis.getUserById(userId).then(action((data)=>{
+        return apis.getUserById(userId).then((data)=>{
           //AuthStore.setUserDataLocal(data);
           //data.user.userData = data.user;
+            console.log("getUserByIdStore")
+          action(AuthStore.authData.user.userData.applicationData = data.user.applicationData ? (data.user.applicationData) : registrationStore.emptyApplicationData());
             
-          AuthStore.authData.user.userData.applicationData = data.user.applicationData ? (data.user.applicationData) : registrationStore.emptyApplicationData();
-            
-        })).finally(()=>this.loadingUser = false);
+        }).finally(()=>this.loadingUser = false);
     };
     @action deleteApplicationById (userId) {
       this.deletingUser = true;

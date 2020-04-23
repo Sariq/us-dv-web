@@ -213,7 +213,7 @@ class VerticalLinearStepper extends Component {
     render() {
         const { classes } = this.props;
         console.log("RENDERRRRR")
-        if (!this.props.AuthStore.authData || this.props.registrationStore.isLoadingApplicationData || this.props.UsersStore.loadingUser || this.props.registrationStore.registerInProgress) {
+        if (!this.props.AuthStore.authData ||  this.props.registrationStore.isLoadingApplicationData || this.props.UsersStore.loadingUser || this.props.registrationStore.registerInProgress) {
             return (<Backdrop className={classes.backdrop} open={true}>
                 <CircularProgress color="inherit" />
             </Backdrop>)
@@ -258,7 +258,7 @@ class VerticalLinearStepper extends Component {
                                     >
                                         Next
                                     </Button>
-                                    <Button
+                                    { (this.props.AuthStore.authData.user.admin || this.props.registrationStore.applicationData.applicationStatus !== "COMPLETED" ) && <Button
                                         variant="contained"
                                         color="primary"
                                         onClick={this.handleSave}
@@ -266,7 +266,7 @@ class VerticalLinearStepper extends Component {
                                         //disabled={this.props.registrationStore.checkFormInValid}
                                     >
                                         Save
-                                    </Button>
+                                    </Button>}
                                 </div>
 
                             </div></>

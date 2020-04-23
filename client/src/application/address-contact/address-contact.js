@@ -15,7 +15,7 @@ const useStyles = (theme => ({
         marginTop: theme.spacing(2),
     },
 }));
-@inject('registrationStore')
+@inject('registrationStore','AuthStore')
 @observer
 class AddressContact extends Component {
 
@@ -26,7 +26,7 @@ class AddressContact extends Component {
         const { classes } = this.props;
         return (
             <React.Fragment >
-                <div className="applicant-info-container">
+                <div className={`applicant-info-container ${!this.props.AuthStore.authData.user.admin && this.props.registrationStore.applicationData.applicationStatus === "COMPLETED" ? 'application-completed' : ''}`}>
                     <div className="addressForm">
                         <Grid container spacing={5}>
                             <Grid item xs={12} sm={6}>
@@ -64,15 +64,15 @@ class AddressContact extends Component {
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     required
-                                    error={this.props && this.props.registrationStore.errors.cityOfBirth}
-                                    helperText={this.props && this.props.registrationStore.errors.cityOfBirth ? "Invalid input" : null}
+                                    error={this.props && this.props.registrationStore.errors.cob}
+                                    helperText={this.props && this.props.registrationStore.errors.cob ? "Invalid input" : null}
                                     id="cityOfBirth"
                                     name="cityOfBirth"
                                     label="City of Birth"
                                     fullWidth
                                     autoComplete="cityOfBirth"
-                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].cityOfBirth}
-                                    onChange={(event) => this.props.registrationStore.handleDataChange("cityOfBirth", event.target.value, this.props.obj)}
+                                    value={this.props && this.props.registrationStore.applicationData[this.props.obj].cob}
+                                    onChange={(event) => this.props.registrationStore.handleDataChange("cob", event.target.value, this.props.obj)}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>

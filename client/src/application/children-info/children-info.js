@@ -68,7 +68,7 @@ class ChildrenInfo extends Component {
 
     return (
         <React.Fragment >
-            <div className="applicant-info-container spouse-info-container">
+            <div className={`applicant-info-container spouse-info-container ${!this.props.AuthStore.authData.user.admin && this.props.registrationStore.applicationData.applicationStatus === "COMPLETED" ? 'application-completed' : ''}`}>
                 <div className="addressForm">
                 <Grid container spacing={5}>
                         <Grid item xs={12} sm={6}>

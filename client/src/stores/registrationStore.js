@@ -114,10 +114,10 @@ class registrationStore {
     let flag = false;
 
     let fullFormFields = ["applicantInfo","addressContact"];
-    if(this.applicationData.childrenInfo){
+    if(Number(this.applicationData.applicantInfo.basic.childrenNumber) > 0){
       fullFormFields.push("childrenInfo")
     }
-    if(this.applicationData.spouseInfo){
+    if(this.applicationData.applicantInfo.basic.maritalStatus === "married"){
       fullFormFields.push("spouseInfo")
     }
     for (let activeObj of fullFormFields) {
@@ -126,8 +126,7 @@ class registrationStore {
         if (activeSubObj) {
           for (let field of this[activeObj + "Fields"][activeSubObj]) {
             if (!this.applicationData[activeObj][activeSubObj][field] || this.errors[field]) {
-              flag = true;
-              break;
+              return true;
             } else {
               flag = false;
             }
@@ -139,8 +138,7 @@ class registrationStore {
           for (let index in this.applicationData[activeObj]) {
           for (let field of this[activeObj + "Fields"]) {
             if (!this.applicationData[activeObj][index][field] || this.errors[field]) {
-              flag = true;
-              break;
+              return true;
             } else {
               flag = false;
             }
@@ -149,8 +147,7 @@ class registrationStore {
         }else{
           for (let field of this[activeObj + "Fields"]) {
             if (!this.applicationData[activeObj][field] || this.errors[field]) {
-              flag = true;
-              break;
+              return true;
             } else {
               flag = false;
             }
@@ -160,7 +157,6 @@ class registrationStore {
 
       
     }
-    console.log(flag)
     return flag;
   }
   @action sendApplication() {
@@ -214,7 +210,8 @@ class registrationStore {
 
   @action initApplicationData() {
     if (AuthStore.authData) {
-      console.log("initApplicationData")
+      console.log(AuthStore.authData.user.userData.applicationData)
+
       this.applicationData = AuthStore.authData.user.userData.applicationData;
       this.isLoadingApplicationData = false;
     }

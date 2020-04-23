@@ -24,7 +24,11 @@ const useStyles = makeStyles({
 
 export default function CountrySelect(props) {
   const classes = useStyles();
-  const defaultCountryIndex = countries[countries.findIndex((c)=> c.label === props.selectedCountry)];
+  let defaultCountryIndex = countries[countries.findIndex((c)=> c.label === props.selectedCountry)];
+  console.log("defaultCountryIndex")
+  if(defaultCountryIndex === undefined){
+    defaultCountryIndex = {};
+  }
   // if(!defaultCountryIndex){
   //   return <div></div>
   // }
@@ -36,7 +40,7 @@ export default function CountrySelect(props) {
           console.log(newValue)
         props.onChange(newValue.label);
       }}
-      defaultValue={defaultCountryIndex}
+      value={defaultCountryIndex}
 
       autoHighlight
       getOptionLabel={option => option.label}

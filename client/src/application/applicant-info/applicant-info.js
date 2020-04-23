@@ -54,8 +54,7 @@ class ApllicantInfo extends Component {
         }
         return (
             <React.Fragment >
-                <div className="applicant-info-container">
-                {/* {JSON.stringify(this.props.registrationStore.applicationData[this.props.obj][this.props.subObj])} */}
+                <div className={`applicant-info-container ${!this.props.AuthStore.authData.user.admin && this.props.registrationStore.applicationData.applicationStatus === "COMPLETED" ? 'application-completed' : ''}`}>
                 
                     <div className="addressForm">
                         <Grid container spacing={5}>
@@ -228,7 +227,7 @@ class ApllicantInfo extends Component {
                                     <Select
                                         labelId="Day"
                                         id="Day"
-                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].day}
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].day || ""}
                                         onChange={(event) => this.props.registrationStore.handleDataChange("day", event.target.value, this.props.obj, null , this.props.subObj)}
                                     >
                                         {Array.from(new Array(31), (v, i) =>
@@ -243,7 +242,7 @@ class ApllicantInfo extends Component {
                                     <Select
                                         labelId="Month"
                                         id="Month"
-                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].month}
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].month || ""}
                                         onChange={(event) => this.props.registrationStore.handleDataChange("month", event.target.value, this.props.obj, null , this.props.subObj)}
                                     >
                                         {Array.from(new Array(12), (v, i) =>
@@ -258,7 +257,7 @@ class ApllicantInfo extends Component {
                                     <Select
                                         labelId="year"
                                         id="year"
-                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].year}
+                                        value={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].year || ""}
                                         onChange={(event) => this.props.registrationStore.handleDataChange("year", event.target.value, this.props.obj, null , this.props.subObj)}
                                     >
                                         {Array.from(new Array(90), (v, i) =>

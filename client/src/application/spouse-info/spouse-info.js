@@ -39,7 +39,7 @@ class SupouseInfo extends Component {
         const { classes } = this.props;
         return (
             <React.Fragment >
-                <div className="applicant-info-container spouse-info-container">
+                <div className={`applicant-info-container spouse-info-container ${!this.props.AuthStore.authData.user.admin && this.props.registrationStore.applicationData.applicationStatus === "COMPLETED" ? 'application-completed' : ''}`}>
                     <div className="addressForm">
                         <Grid container spacing={5}>
                             <Grid container justify="flex-start" item xs={12} sm={6}>
@@ -110,7 +110,7 @@ class SupouseInfo extends Component {
 
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].country} placeHolder="Issuing Country" onChange={(value) => this.onCountryChange(value,"issuingCountry")} />
+                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].issuingCountry} placeHolder="Issuing Country" onChange={(value) => this.onCountryChange(value,"issuingCountry")} />
                             </Grid>
 
                         </Grid>
