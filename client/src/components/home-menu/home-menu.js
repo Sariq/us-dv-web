@@ -50,6 +50,9 @@ export default function HomeMenu(props) {
         setAnchorEl(event.currentTarget);
 
     };
+    const goToRegister = () =>{
+        this.props.history.push('/register');
+    }
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -118,6 +121,18 @@ export default function HomeMenu(props) {
                     </MenuItem>
                     </Link>
                 </StyledMenu>
+            </div>
+            <div>
+            <Link className="link-item" to="/register">
+                <Button
+                    aria-controls="customized-menu"
+                    aria-haspopup="true"
+                    variant="contained"
+                    color="primary"
+                >
+                    Aplly Now
+                </Button>
+                </Link>
             </div>
         </div>
     );

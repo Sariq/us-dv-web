@@ -25,6 +25,9 @@ import { Route, Link, BrowserRouter as Router, Switch, Redirect } from 'react-ro
 import AboutGreenCard from "./info/about-green-card/about-green-card";
 import FAQ from "./info/faq/faq";
 import StatisticsEligibleCountries from "./info/Statistics-eligible-countries/Statistics-eligible-countries";
+const logo = require('../assests/images/us-dv-logo.png'); 
+
+
 function Copyright() {
     return (
         <Typography variant="body2" align="center">
@@ -87,7 +90,7 @@ class Home extends React.Component {
 
                 <React.Fragment>
                     <CssBaseline />
-
+{/* 
                         <AppBar position="absolute" color="default" className="header">
                             <Toolbar>
                             <div className="header-content-container">
@@ -107,16 +110,19 @@ class Home extends React.Component {
                   </div>
 
                             </Toolbar>
-                        </AppBar>
+                        </AppBar> */}
                     <main>
+                    <div className="data-divider header"></div>
+
                         {/* Hero unit */}
+                        <div className="header-container">
                         <div className="info-container">
                             <Container className="info-section">
                                 <Grid container spacing={4}>
                                     <Grid container item sm={4} >
-                                        <Typography component="h3" variant="h4" align="center" color="textPrimary" gutterBottom>
-                                            LOGO
-              </Typography>
+                                    <img style={{height:'200px'}} src={logo} />
+
+
                                     </Grid>
                                     <Grid container item justify="flex-end" sm={8} direction="row">
                                         <Grid container sm={4} spacing={4} direction="row" alignItems="center" item>
@@ -157,11 +163,28 @@ class Home extends React.Component {
                                                     08.00 - 18.00
                         </Grid>
                                             </Grid>
+                                            
                                         </Grid>
+                                      
                                     </Grid>
+                                    
                                 </Grid>
+                                
                             </Container>
                         </div>
+                        <div className="apply-now">
+                        <Link className="link-item" to="/register">
+                <Button
+                    aria-controls="customized-menu"
+                    aria-haspopup="true"
+                    variant="contained"
+                    color="primary"
+                >
+                    Aplly Now
+                </Button>
+                </Link>
+                                </div>
+                                </div>
                         <Grid className="home-menu-grid">
                             <HomeMenu goTo={(page) => { this.goTo(page) }} />
                         </Grid>
@@ -178,7 +201,7 @@ class Home extends React.Component {
                         {/* <Route exact  path="/home/about-us" render={(props) => <AboutUs {...props} />} /> */}
                     </Switch>
                     {/* Footer */}
-                    <footer className={classes.footer}>
+                    {/* <footer className={classes.footer}>
                         <Typography variant="h6" align="center" gutterBottom>
                             Footer
           </Typography>
@@ -186,8 +209,48 @@ class Home extends React.Component {
                             Something here to give the footer a purpose!
           </Typography>
                         <Copyright />
-                    </footer>
+                    </footer> */}
+                    
                     {/* End footer */}
+                    <footer id="footer">
+				<div className="inner">
+					<div className="content">
+						<section>
+							<h3>Contact Info</h3>
+							<p>XXX (Building)
+New York, NY 00000
+United States
+Phone : +1-000-000-0000
+Whatsapp: : +1-000-000-0000
+Email : csr@usa-dv.org
+
+</p>
+						</section>
+						<section>
+							<h4></h4>
+							<ul className="alt">
+								<li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#">Terms of Use</a></li>
+								<li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#">Privacy Policy</a></li>
+								<li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#">FAQ</a></li>
+								
+							</ul>
+						</section>
+						<section>
+							<h4>Follow Us</h4>
+							<ul className="plain">
+								<li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#"><i className="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#"><i className="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#"><i className="icon fa-instagram">&nbsp;</i>Google</a></li>
+								<li></li>
+							</ul>
+						</section>
+					</div>
+					<div className="copyright">
+						© USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use. 
+USA-DV is owned and operated by (Company name).
+					</div>
+				</div>
+			</footer>
                 </React.Fragment>
             </div>
 

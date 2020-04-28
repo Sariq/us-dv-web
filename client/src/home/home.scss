@@ -1,8 +1,17 @@
 @import "../variables";
 .home-container {
   .info-container {
-    margin-top: 100px;
+    margin-top: 30px;
     margin-bottom: 20px;
+    width: 90%;
+  }
+  .header-container {
+    display: flex;
+    .apply-now {
+      align-self: center;
+      margin-top: 32px;
+      margin-bottom: 20px;
+    }
   }
   .header {
     background-color: #212b51;
@@ -19,16 +28,15 @@
     border-left: 0;
     position: "relative";
     margin-bottom: 50px;
-
   }
-  .header-content-container{
+  .header-content-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    div{
+    div {
       align-self: center;
     }
-}
+  }
   .info-section {
     // @include setGrid(1fr 1fr, 0, null, null, 'columns');
     // align-items: center;
@@ -121,6 +129,7 @@
   .home-menu-grid {
     border-top: 1px solid #dbdcdc;
     padding: 10px 0;
+    background-color: #212b51;
   }
 
   .about-us-container {
@@ -166,7 +175,14 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
-
+  .data-divider {
+    &.header {
+      height: 5px !important;
+      background: $bordo;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
   .live-work {
     height: auto;
 
@@ -186,6 +202,67 @@
       .body {
         font-size: 20px;
       }
+    }
+  }
+  #footer {
+    background-color: #212b51;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 8rem 0 6rem 0;
+    h3,h4{
+      color: #ffffff;
+    }
+    .content {
+      display: flex;
+      section:first-child {
+        width: 50%;
+        padding-right: 4rem;
+      }
+      section {
+        width: 25%;
+      }
+      section:last-child {
+        padding-left: 4rem;
+      }
+    }
+    ul.plain {
+      list-style: none;
+      padding-left: 0;
+  }
+  ul.plain li {
+    margin-bottom: 1rem;
+}
+ul li {
+  padding-left: 0.325rem;
+}
+    .copyright {
+      border-top: 1px solid;
+      font-size: 0.8rem;
+      opacity: 0.5;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+    }
+    ul.alt {
+      list-style: none;
+      padding-left: 0;
+      li {
+        border-top-color: rgba(255, 255, 255, 0.25);
+        padding: 0.75rem 0;
+        border-top: solid 1px;
+        padding: 0.75rem 0;
+      }
+      li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    }
+    .inner {
+      margin: 0 auto;
+      width: 75rem;
+      max-width: calc(100% - 6rem);
     }
   }
 }
