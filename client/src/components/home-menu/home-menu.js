@@ -123,14 +123,14 @@ export default function HomeMenu(props) {
                 </StyledMenu>
             </div>
             <div>
-            <Link className="link-item" to="/register">
+            <Link  className="link-item apply-now-btn" to="/register">
                 <Button
                     aria-controls="customized-menu"
                     aria-haspopup="true"
                     variant="contained"
                     color="primary"
                 >
-                    Aplly Now
+                    Apply Now
                 </Button>
                 </Link>
             </div>

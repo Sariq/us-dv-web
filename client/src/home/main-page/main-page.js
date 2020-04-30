@@ -80,7 +80,7 @@ const cards = [
         id: 2,
         icon: <WorkIcon />,
         bodyText: "ACCESS AT ALL TIMES",
-        bodySubText: "ACCESS AT ALL TIMES As life can be unexpected and full of happy occasions, such as having a new child or marriage, we provide full time access to the application enabling editing information and keeping the application up to date with the current status."
+        bodySubText: "As life can be unexpected and full of happy occasions, such as having a new child or marriage, we provide full time access to the application enabling editing information and keeping the application up to date with the current status."
     },
     {
         id: 3,
@@ -126,18 +126,19 @@ class MainPage extends React.Component {
                         <Grid className="consultation-section" container direction="row" justify="center" alignItems="center">
                             <Grid container justify="center" item xs={12} sm={6}>
                                 <Typography variant="h2" justify="flex-start" className="text" >
-                                    USA-DV                        </Typography>
+                                    USA-DV                        
+                                </Typography>
                                 <Typography variant="h2" className="text" >
                                     All you need for a green card in one place
-                        </Typography>
-                                <Link style={{ marginTop: '25px' }} className="link-item" to="/register">
+                                </Typography>
+                                <Link style={{ marginTop: '25px' }} className="link-item apply-now-btn" to="/register">
                                     <Button
                                         aria-controls="customized-menu"
                                         aria-haspopup="true"
                                         variant="contained"
                                         color="primary"
                                     >
-                                        Aplly Now
+                                        Apply Now
                 </Button>
                                 </Link>
 
@@ -222,7 +223,7 @@ class MainPage extends React.Component {
                                     Welcome to Voyage Agency.
                                 </div> */}
                                     <div className="body">
-                                        Every year at the 4th of July, the United States of America celebrates its independence, and for over 200 years, the country that was built by hard working pioneers and patriots seeking a better life, has been the destination for people from all over the world who also aim for a higher goal in terms of career, education, equality and most importantly freedom. As a result , conducted under the Immigration and Nationality Act (INA) of 1965 and administered by the Department of State, the DV lottery is held annually to provide 50,000 permanent resident visas to countries under-represented in the United States. <p>For further information please to FAQ </p>                                </div>
+                                        Every year at the 4th of July, the United States of America celebrates its independence, and for over 200 years, the country that was built by hard working pioneers and patriots seeking a better life, has been the destination for people from all over the world who also aim for a higher goal in terms of career, education, equality and most importantly freedom. As a result , conducted under the Immigration and Nationality Act (INA) of 1965 and administered by the Department of State, the DV lottery is held annually to provide 50,000 permanent resident visas to countries under-represented in the United States. <p>For further information please go to <span className="goto-faq">FAQ</span> </p>                                </div>
                                     {/* <div className="footer">
                                     <span className="need">
                                         Need a consultation?
@@ -286,7 +287,7 @@ class MainPage extends React.Component {
                                     </div>
                    
                                 </div>
-                                <Link style={{ marginTop: '25px' }} className="link-item" to="/register">
+                                <Link style={{ marginTop: '25px' }} className="link-item apply-now-btn" to="/register">
                                     <Button
                                     style={{  width: '200px' }}
                                         aria-controls="customized-menu"
@@ -294,7 +295,7 @@ class MainPage extends React.Component {
                                         variant="contained"
                                         color="primary"
                                     >
-                                        Aplly Now
+                                        Apply Now
                 </Button>
                                 </Link>
                             </div>

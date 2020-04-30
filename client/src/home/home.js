@@ -173,14 +173,14 @@ class Home extends React.Component {
                             </Container>
                         </div>
                         <div className="apply-now">
-                        <Link className="link-item" to="/register">
+                        <Link className="link-item apply-btn" to="/register">
                 <Button
                     aria-controls="customized-menu"
                     aria-haspopup="true"
                     variant="contained"
                     color="primary"
                 >
-                    Aplly Now
+                    Login
                 </Button>
                 </Link>
                                 </div>
