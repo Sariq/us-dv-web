@@ -289,3 +289,45 @@ ul li {
     color: white !important;
   }
 }
+@media only screen and (max-width: 900px) {
+    .home-container {
+      .home-menu-grid{
+        display: none;
+      }
+      .live-work{
+        .body{
+          font-size: 1rem!important;
+        }
+        .about-us-container {
+        height: 600px!important;
+        }
+      }
+      .about-us-container {
+        height: 200px;
+        background-image: unset;
+        .data-divider{
+          // height: 100%;
+        }
+        .text-container {
+          width: unset;
+          margin:10px;
+          padding: 10px;
+        }
+      }
+      #footer{
+        padding: 10px;
+        .inner{
+          width: unset;
+          max-width: unset;
+        }
+        padding: 10px;
+         .content section:last-child {
+          padding-left: 1rem;
+      }
+      .content section:first-child {
+        width: 50%;
+        padding-right: 1rem;
+    }
+      }
+    }
+}

@@ -120,7 +120,7 @@ class Home extends React.Component {
                             <Container className="info-section">
                                 <Grid container spacing={4}>
                                     <Grid container item sm={4} >
-                                    <img style={{height:'200px'}} src={logo} />
+                                    {/* <img style={{height:'200px'}} src={logo} /> */}
 
 
                                     </Grid>
@@ -173,7 +173,7 @@ class Home extends React.Component {
                             </Container>
                         </div>
                         <div className="apply-now">
-                        <Link className="link-item apply-btn" to="/register">
+                        <Link className="link-item apply-btn" to="/login-page">
                 <Button
                     aria-controls="customized-menu"
                     aria-haspopup="true"

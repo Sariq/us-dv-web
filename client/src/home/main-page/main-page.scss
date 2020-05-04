@@ -49,3 +49,22 @@
     cursor: pointer;
   }
 }
+@media only screen and (max-width: 900px) {
+    .main-page-container {
+        .inner{
+            width: 100%;
+            max-width: unset;
+            padding: 10px;
+        }
+        .testimonials {
+            display: block;
+            .content{
+                padding: 0.1rem;
+            }
+        }
+        .blockquote{
+            padding: 5px;
+            border-left: 0;
+        }
+    }
+}
