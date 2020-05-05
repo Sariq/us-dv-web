@@ -1,6 +1,9 @@
 @import "../variables";
 .home-container {
+  main{
+    width: 100%;
 
+  }
   .info-container {
     margin-top: 30px;
     margin-bottom: 20px;
@@ -288,9 +291,23 @@ ul li {
     text-decoration: none !important;
     color: white !important;
   }
+  .mobile-menu-container{
+    display: none;
+  }
 }
 @media only screen and (max-width: 900px) {
     .home-container {
+
+      .mobile-menu-container{
+        display: unset;
+        .link-item{
+          color: $bordo!important;
+        }
+      }
+      .menu-btn{
+        background-color: unset;
+        width: unset;
+      }
       .home-menu-grid{
         display: none;
       }

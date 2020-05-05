@@ -51,6 +51,9 @@
 }
 @media only screen and (max-width: 900px) {
     .main-page-container {
+        .wrapper{
+            padding: 0;
+        }
         .inner{
             width: 100%;
             max-width: unset;
