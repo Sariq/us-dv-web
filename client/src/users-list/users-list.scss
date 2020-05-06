@@ -14,4 +14,27 @@
             padding: 0 5px;
         }
     }
+    
+}
+.side-menu-container{
+    height: 100vh;
+    position: fixed;
+    .menu-body{
+      height: 100%;
+      color: white;
+      background-color: #212b51;
+      .link-item{
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+@media only screen and (max-width: 900px) {
+    .users-list-container{
+        width: 100%;
+        margin: 10px;
+    }
+    .side-menu-container{
+        display: none;
+      }
 }

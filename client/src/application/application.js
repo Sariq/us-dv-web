@@ -20,6 +20,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import EditIcon from '@material-ui/icons/Edit';
+import MobileSideMenu from '../components/mobile-side-menu/mobile-side-menu'
 const useStyles = (theme => ({
     root: {
         width: '70%',
@@ -225,6 +226,7 @@ class VerticalLinearStepper extends Component {
                         <CircularProgress color="inherit" />
                     </Backdrop>}
                     {/* {JSON.stringify(this.props.registrationStore.applicationData)} */}
+                    <MobileSideMenu/>
 
                     <Stepper nonLinear activeStep={this.state.activeStep} >
                         {this.steps.map((step, index) => (
