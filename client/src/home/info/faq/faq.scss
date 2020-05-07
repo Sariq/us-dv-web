@@ -1,14 +1,18 @@
 .faq-container {
     .about-us-container {
-      height: auto;
-      .text-container {
-        position: relative;
-      }
-      .body {
-        div {
-          margin-bottom: 10px;
+        height: auto;
+        background-image: unset;
+        .text-container {
+          position: relative;
+          width: unset;
+        }
+        .body {
+          font-size: 15px!important;
+  
+          div {
+            margin-bottom: 10px;
+          }
         }
       }
-    }
   }
   

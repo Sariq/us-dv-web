@@ -60,11 +60,13 @@
     }
   }
   .consultation-section {
-    background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-header-bg.jpg);
+    //background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-header-bg.jpg);
+    background-image: url('../assests/images/home-back.jpg');
+
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 700px;
+    height: 1000px;
     width: 100%;
     color: $white;
     font-weight: bold;
@@ -148,8 +150,11 @@
 
   .about-us-container {
     height: 600px;
-    background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-parallax1.jpg);
-    background-position: top;
+    //background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-parallax1.jpg);
+    background-image: url('../assests/images/how-we-help-back.jpg');
+
+    // background-position: top;
+    background-position: 0 10px;
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: 40px;
@@ -163,8 +168,9 @@
       background-color: #212b51;
       transition-duration: 0.4s;
       transition-property: background-color, border-color;
-      width: 50%;
+       width: 25%;
       margin: 50px;
+      height: 91%;
       .title{
         font-family: serif;
       }
@@ -175,6 +181,7 @@
       }
       .body {
         margin-bottom: 15px;
+        font-size: 20px;
       }
       .footer {
         .need {
@@ -202,15 +209,19 @@
   }
   .live-work {
     height: auto;
-
+    display: flex;
+    .image-container{
+      width: 60%;
+    }
     .about-us-container {
       background-image: unset;
       position: relative !important;
       height: 450px !important;
-
+      width: 40%;
       .text-container {
         padding: 10px;
         background-color: unset;
+        width:90%;
       }
 
       .title {
@@ -317,10 +328,15 @@ ul li {
         }
         .about-us-container {
         height: 600px!important;
+        width:100%;
+        }
+        .image-container{
+          display: none;
         }
       }
       .about-us-container {
-        height: 200px;
+        // height: 200px;
+        height: auto;
         background-image: unset;
         .data-divider{
           // height: 100%;

@@ -1,10 +1,13 @@
 #about-us-container {
   .about-us-container {
     height: auto;
+    background-image: none;
     .text-container {
       position: relative;
+      width: unset;
     }
     .body {
+      font-size: 15px;
       div {
         margin-bottom: 10px;
       }

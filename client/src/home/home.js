@@ -290,7 +290,7 @@ class Home extends React.Component {
                                     <Container className="info-section">
                                         <Grid container spacing={4}>
                                             <Grid container item sm={4} >
-                                                {/* <img style={{height:'200px'}} src={logo} /> */}
+                                                <img style={{height:'70px'}} src={logo} />
 
 
                                             </Grid>

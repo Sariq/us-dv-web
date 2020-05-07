@@ -21,6 +21,8 @@ import { withStyles } from '@material-ui/core';
 import WorkIcon from '@material-ui/icons/Work';
 import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
 import {  Link} from 'react-router-dom'
+const passport = require('../../assests/images/passport.jpg');
+const supportPhone = require('../../assests/images/support-phone.png');
 
 function Copyright() {
     return (
@@ -195,6 +197,7 @@ class MainPage extends React.Component {
                                                 <CardContent className={classes.cardContent}>
                                                     <div className="icon-container">
                                                         {card.icon}
+                                                        {/* <img src={supportPhone} alt=""/> */}
                                                     </div>
                                                     <div className="text">
                                                         {card.bodyText}
@@ -214,7 +217,7 @@ class MainPage extends React.Component {
                         </Container>
 
                         <div className="data-divider live-work">
-                            <div className="about-us-container">
+                            <div  className="about-us-container">
                                 <div className="text-container">
                                     <h2 className="title">
                                         Live and work in the United States
@@ -234,7 +237,12 @@ class MainPage extends React.Component {
                                 </div> */}
                                 </div>
                             </div>
+                            <div className="image-container">
+                            <img src={passport} style={{width:'100%'}} alt=""/>
+                            </div>
+                            
 
+                            
                         </div>
 
                         <div className="wrapper">

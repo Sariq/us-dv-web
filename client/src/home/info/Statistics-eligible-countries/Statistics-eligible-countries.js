@@ -17,6 +17,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import { withStyles } from '@material-ui/core';
 import WorkIcon from '@material-ui/icons/Work';
 import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
+import './Statistics-eligible-countries.scss'
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -64,38 +65,6 @@ const useStyles = (theme => ({
     },
 }));
 
-const cards = [
-    {
-        icon: <WorkIcon />,
-        bodyText: "Skilled Worker Visa",
-        bodySubText: "Migrate as a skilled worker"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Business Immigration Visa",
-        bodySubText: "Relocate or invest in a new business abroad"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Green Card",
-        bodySubText: "Migrate to the USA"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Family Visa",
-        bodySubText: "Join Your Family"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Visitor Visa",
-        bodySubText: "Travel abroad for business or vacation"
-    },
-    {
-        icon: <WorkIcon />,
-        bodyText: "Work Permit",
-        bodySubText: "Work and live abroad"
-    }
-];
 class StatisticsEligibleCountries extends React.Component {
 
   
@@ -103,7 +72,7 @@ class StatisticsEligibleCountries extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div className="home-container">
+            <div className="home-container statistics-eligible-countries-container">
 
                 <React.Fragment>
 
@@ -130,19 +99,9 @@ class StatisticsEligibleCountries extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="data-divider"></div>
 
                     </main>
-                    {/* Footer */}
-                    <footer className={classes.footer}>
-                        <Typography variant="h6" align="center" gutterBottom>
-                            Footer
-          </Typography>
-                        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                            Something here to give the footer a purpose!
-          </Typography>
-                        <Copyright />
-                    </footer>
+ 
                     {/* End footer */}
                 </React.Fragment>
             </div>
