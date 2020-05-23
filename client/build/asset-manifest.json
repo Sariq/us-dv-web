@@ -1,27 +1,40 @@
 {
   "files": {
-    "main.css": "/static/css/main.b0672bb5.chunk.css",
-    "main.js": "/static/js/main.6dca021c.chunk.js",
-    "main.js.map": "/static/js/main.6dca021c.chunk.js.map",
+    "main.css": "/static/css/main.64654d16.chunk.css",
+    "main.js": "/static/js/main.2f22368f.chunk.js",
+    "main.js.map": "/static/js/main.2f22368f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.6823e00b.js",
     "runtime-main.js.map": "/static/js/runtime-main.6823e00b.js.map",
-    "static/js/2.a7b7f021.chunk.js": "/static/js/2.a7b7f021.chunk.js",
-    "static/js/2.a7b7f021.chunk.js.map": "/static/js/2.a7b7f021.chunk.js.map",
+    "static/js/2.c8950c22.chunk.js": "/static/js/2.c8950c22.chunk.js",
+    "static/js/2.c8950c22.chunk.js.map": "/static/js/2.c8950c22.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.58f16ac7ae1a665685bee98e7d83c86c.js": "/precache-manifest.58f16ac7ae1a665685bee98e7d83c86c.js",
+    "precache-manifest.45e9141ccc7d6a16b42eace3af3d0b31.js": "/precache-manifest.45e9141ccc7d6a16b42eace3af3d0b31.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.b0672bb5.chunk.css.map": "/static/css/main.b0672bb5.chunk.css.map",
-    "static/js/2.a7b7f021.chunk.js.LICENSE.txt": "/static/js/2.a7b7f021.chunk.js.LICENSE.txt",
+    "src/assests/images/home.scss": "/src/assests/images/how-we-help-back.jpg",
+    "src/assests/images/logo.svg": "/src/assests/images/logo.svg",
+    "src/assests/images/passport.jpg": "/src/assests/images/passport.jpg",
+    "src/assests/images/personal-icon.png": "/src/assests/images/personal-icon.png",
+    "src/assests/images/resubmission-icon.png": "/src/assests/images/resubmission-icon.png",
+    "src/assests/images/review-icon.png": "/src/assests/images/review-icon.png",
+    "src/assests/images/submission-icon.png": "/src/assests/images/submission-icon.png",
+    "src/assests/images/support-phone.png": "/src/assests/images/support-phone.png",
+    "src/assests/images/us-dv-logo.svg": "/src/assests/images/us-dv-logo.svg",
+    "static/css/main.64654d16.chunk.css.map": "/static/css/main.64654d16.chunk.css.map",
+    "static/js/2.c8950c22.chunk.js.LICENSE.txt": "/static/js/2.c8950c22.chunk.js.LICENSE.txt",
     "static/media/home.scss": "/static/media/how-we-help-back.020edb07.jpg",
     "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg",
     "static/media/passport.jpg": "/static/media/passport.5ff03242.jpg",
+    "static/media/personal-icon.png": "/static/media/personal-icon.f4457807.png",
+    "static/media/resubmission-icon.png": "/static/media/resubmission-icon.08341e5a.png",
+    "static/media/review-icon.png": "/static/media/review-icon.eb40110a.png",
+    "static/media/submission-icon.png": "/static/media/submission-icon.f50eedd8.png",
     "static/media/support-phone.png": "/static/media/support-phone.57277fd5.png",
-    "static/media/us-dv-logo.png": "/static/media/us-dv-logo.509e8f37.png"
+    "static/media/us-dv-logo.svg": "/static/media/us-dv-logo.229132f5.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.6823e00b.js",
-    "static/js/2.a7b7f021.chunk.js",
-    "static/css/main.b0672bb5.chunk.css",
-    "static/js/main.6dca021c.chunk.js"
+    "static/js/2.c8950c22.chunk.js",
+    "static/css/main.64654d16.chunk.css",
+    "static/js/main.2f22368f.chunk.js"
   ]
 }
