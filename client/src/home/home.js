@@ -37,7 +37,8 @@ import clsx from 'clsx';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-const logo = require('../assests/images/us-dv-logo.png');
+//const logo = require('../assests/images/us-dv-logo.svg');
+import logo from '../assests/images/us-dv-logo.svg';
 
 
 function Copyright() {

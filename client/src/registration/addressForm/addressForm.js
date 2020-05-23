@@ -88,7 +88,8 @@ class AddressForm extends Component {
                         </Grid>
 
                         <Grid item xs={12} sm={6}>
-                            <CountrySelect isValid={this.props.registrationStore.errors.country} placeHolder={this.props.registrationStore.registrationData.personalDetails.country} placeHolder="Country Of Birth" onChange={(value)=>this.onCountryChange(value, "cob")}  />
+
+                            <CountrySelect  selectedCountry={this.props.registrationStore.registrationData.personalDetails.cob} isValid={this.props.registrationStore.errors.cob} placeHolder={this.props.registrationStore.registrationData.personalDetails.cob} placeHolder="Country Of Birth" onChange={(value)=>this.onCountryChange(value, "cob")}  />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <ReactPhoneInput value={this.props && this.props.registrationStore.registrationData.personalDetails.phone} defaultCountry={'us'} onChange={this.handleOnChange} />

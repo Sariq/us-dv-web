@@ -48,6 +48,25 @@
     text-decoration: underline;
     cursor: pointer;
   }
+  .consultation-section{
+    .us-dv-header{
+      font-size: 65px!important;
+      font-family: serif;
+      font-weight: bolder;
+    }
+    .text{
+      font-size: 3rem;
+
+    }
+  } 
+  .icon-container{
+    image{
+      height: 65px;
+      width: 65px;
+      border-radius: 28px;
+    }
+    
+  }
 }
 @media only screen and (max-width: 900px) {
     .main-page-container {
@@ -78,6 +97,8 @@
             .about-us-container{
                 height: auto;
             }
-        } 
+        }
+
     }
+
 }

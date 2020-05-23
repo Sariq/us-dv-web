@@ -104,6 +104,7 @@
     }
   }
   .categories-cards-container {
+
     margin-top: 40px;
     .text {
       margin-top: 10px;
@@ -129,13 +130,17 @@
     .icon-container {
       height: 50px;
       width: 50px;
-      background: $bordo;
+      // background: $bordo;
       border-radius: 50px;
       margin: auto;
       display: flex;
 
       align-items: center;
-
+      .icon-img{
+        height: 65px;
+        width: 65px;
+        border-radius: 28px;
+      }
       .MuiSvgIcon-root {
         margin: auto;
         color: white;

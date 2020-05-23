@@ -23,6 +23,11 @@ import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
 import {  Link} from 'react-router-dom'
 const passport = require('../../assests/images/passport.jpg');
 const supportPhone = require('../../assests/images/support-phone.png');
+const reviewIcon = require('../../assests/images/review-icon.png');
+const submissionIcon = require('../../assests/images/submission-icon.png');
+const resubmissionIcon = require('../../assests/images/resubmission-icon.png');
+const personalIcon = require('../../assests/images/personal-icon.png');
+
 
 function Copyright() {
     return (
@@ -74,13 +79,13 @@ const useStyles = (theme => ({
 const cards = [
     {
         id: 1,
-        icon: <WorkIcon />,
+        icon: supportPhone,
         bodyText: "REVIEW GUARANTEED ENTRY",
         bodySubText: "Our experts review all applications prior to submission to the U.S state department, avoiding disqualification and guaranteeing the entry. We guarantee matching your application to the demanded requirements by the States department from all aspects."
     },
     {
         id: 2,
-        icon: <WorkIcon />,
+        icon: reviewIcon,
         bodyText: "ACCESS AT ALL TIMES",
         bodySubText: "As life can be unexpected and full of happy occasions, such as having a new child or marriage, we provide full time access to the application enabling editing information and keeping the application up to date with the current status."
     },
@@ -92,19 +97,19 @@ const cards = [
     },
     {
         id: 4,
-        icon: <WorkIcon />,
+        icon: resubmissionIcon,
         bodyText: "RESUBMISSION SERVICE",
         bodySubText: "Our dedication towards our clients to be successful is the reason we found success as well. This is the reason for us to provide the option to resubmit the application for upcoming DV lotteries maximizing opportunities to the limit."
     },
     {
         id: 5,
-        icon: <WorkIcon />,
+        icon: personalIcon,
         bodyText: "PERSONAL 1 ON 1 CONSULTATION",
         bodySubText: "As thousands of people receive a Green Card every year, many seek out assistance to adapt their new life in America. We provide a personal immigration consultant to work with the applicant one on one and help secure employment, finding accommodation, medical insurance and many more."
     },
     {
         id: 6,
-        icon: <WorkIcon />,
+        icon: submissionIcon,
         bodyText: "SUBMISSIONS",
         bodySubText: "The lottery opens for 4 to 5 weeks every fall, this gives limited time to finalize applications and complete the reviews, in addition many individuals report not being able to submit the application during this time due to technical issues that can cause the online form to often crash or become unavailable, which causes many people to miss the opportunity. Therefore we provide the option to submit the application 365 days a year and insure its participation in the upcoming DV lottery. In the case of finding both applicant and spouse eligible to apply, we submit two applications under each of the partners names to double the statistical chances."
     }
@@ -127,7 +132,7 @@ class MainPage extends React.Component {
                     <main>
                         <Grid className="consultation-section" container direction="row" justify="center" alignItems="center">
                             <Grid container justify="center" item xs={12} sm={6}>
-                                <Typography variant="h2" justify="flex-start" className="text" >
+                                <Typography variant="h1" justify="flex-start" className="text us-dv-header" >
                                     USA-DV                        
                                 </Typography>
                                 <Typography variant="h2" className="text" >
@@ -196,8 +201,8 @@ class MainPage extends React.Component {
 
                                                 <CardContent className={classes.cardContent}>
                                                     <div className="icon-container">
-                                                        {card.icon}
-                                                        {/* <img src={supportPhone} alt=""/> */}
+                                                        {/* {card.icon} */}
+                                                        <img className="icon-img" src={card.icon} alt=""/>
                                                     </div>
                                                     <div className="text">
                                                         {card.bodyText}
