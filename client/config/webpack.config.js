@@ -319,17 +319,17 @@ module.exports = function(webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
-        {
-          test: /\.(png|jp(e*)g|svg|gif)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'src/assests/images/[name].[ext]',
-              },
-            },
-          ],
-        },
+        // {
+        //   test: /\.(png|jp(e*)g|svg|gif)$/,
+        //   use: [
+        //     {
+        //       loader: 'file-loader',
+        //       options: {
+        //         name: 'src/assests/images/[name].[ext]',
+        //       },
+        //     },
+        //   ],
+        // },
         // Disable require.ensure as it's not a standard language feature.
         { parser: { requireEnsure: false } },
 

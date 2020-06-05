@@ -30,6 +30,8 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import LockIcon from '@material-ui/icons/Lock';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -153,10 +155,10 @@ class Home extends React.Component {
         subMenuOpen: false
     }
     handleSubItemClick = (data, forceCloseSubMenu) => {
-        if(data.subItems){
+        if (data.subItems) {
             this.setState({ subMenuOpen: !this.state.subMenuOpen })
-        }else{
-            if(forceCloseSubMenu){
+        } else {
+            if (forceCloseSubMenu) {
                 this.setState({ subMenuOpen: !this.state.subMenuOpen })
             }
             this.handleDrawerClose();
@@ -179,8 +181,86 @@ class Home extends React.Component {
             <div className="home-container">
 
                 <React.Fragment>
-                    <div className={classes.root}>
-                        <CssBaseline />
+                    <div >
+                        <div className="header-container">
+                            <div className="info-container">
+                                <Container className="info-section">
+                                    <Grid container spacing={3}>
+                                        <Grid container item sm={12} direction="row">
+                                            <Grid container sm={4} direction="row" alignItems="center" item>
+                                                <Grid item>
+                                                    <PhoneIcon fontSize="small" />
+                                                </Grid>
+                                                <Grid item>
+                                                    1-888-123-45678
+                                                        </Grid>
+                                            </Grid>
+                                            <Grid container sm={4} direction="row" alignItems="center" item>
+                                                <Grid item>
+                                                    <MailOutlineIcon />
+                                                </Grid>
+                                                <Grid item>
+                                                    info@demolink.org
+                                                        </Grid>
+                                            </Grid>
+                                            <Grid container sm={4} direction="row" alignItems="center" item>
+                                                <Grid item>
+                                                    <AccessTimeIcon />
+                                                </Grid>
+                                                <Grid item>
+                                                    08.00 - 18.00
+                                                        </Grid>
+
+                                            </Grid>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Container>
+                            </div>
+                            <div className="log-in-out-container">
+                                <Container className="log-in-out-section">
+                                    <Grid container>
+                                        <Grid container item justify="flex-start" sm={12} direction="row">
+                                            <Grid container sm={12} direction="row" alignItems="center" item>
+                                                <Grid item>
+                                                    <PersonAddIcon />
+                                                </Grid>
+                                                <Grid item>
+                                                    Sign up
+                                                </Grid>
+                                                <Grid className={"divider"} item>
+                                                    /
+                                                </Grid>
+                                                <Grid item>
+                                                    <LockIcon />
+                                                </Grid>
+                                                <Grid item>
+                                                    Login
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Container>
+                            </div>
+                            <div className="apply-now-container">
+                                <Container className="apply-now-section">
+                                    <Grid container>
+                                        <Grid container item justify="flex-start" sm={12} direction="row">
+                                            <Grid container sm={12} direction="row" alignItems="center" item>
+                                                <Grid item>
+                                                    <Button
+                                                    > APPLY NOW</Button>
+                                                </Grid>
+                                            </Grid>
+
+                                        </Grid>
+                                    </Grid>
+                                </Container>
+                            </div>
+                        </div>
+
                         <div className="mobile-menu-container">
                             <AppBar
                                 position="fixed"
@@ -226,14 +306,14 @@ class Home extends React.Component {
                                         subItems: [{ title: 'About the Green card', page: '/home/about-green-card' },
                                         { title: 'Statistics and eligible countries', page: '/home/statistics-eligible-countries' },
                                         { title: 'FAQ', page: '/home/faq' },
-                                    ]
+                                        ]
                                     },
                                     { title: 'Apply Now', page: '/register' },
                                     ]
                                         .map((data, index) => (
                                             <>
                                                 <Link className="link-item" to={data.page}>
-                                                    <ListItem button key={data.title} onClick={()=>this.handleSubItemClick(data)}>
+                                                    <ListItem button key={data.title} onClick={() => this.handleSubItemClick(data)}>
                                                         <ListItemText primary={data.title} />
                                                         {data.subItems ? this.state.subMenuOpen ? <ExpandLess /> : <ExpandMore /> : null}
                                                     </ListItem>
@@ -245,7 +325,7 @@ class Home extends React.Component {
                                                             {data.subItems.map((item) => {
                                                                 return (
                                                                     <Link className="link-item" to={item.page}>
-                                                                        <ListItem button className={classes.nested} onClick={()=>this.handleSubItemClick(item, true)}>
+                                                                        <ListItem button className={classes.nested} onClick={() => this.handleSubItemClick(item, true)}>
                                                                             <ListItemText primary={item.title} />
                                                                         </ListItem>
                                                                     </Link>
@@ -260,7 +340,6 @@ class Home extends React.Component {
                                 </List>
                             </Drawer>
                         </div>
-                        <CssBaseline />
                         {/* 
                         <AppBar position="absolute" color="default" className="header">
                             <Toolbar>
@@ -282,86 +361,12 @@ class Home extends React.Component {
 
                             </Toolbar>
                         </AppBar> */}
-                        <main>
-                            <div className="data-divider header"></div>
 
-                            {/* Hero unit */}
-                            <div className="header-container">
-                                <div className="info-container">
-                                    <Container className="info-section">
-                                        <Grid container spacing={4}>
-                                            <Grid container item sm={4} >
-                                                <img style={{height:'70px'}} src={logo} />
-
-
-                                            </Grid>
-                                            <Grid container item justify="flex-end" sm={8} direction="row">
-                                                <Grid container sm={4} spacing={4} direction="row" alignItems="center" item>
-                                                    <Grid item>
-                                                        <PhoneIcon />
-                                                    </Grid>
-                                                    <Grid item>
-                                                        <Grid container alignItems="flex-start" item>
-                                                            Phone
-                        </Grid>
-                                                        <Grid item>
-                                                            1-888-123-45678
-                        </Grid>
-                                                    </Grid>
-                                                </Grid>
-                                                <Grid container sm={4} spacing={4} direction="row" alignItems="center" item>
-                                                    <Grid item>
-                                                        <MailOutlineIcon />
-                                                    </Grid>
-                                                    <Grid item>
-                                                        <Grid container alignItems="flex-start" item>
-                                                            E-mail us
-                            </Grid>
-                                                        <Grid item>
-                                                            info@demolink.org
-                            </Grid>
-                                                    </Grid>
-                                                </Grid>
-                                                <Grid container sm={4} spacing={4} direction="row" alignItems="center" item>
-                                                    <Grid item>
-                                                        <AccessTimeIcon />
-                                                    </Grid>
-                                                    <Grid item>
-                                                        <Grid item>
-                                                            Opening Time
-                        </Grid>
-                                                        <Grid item>
-                                                            08.00 - 18.00
-                        </Grid>
-                                                    </Grid>
-
-                                                </Grid>
-
-                                            </Grid>
-
-                                        </Grid>
-
-                                    </Container>
-                                </div>
-                                <div className="apply-now">
-                                    <Link className="link-item apply-btn" to="/login-page">
-                                        <Button
-                                            aria-controls="customized-menu"
-                                            aria-haspopup="true"
-                                            variant="contained"
-                                            color="primary"
-                                        >
-                                            Login
-                </Button>
-                                    </Link>
-                                </div>
-                            </div>
                             <Grid className="home-menu-grid">
                                 <HomeMenu goTo={(page) => { this.goTo(page) }} />
                             </Grid>
 
 
-                        </main>
                     </div>
                     <Switch>
                         <Route exact path="/home" component={MainPage} />

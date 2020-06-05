@@ -50,7 +50,7 @@ export default function HomeMenu(props) {
         setAnchorEl(event.currentTarget);
 
     };
-    const goToRegister = () =>{
+    const goToRegister = () => {
         this.props.history.push('/register');
     }
 
@@ -60,41 +60,33 @@ export default function HomeMenu(props) {
 
     return (
         <div className="home-menu-container">
+        <div >
+              <div>
+                <Link className="link-item apply-now-btn" to="/register">
+                    <Button>
+                        Apply Now
+                    </Button>
+                </Link>
+            </div>
+        </div>
+        <div className="menu-list">
             <div>
                 <Link className="link-item" to="/home">
-                    <Button
-                        aria-controls="customized-menu"
-                        aria-haspopup="true"
-                        variant="contained"
-                        color="primary"
-
-                    >
+                    <Button>
                         Home
-                </Button>
+                    </Button>
                 </Link>
             </div>
             <div>
-            <Link className="link-item" to="/home/aboutus">
-                <Button
-                    aria-controls="customized-menu"
-                    aria-haspopup="true"
-                    variant="contained"
-                    color="primary"
-
-                >
-                    About Us
-                </Button>
+                <Link className="link-item" to="/home/aboutus">
+                    <Button>
+                        About Us
+                    </Button>
                 </Link>
             </div>
 
             <div>
-                <Button
-                    aria-controls="customized-menu"
-                    aria-haspopup="true"
-                    variant="contained"
-                    color="primary"
-                    onClick={handleClick}
-                >
+                <Button>
                     Info <ExpandMoreIcon />
                 </Button>
                 <StyledMenu
@@ -103,37 +95,27 @@ export default function HomeMenu(props) {
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <Link onClick={handleClose} style={{ textDecoration: 'none', color:'#a10532' }} className="link-item" to="/home/about-green-card">
-                    <MenuItem className="menu-item">
-                        <ListItemText primary="About the Green card" />
-                    </MenuItem>
+                    <Link onClick={handleClose} style={{ textDecoration: 'none', color: '#a10532' }} className="link-item" to="/home/about-green-card">
+                        <MenuItem className="menu-item">
+                            <ListItemText primary="About the Green card" />
+                        </MenuItem>
                     </Link>
-                    <div style={{  borderTop:'1px solid #a10532' }}></div>
-                    <Link onClick={handleClose} style={{ textDecoration: 'none', color:'#a10532' }} className="link-item" to="/home/statistics-eligible-countries">
-                    <MenuItem>
-                        <ListItemText primary="Statistics and eligible countries" />
-                    </MenuItem>
+                    <div style={{ borderTop: '1px solid #a10532' }}></div>
+                    <Link onClick={handleClose} style={{ textDecoration: 'none', color: '#a10532' }} className="link-item" to="/home/statistics-eligible-countries">
+                        <MenuItem>
+                            <ListItemText primary="Statistics and eligible countries" />
+                        </MenuItem>
                     </Link>
-                    <div style={{  borderTop:'1px solid #a10532' }}></div>
-                    <Link onClick={handleClose} style={{ textDecoration: 'none', color:'#a10532' }} className="link-item" to="/home/faq">
-                    <MenuItem>
-                        <ListItemText primary="FAQ" />
-                    </MenuItem>
+                    <div style={{ borderTop: '1px solid #a10532' }}></div>
+                    <Link onClick={handleClose} style={{ textDecoration: 'none', color: '#a10532' }} className="link-item" to="/home/faq">
+                        <MenuItem>
+                            <ListItemText primary="FAQ" />
+                        </MenuItem>
                     </Link>
                 </StyledMenu>
             </div>
-            <div>
-            <Link  className="link-item apply-now-btn" to="/register">
-                <Button
-                    aria-controls="customized-menu"
-                    aria-haspopup="true"
-                    variant="contained"
-                    color="primary"
-                >
-                    Apply Now
-                </Button>
-                </Link>
-            </div>
+          
+        </div>
         </div>
     );
 }

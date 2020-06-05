@@ -1,6 +1,21 @@
 @import "../../variables";
-
+.home-menu-grid{
+  margin: 0 15%;
+}
 .home-menu-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+   // margin: 0px 10% 0 10%;
+   .menu-list{
+     display: flex;
+     width: 45%;
+   }
+  button {
+    background-color: $white;
+    color: $dark-gray;
+    background-color: initial;
+  }
   display: inline-flex;
   div {
     margin: 5px 10px;
@@ -14,7 +29,7 @@
     color: $bordo !important;
   }
   button {
-    min-width: 200px;
+    min-width: 150px;
   }
 
     .menu-item {

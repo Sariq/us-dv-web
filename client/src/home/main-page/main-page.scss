@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .main-page-container {
     a{
         text-decoration: none;
@@ -49,6 +51,60 @@
     cursor: pointer;
   }
   .consultation-section{
+    background-image: url('../../assests/images/home-back.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 830px;
+    width: 100%;
+    color: $white;
+    font-weight: bold;
+    .layer{
+      background-color: rgba(185, 15, 255, 0.2);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .us-dv-text-container{
+      height: 25%;
+      margin: 10%;
+      .text{
+        font-size: $font_xl;
+      }
+      .prof{
+        margin-bottom: 20px;
+      }
+      .need{
+        margin-top: 20px;
+      }
+      .us-dv-header-text{
+        font-size: $font_xxxxxxxxxxxxxxxxl;
+        .usa-dv-text{
+          font-size: $font_xxxxxxxxxxxxxxxxxxl;
+          font-family: Poppins-SemiBold;
+        }
+      }
+      .btns-container{
+        margin-top: 55px;
+        .link-item{
+          padding-right: 30px;
+          width:200px;
+          &.apply-now-btn{
+            button{
+              background-color: $dark-green;
+            }
+          }
+          &.contact-us-btn{
+            button{
+              background-color: $dark-red;
+            }
+          }
+        }
+      }
+     
+    }
+
     .us-dv-header{
       font-size: 65px!important;
       font-family: serif;
@@ -67,7 +123,136 @@
     }
     
   }
+  .how-do-we-help{
+    background-color: $light-gray;
+    .description-container{
+      margin:auto;
+      width:30%;
+      text-align: center;
+      .title{
+        font-weight: bold;
+        font-size: $font_xxxxxxxxxxxxxxxxxl;
+        padding-top: 70px;
+        margin-bottom: 20px;
+      }
+      .body{
+        line-height: 2rem;
+      }
+    }
+  }
+  .categories-cards-container {
+    max-width: 61%;
+    margin-top: 50px;
+    padding-bottom: 100px;
+    text-align: center;
+      .card-container{
+        width: 470px;
+        .customer-care{
+          border-bottom: solid 2px $bordo;
+        }
+      }
+    .text {
+      margin-top: 10px;
+      font-size: $font_xxl;
+      font-weight: bold;
+    }
+    .sub-text {
+      margin-top: 10px;
+      font-size: $font_l;
+      opacity: 0.6;
+      line-height: 1.5rem;
+    }
+    .more-info {
+      width: 100%;
+      color: $bordo;
+      margin-bottom: 20px;
+      font-weight: bolder;
+    }
+    .more-info:after {
+      content: "\2794";
+      transition: 0.3s;
+      margin-left: 5px;
+    }
+    .icon-container {
+      width: 100%;
+      margin: auto;
+      margin-bottom: 25px;
+      margin-top: 25px;
+      .icon-img{
+        height: 72px;
+        width: 70px;
+      }
+      .MuiSvgIcon-root {
+        margin: auto;
+        color: white;
+      }
+    }
+  }
+
+  .live-work {
+    // background-color: $light-gray;
+    background: linear-gradient(to right,  $light-gray 0%,$light-gray 35%,white 35%,white 100%);
+    padding: 5% 20% 0 20%;
+    display: flex;
+    .text-container{
+      padding-left: 50px;
+      .link-item{ 
+        &.contact-us-btn{
+          button{
+            background-color: $bordo;
+            width: 30%;
+          }
+        }
+      }
+      .title{
+        font-size: $font_xxxxxxxxxxxxxxl;
+        font-weight: bold;
+      }
+      .body{
+        font-size: $font_xxl;
+        line-height: 2rem;
+        opacity: 0.8;
+
+      }
+    }
+    .image-container{
+      width: 330%;
+      height: 510px;  
+      .passport-image{
+        height: 100%;
+      }
+      .employes-img{
+        position: absolute;
+        margin-top: -150px;
+        left: 270px;
+        width: 19%;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+      }  
+    }
+
+  }
+  .our-success-stories{
+    margin-top: 150px;
+    .title-container{
+      text-align: center;
+      .title{
+        font-size: $font_xxxxxxxxxxxxxxl;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .sub-title{
+        margin: 0 36%;
+        line-height: 1.5rem;
+      }
+    }
+  }
 }
+
+
 @media only screen and (max-width: 900px) {
     .main-page-container {
         .wrapper{
