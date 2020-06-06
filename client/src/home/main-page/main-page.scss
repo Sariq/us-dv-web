@@ -18,33 +18,6 @@
     text-align: center;
     margin-bottom: 4rem;
   }
-  .testimonials {
-    margin: 2.5rem 0;
-    width: 100%;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-
-    -moz-align-items: -moz-stretch;
-    -webkit-align-items: -webkit-stretch;
-    -ms-align-items: -ms-stretch;
-    align-items: stretch;
-  }
-  .testimonials .content {
-    border-radius: 4px;
-    height: 100%;
-    padding: 3rem;
-    background: #ffffff;
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.025);
-  }
-  .blockquote {
-    border-left: solid 0.5rem;
-    font-style: italic;
-    margin: 0 0 2rem 0;
-    padding: 1rem 0 1rem 2rem;
-    border-left-color: rgba(0, 0, 0, 0.25);
-  }
   .goto-faq{
     font-weight: bolder;
     text-decoration: underline;
@@ -249,6 +222,94 @@
         line-height: 1.5rem;
       }
     }
+    .our-success-stories-slider{
+      padding-top: 50px;
+      padding-bottom: 70px;
+      display: flex;
+      width: 60%;
+      margin: auto;
+      .slider-items{
+        width: 100%;
+        margin: 0 15px;
+        .slide-item{
+          height: 550px;
+          padding:unset!important;
+          margin: 10px 0;
+        }
+      }
+      .back-btn, .next-btn{
+        width: 50px;
+        height: 45px;
+        align-self: center;
+        border-radius: 30px;
+        border: solid 1px white;
+        color: $bordo;
+        background-color: white;
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.09);
+        font-size: $font_xl;
+        ;
+        &:hover{
+          color: white!important;
+          background-color: $bordo!important;
+        }
+      }
+
+      
+    }
+    .testimonials{
+      height: 100%;
+      .content {
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.09);
+        margin: auto;
+        width: 90%;
+        height: 95%;
+        padding: 10px 10px;
+        .image{
+          padding: 10px;
+          img{
+            width: 60px;
+            border-radius: 30px;
+          }
+         
+        }
+      }
+      .divider{
+        height: 1px;
+        margin:15px 0 0 10px;
+        
+        background: linear-gradient(to right,  $bordo 0%,$bordo 15%,#e4e4e4 15%,#e4e4e4 100%);
+      }
+      .agent-info{
+        padding: 10px;
+        margin-top: 15px;
+        .agent-name{
+          color: $bordo;
+        }
+        .agent-title{
+          color:#666D81;
+        }
+       
+      }
+      .quote{
+        margin-left: 10px;
+        background-color: $bordo;
+        height: 25px;
+        width: 25px;
+        border-radius: 35px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+        color: white;
+      }
+  
+    } 
+    .blockquote {
+      border-left-color: rgba(0, 0, 0, 0.25);
+      color: #666D81;
+      line-height: 1.5rem;
+      padding: 10px;
+    }
   }
 }
 
@@ -270,7 +331,6 @@
             }
         }
         .blockquote{
-            padding: 5px;
             border-left: 0;
         }
         .about-us-container{

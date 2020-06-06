@@ -20,7 +20,10 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import { withStyles } from '@material-ui/core';
 import WorkIcon from '@material-ui/icons/Work';
 import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+
 const passport = require('../../assests/images/passport.jpg');
 const supportPhone = require('../../assests/images/support-phone.png');
 const reviewIcon = require('../../assests/images/review-icon.png');
@@ -29,6 +32,7 @@ const resubmissionIcon = require('../../assests/images/resubmission-icon.png');
 const personalIcon = require('../../assests/images/personal-icon.png');
 const supportDays = require('../../assests/images/365-days-icon.png');
 const howWeHelpImg = require('../../assests/images/how-we-help-back.jpg');
+const agent1 = require('../../assests/images/pic01.jpg');
 
 
 function Copyright() {
@@ -251,67 +255,75 @@ class MainPage extends React.Component {
 
                         <div className="our-success-stories">
                             <div className="title-container">
-                                    <div className="title">Our Success Stories</div>
-                                    <p className="sub-title">The dedicated team of immigration consoultants in USA-DV takes 
+                                <div className="title">Our Success Stories</div>
+                                <p className="sub-title">The dedicated team of immigration consoultants in USA-DV takes
                                     pride in your success, listen to what our clients have to say. </p>
                             </div>
-
-                                <div className="testimonials">
-                                    <div>
-                                        <div className="content">
-                                            <div className="blockquote">
-                                                <p>Im grateful to USA-DV organization for helping me win the green card, I submitted my application in 2016 and after 3 years my application was selected. Waiting for this long can be frustrating, but USA-DV was always in touch with us providing guidance and updates on the application status which made the process feel very smooth and comfortable.</p>
-                                            </div>
-                                            <div className="author">
+                            <CarouselProvider className="our-success-stories-slider"
+                                naturalSlideWidth={100}
+                                naturalSlideHeight={125}
+                                totalSlides={3}
+                                visibleSlides={3}
+                            >
+                                <ButtonBack className="back-btn">{"<"}</ButtonBack>
+                                <Slider className="slider-items">
+                                    <Slide className="slide-item" index={0}>
+                                        <div className="testimonials">
+                                            <div className="content">
                                                 <div className="image">
-                                                    {/* <img src="./index_files/pic01.jpg" alt=""/> */}
+                                                    <img src={agent1} alt="" />
                                                 </div>
-                                                <p className="credit">- <strong>Jane Doe</strong> <span>CEO - ABC Inc.</span></p>
+                                                <div className="blockquote">
+                                                    <div>Im grateful to USA-DV organization for helping me win the green card, I submitted my application in 2016 and after 3 years my application was selected. Waiting for this long can be frustrating, but USA-DV was always in touch with us providing guidance and updates on the application status which made the process feel very smooth and comfortable.</div>
+                                                </div>
+                                                <div className="divider"></div>
+                                                <div className="author">
+                                                    <div className="agent-info">
+                                                        <div className="agent-name">Jane Doe</div>
+                                                        <div className="agent-title">CEO - ABC Inc.</div>
+                                                    </div>
+                                                    <div className="quote">
+                                                        ""
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div className="content">
-                                            <div className="blockquote">
-                                                <p>In May 2019 I was contacted by USA-DV and they informed me that my application was selected in the DV lottery, it was very exciting and and confusing at the same time, but I was thankful to USA-DV for going even beyond and assisting me with  finding a good job, house and make sure that my children are registered in schools.</p>
-                                            </div>
-                                            <div className="author">
-                                                <div className="image">
-                                                    {/* <img src="./index_files/pic03.jpg" alt=""> */}
+                                    </Slide>
+                                    <Slide className="slide-item" index={1}>
+                                        <div className="testimonials">
+                                            <div className="content">
+                                                <div className="blockquote">
+                                                    <p>In May 2019 I was contacted by USA-DV and they informed me that my application was selected in the DV lottery, it was very exciting and and confusing at the same time, but I was thankful to USA-DV for going even beyond and assisting me with  finding a good job, house and make sure that my children are registered in schools.</p>
                                                 </div>
-                                                <p className="credit">- <strong>John Doe</strong> <span>CEO - ABC Inc.</span></p>
+                                                <div className="author">
+                                                    <div className="image">
+                                                        {/* <img src="./index_files/pic03.jpg" alt=""> */}
+                                                    </div>
+                                                    <p className="credit">- <strong>John Doe</strong> <span>CEO - ABC Inc.</span></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div className="content">
-                                            <div className="blockquote">
-                                                <p>The service I received from USA-DV is described only as committed  and professional, not only did they guide me through the entire consular procedure after my winning announcement and made sure that all documents were reviewed and submitted to the right place in the right time , they also gave excellent and professional consultancy for my business investments in the United States.</p>
-                                            </div>
-                                            <div className="author">
-                                                <div className="image">
-                                                    {/* <img src="./index_files/pic02.jpg" alt=""> */}
+                                    </Slide>
+                                    <Slide className="slide-item" index={2}>
+                                        <div className="testimonials">
+                                            <div className="content">
+                                                <div className="blockquote">
+                                                    <p>The service I received from USA-DV is described only as committed  and professional, not only did they guide me through the entire consular procedure after my winning announcement and made sure that all documents were reviewed and submitted to the right place in the right time , they also gave excellent and professional consultancy for my business investments in the United States.</p>
                                                 </div>
-                                                <p className="credit">- <strong>Janet Smith</strong> <span>CEO - ABC Inc.</span></p>
+                                                <div className="author">
+                                                    <div className="image">
+                                                        {/* <img src="./index_files/pic02.jpg" alt=""> */}
+                                                    </div>
+                                                    <p className="credit">- <strong>Janet Smith</strong> <span>CEO - ABC Inc.</span></p>
+                                                </div>
+
                                             </div>
-
                                         </div>
-
-                                    </div>
-
-                                </div>
-                                <Link style={{ marginTop: '25px' }} className="link-item apply-now-btn" to="/register">
-                                    <Button
-                                        style={{ width: '200px' }}
-                                        aria-controls="customized-menu"
-                                        aria-haspopup="true"
-                                        variant="contained"
-                                        color="primary"
-                                    >
-                                        Apply Now
-                </Button>
-                                </Link>
-
+                                    </Slide>
+                                </Slider>
+                                <ButtonNext className="next-btn">></ButtonNext>
+                            </CarouselProvider>
                         </div>
 
                     </main>
