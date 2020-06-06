@@ -83,7 +83,7 @@ export default function HomeMenu(props) {
             </div>
 
             <div>
-                <Button>
+                <Button onClick={handleClick}>
                     Info <ExpandMoreIcon />
                 </Button>
                 <StyledMenu

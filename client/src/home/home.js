@@ -40,8 +40,8 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 //const logo = require('../assests/images/us-dv-logo.svg');
-import logo from '../assests/images/us-dv-logo.svg';
 
+const logoWhiteImage = require('../assests/images/us-dv-logo-white.png');
 
 function Copyright() {
     return (
@@ -147,7 +147,18 @@ const useStyles = (theme => ({
     },
 }));
 
-
+const usefullLinks = [
+    { text: "Home", to: "/home" },
+    { text: "About Us", to: "/about-us" },
+    { text: "Info", to: "/info" },
+    { text: "Blog", to: "/blog" },
+    { text: "Contact", to: "/contact" },
+];
+const informationLinks = [
+    { text: "Privacy Policy", to: "/privacy-policy" },
+    { text: "FAQS", to: "/faq" },
+    { text: "Terms of Use", to: "/terms-of-use" }
+];
 
 class Home extends React.Component {
     state = {
@@ -212,7 +223,6 @@ class Home extends React.Component {
                                                         </Grid>
 
                                             </Grid>
-
                                         </Grid>
 
                                     </Grid>
@@ -223,12 +233,14 @@ class Home extends React.Component {
                                 <Container className="log-in-out-section">
                                     <Grid container>
                                         <Grid container item justify="flex-start" sm={12} direction="row">
-                                            <Grid container sm={12} direction="row" alignItems="center" item>
+                                            <Grid spacing={1} container sm={12} direction="row" alignItems="center" item>
                                                 <Grid item>
                                                     <PersonAddIcon />
                                                 </Grid>
                                                 <Grid item>
-                                                    Sign up
+                                                    <Link className="link-item contact-us-btn" to="/register">
+                                                        Sign up
+                                                    </Link>
                                                 </Grid>
                                                 <Grid className={"divider"} item>
                                                     /
@@ -237,7 +249,9 @@ class Home extends React.Component {
                                                     <LockIcon />
                                                 </Grid>
                                                 <Grid item>
-                                                    Login
+                                                    <Link className="link-item contact-us-btn" to="/login-page">
+                                                        Login
+                                                    </Link>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
@@ -250,10 +264,10 @@ class Home extends React.Component {
                                         <Grid container item justify="flex-start" sm={12} direction="row">
                                             <Grid container sm={12} direction="row" alignItems="center" item>
                                                 <Grid item>
-                                                <Link  className="link-item contact-us-btn" to="/register">
-                                                    <Button
-                                                    > APPLY NOW</Button>
-                                                </Link>
+                                                    <Link className="link-item contact-us-btn" to="/register">
+                                                        <Button
+                                                        > APPLY NOW</Button>
+                                                    </Link>
                                                 </Grid>
                                             </Grid>
 
@@ -364,9 +378,9 @@ class Home extends React.Component {
                             </Toolbar>
                         </AppBar> */}
 
-                            <Grid className="home-menu-grid">
-                                <HomeMenu goTo={(page) => { this.goTo(page) }} />
-                            </Grid>
+                        <Grid className="home-menu-grid">
+                            <HomeMenu goTo={(page) => { this.goTo(page) }} />
+                        </Grid>
 
 
                     </div>
@@ -392,7 +406,93 @@ class Home extends React.Component {
 
                     {/* End footer */}
                     <footer id="footer">
-                        <div className="inner">
+                        <div className="apply-now-container">
+                            <div className="text-container">
+                                Registration is open, So you
+                                Can apply now with Us.
+                            </div>
+                            <div className="btn-container">
+                                <Link className="link-item contact-us-btn" to="/register">
+                                    <Button
+                                        aria-controls="customized-menu"
+                                        aria-haspopup="true"
+                                        variant="contained"
+                                        color="primary"
+                                    > APPLY NOW</Button>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="information">
+                            <Grid spacing={3} container direction="row" alignItems="center" item>
+                                <Grid sm={4} item>
+                                    <div>
+                                        <img src={logoWhiteImage} alt="" />
+                                    </div>
+                                    <div className="logo-info-container">
+                                        <span className="logo-title">USA-DV </span>
+                                        <span className="logo-text">
+                                            organization
+                                            All you need for a green card in one place.
+                                        </span>
+                                    </div>
+                                </Grid>
+                                <Grid sm={2} item className="links-list-container">
+                                    <div className="usefull-links-container">
+                                        <div className="title">
+                                            Useful Links
+                                        </div>
+                                        <div className="list">
+                                            {usefullLinks.map((link) =>
+                                                <Link className="link-item contact-us-btn" to={link.to}>
+                                                    <div className="item">
+                                                        <span className="arrow">>>  </span>
+                                                        <span className="text">{link.text}</span>
+                                                    </div>
+                                                </Link>
+                                            )}
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid sm={2} item className="links-list-container">
+                                    <div className="usefull-links-container">
+                                        <div className="title">
+                                            Information
+                                        </div>
+                                        <div className="list">
+                                            {informationLinks.map((link) =>
+                                                <Link className="link-item contact-us-btn" to={link.to}>
+                                                    <div className="item">
+                                                        <span className="arrow">>>  </span>
+                                                        <span className="text">{link.text}</span>
+                                                    </div>
+                                                </Link>
+                                            )}
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid sm={4} item className="links-list-container">
+                                    <div className="contact-us-container">
+                                        <div className="title">
+                                            Contact Us
+                                        </div>
+
+                                        <div className="row">
+                                            XXX (Building) New York, NY 00000
+                                            United States
+                                        </div>
+                                        <div className="row">
+                                            <span> +1-000-000-0000</span><span className="email">csr@usa-dv.org</span>
+                                        </div>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                        </div>
+                        <div className="footer-text-container">
+                            <div className="text">
+                            © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use. USA
+                            </div>
+                        </div>
+                        {/* <div className="inner">
                             <div className="content">
                                 <section>
                                     <h3>Contact Info</h3>
@@ -428,10 +528,10 @@ class Home extends React.Component {
                                 © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use.
         USA-DV is owned and operated by (Company name).
 					</div>
-                        </div>
+                        </div> */}
                     </footer>
                 </React.Fragment>
-            </div>
+            </div >
 
         );
     }

@@ -15,6 +15,8 @@
     background-color: $white;
     color: $dark-gray;
     background-color: initial;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
   }
   display: inline-flex;
   div {
@@ -26,9 +28,14 @@
   .link-item {
     text-decoration: none !important;
     color: white !important;
+    button{
+      font-family: 'Rubik', sans-serif;
+      font-weight: 500;
+    }
     &.home-link{
       button{
         color: $bordo!important;
+      
       }
     }
   }
