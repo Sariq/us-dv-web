@@ -250,8 +250,10 @@ class Home extends React.Component {
                                         <Grid container item justify="flex-start" sm={12} direction="row">
                                             <Grid container sm={12} direction="row" alignItems="center" item>
                                                 <Grid item>
+                                                <Link  className="link-item contact-us-btn" to="/register">
                                                     <Button
                                                     > APPLY NOW</Button>
+                                                </Link>
                                                 </Grid>
                                             </Grid>
 
