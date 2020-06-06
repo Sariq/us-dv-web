@@ -1,33 +1,33 @@
 {
   "files": {
-    "main.css": "/static/css/main.d71769a3.chunk.css",
-    "main.js": "/static/js/main.e3ed90e0.chunk.js",
-    "main.js.map": "/static/js/main.e3ed90e0.chunk.js.map",
+    "main.css": "/static/css/main.8a554750.chunk.css",
+    "main.js": "/static/js/main.b80d7203.chunk.js",
+    "main.js.map": "/static/js/main.b80d7203.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.6823e00b.js",
     "runtime-main.js.map": "/static/js/runtime-main.6823e00b.js.map",
     "static/css/2.cb7021a3.chunk.css": "/static/css/2.cb7021a3.chunk.css",
-    "static/js/2.f233f58f.chunk.js": "/static/js/2.f233f58f.chunk.js",
-    "static/js/2.f233f58f.chunk.js.map": "/static/js/2.f233f58f.chunk.js.map",
+    "static/js/2.f0d51585.chunk.js": "/static/js/2.f0d51585.chunk.js",
+    "static/js/2.f0d51585.chunk.js.map": "/static/js/2.f0d51585.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.23bb73cc2be38f397b55dd4f24d6b2e4.js": "/precache-manifest.23bb73cc2be38f397b55dd4f24d6b2e4.js",
+    "precache-manifest.3ae3b299141b4fb880683e765ebc8fc9.js": "/precache-manifest.3ae3b299141b4fb880683e765ebc8fc9.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.cb7021a3.chunk.css.map": "/static/css/2.cb7021a3.chunk.css.map",
-    "static/css/main.d71769a3.chunk.css.map": "/static/css/main.d71769a3.chunk.css.map",
-    "static/js/2.f233f58f.chunk.js.LICENSE.txt": "/static/js/2.f233f58f.chunk.js.LICENSE.txt",
+    "static/css/main.8a554750.chunk.css.map": "/static/css/main.8a554750.chunk.css.map",
+    "static/js/2.f0d51585.chunk.js.LICENSE.txt": "/static/js/2.f0d51585.chunk.js.LICENSE.txt",
+    "static/media/home.scss": "/static/media/footer-bg.980a1ae7.png",
     "static/media/main-page.scss": "/static/media/home-back.273d3eed.jpg",
     "static/media/how-we-help-back.jpg": "/static/media/how-we-help-back.020edb07.jpg",
     "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg",
     "static/media/passport.jpg": "/static/media/passport.5ff03242.jpg",
     "static/media/pic01.jpg": "/static/media/pic01.2e72e89a.jpg",
     "static/media/pic02.jpg": "/static/media/pic02.80a19663.jpg",
-    "static/media/pic03.jpg": "/static/media/pic03.5096fe30.jpg",
-    "static/media/us-dv-logo.svg": "/static/media/us-dv-logo.229132f5.svg"
+    "static/media/pic03.jpg": "/static/media/pic03.5096fe30.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.6823e00b.js",
     "static/css/2.cb7021a3.chunk.css",
-    "static/js/2.f233f58f.chunk.js",
-    "static/css/main.d71769a3.chunk.css",
-    "static/js/main.e3ed90e0.chunk.js"
+    "static/js/2.f0d51585.chunk.js",
+    "static/css/main.8a554750.chunk.css",
+    "static/js/main.b80d7203.chunk.js"
   ]
 }
