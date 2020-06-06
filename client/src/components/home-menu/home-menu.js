@@ -12,6 +12,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Route, Link, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 
 import './home-menu.scss'
+const logoImage = require('../../assests/images/us-dv-logo.png');
+
 const StyledMenu = withStyles({
     paper: {
         border: '1px solid #d3d4d5'
@@ -60,18 +62,13 @@ export default function HomeMenu(props) {
 
     return (
         <div className="home-menu-container">
-        <div >
-              <div>
-                <Link className="link-item apply-now-btn" to="/register">
-                    <Button>
-                        Apply Now
-                    </Button>
-                </Link>
-            </div>
+        <div className="logo-container">
+        <img src={logoImage} alt="" />
+        
         </div>
         <div className="menu-list">
             <div>
-                <Link className="link-item" to="/home">
+                <Link className="link-item  home-link" to="/home">
                     <Button>
                         Home
                     </Button>

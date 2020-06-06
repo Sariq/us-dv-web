@@ -33,6 +33,8 @@ const personalIcon = require('../../assests/images/personal-icon.png');
 const supportDays = require('../../assests/images/365-days-icon.png');
 const howWeHelpImg = require('../../assests/images/how-we-help-back.jpg');
 const agent1 = require('../../assests/images/pic01.jpg');
+const agent2 = require('../../assests/images/pic02.jpg');
+const agent3= require('../../assests/images/pic03.jpg');
 
 
 function Copyright() {
@@ -122,6 +124,29 @@ const cards = [
         bodySubText: "The lottery opens for 4 to 5 weeks every fall, this gives limited time to finalize applications and complete the reviews, in addition many individuals report not being able to submit the application during this time due to technical issues that can cause"
     }
 ];
+const sliderData = [
+    {
+        id: 1,
+        image: agent1,
+        blockquote: "Im grateful to USA-DV organization for helping me win the green card, I submitted my application in 2016 and after 3 years my application was selected. Waiting for this long can be frustrating, but USA-DV was always in touch with us providing guidance and updates on the application status which made the process feel very smooth and comfortable.",
+        name: "Jane Doe",
+        title:"CEO - ABC Inc."
+    },
+    {
+        id: 2,
+        image: agent2,
+        blockquote: "In May 2019 I was contacted by USA-DV and they informed me that my application was selected in the DV lottery, it was very exciting and and confusing at the same time, but I was thankful to USA-DV for going even beyond and assisting me with  finding a good job, house and make sure that my children are registered in schools.",
+        name: "John Doe",
+        title:"CEO - ABC Inc"
+    },
+    {
+        id: 3,
+        image: agent3,
+        blockquote: "The service I received from USA-DV is described only as committed  and professional, not only did they guide me through the entire consular procedure after my winning announcement and made sure that all documents were reviewed and submitted to the right place in the right time , they also gave excellent and professional consultancy for my business investments in the United States.",
+        name: "Janet Smith",
+        title:"CEO - ABC Inc"
+    },
+]
 class MainPage extends React.Component {
 
     goTo = (page) => {
@@ -266,21 +291,22 @@ class MainPage extends React.Component {
                                 visibleSlides={3}
                             >
                                 <ButtonBack className="back-btn">{"<"}</ButtonBack>
+                                <div className="slider-items-container">
                                 <Slider className="slider-items">
-                                    <Slide className="slide-item" index={0}>
+                                   {sliderData.map(slide => ( <Slide className="slide-item" index={0}>
                                         <div className="testimonials">
                                             <div className="content">
                                                 <div className="image">
-                                                    <img src={agent1} alt="" />
+                                                    <img src={slide.image} alt="" />
                                                 </div>
                                                 <div className="blockquote">
-                                                    <div>Im grateful to USA-DV organization for helping me win the green card, I submitted my application in 2016 and after 3 years my application was selected. Waiting for this long can be frustrating, but USA-DV was always in touch with us providing guidance and updates on the application status which made the process feel very smooth and comfortable.</div>
+                                                    <div>{slide.blockquote}</div>
                                                 </div>
                                                 <div className="divider"></div>
                                                 <div className="author">
                                                     <div className="agent-info">
-                                                        <div className="agent-name">Jane Doe</div>
-                                                        <div className="agent-title">CEO - ABC Inc.</div>
+                                                        <div className="agent-name">{slide.name}</div>
+                                                        <div className="agent-title">{slide.title}</div>
                                                     </div>
                                                     <div className="quote">
                                                         ""
@@ -289,39 +315,13 @@ class MainPage extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
-                                    </Slide>
-                                    <Slide className="slide-item" index={1}>
-                                        <div className="testimonials">
-                                            <div className="content">
-                                                <div className="blockquote">
-                                                    <p>In May 2019 I was contacted by USA-DV and they informed me that my application was selected in the DV lottery, it was very exciting and and confusing at the same time, but I was thankful to USA-DV for going even beyond and assisting me with  finding a good job, house and make sure that my children are registered in schools.</p>
-                                                </div>
-                                                <div className="author">
-                                                    <div className="image">
-                                                        {/* <img src="./index_files/pic03.jpg" alt=""> */}
-                                                    </div>
-                                                    <p className="credit">- <strong>John Doe</strong> <span>CEO - ABC Inc.</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Slide>
-                                    <Slide className="slide-item" index={2}>
-                                        <div className="testimonials">
-                                            <div className="content">
-                                                <div className="blockquote">
-                                                    <p>The service I received from USA-DV is described only as committed  and professional, not only did they guide me through the entire consular procedure after my winning announcement and made sure that all documents were reviewed and submitted to the right place in the right time , they also gave excellent and professional consultancy for my business investments in the United States.</p>
-                                                </div>
-                                                <div className="author">
-                                                    <div className="image">
-                                                        {/* <img src="./index_files/pic02.jpg" alt=""> */}
-                                                    </div>
-                                                    <p className="credit">- <strong>Janet Smith</strong> <span>CEO - ABC Inc.</span></p>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </Slide>
+                                   </Slide>))}
                                 </Slider>
+                                <div className="current-page">
+                                {sliderData.map(slide => (<div className="circle"></div>))}
+                                    </div>
+                                </div>
+
                                 <ButtonNext className="next-btn">></ButtonNext>
                             </CarouselProvider>
                         </div>

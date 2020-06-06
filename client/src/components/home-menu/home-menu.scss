@@ -1,6 +1,6 @@
 @import "../../variables";
 .home-menu-grid{
-  margin: 0 15%;
+  margin: 5px 15%;
 }
 .home-menu-container {
     display: flex;
@@ -20,9 +20,17 @@
   div {
     margin: 5px 10px;
   }
+  .logo-container{
+    align-self: center;
+  }
   .link-item {
     text-decoration: none !important;
     color: white !important;
+    &.home-link{
+      button{
+        color: $bordo!important;
+      }
+    }
   }
   .link-item:hover {
     text-decoration: none;
