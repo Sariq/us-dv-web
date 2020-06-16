@@ -1,23 +1,22 @@
 @import "../variables";
 .home-container {
-  main{
+  main {
     width: 100%;
-
   }
 
   .header-container {
-    background-image: url('../assests/images/header-info.png');
-
+    background-image: url("../assests/images/header-info.png");
+    justify-content: center;
     display: flex;
     height: 50px;
     background-color: $bordo;
     color: white;
-    .apply-btn{
-      button{
+    .apply-btn {
+      button {
         width: 80%;
-      background-color: #a10532;
-      font-weight: bold;
-      height: 40px;
+        background-color: #a10532;
+        font-weight: bold;
+        height: 40px;
       }
     }
     .apply-now {
@@ -32,38 +31,55 @@
     .info-container {
       margin: 15px 15px 15px 15px;
 
-      margin-left: 20%;
-      width: 31%;
+      // margin-left: 20%;
+      // width: 31%;
       align-self: center;
       .info-section {
         margin-right: 0;
         // @include setGrid(1fr 1fr, 0, null, null, 'columns');
         // align-items: center;
-        .MuiGrid-item{
+        display: flex;
+        > div {
+          display: flex;
+          align-self: center;
+          margin: 0 10px;
+          > div {
+            align-self: center;
+            margin: 0 5px;
+          }
+        }
+        .MuiGrid-item {
           padding: 5px;
         }
       }
-
     }
     .log-in-out-container {
-
       margin-left: 10%;
-      width: 13%;
+      // width: 13%;
       align-self: center;
       .log-in-out-section {
+        display: flex;
+
+        > div {
+          display: flex;
+          align-self: center;
+          margin: 0 10px;
+          > div {
+            align-self: center;
+            margin: 0 5px;
+          }
+        }
       }
     }
-    .apply-now-container{
-      .apply-now-section{
-        button{
+    .apply-now-container {
+      .apply-now-section {
+        button {
           color: $white;
           background-color: $dark-blue;
           border-radius: 0;
         }
       }
     }
-
-   
   }
   .header {
     background-color: #212b51;
@@ -92,8 +108,6 @@
   }
 
   .consultation-section {
-
-
     .consulation-container {
       padding: 20px;
       .text {
@@ -127,12 +141,10 @@
     }
   }
 
-
-
   .about-us-container {
     height: 600px;
     //background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-parallax1.jpg);
-    background-image: url('../assests/images/how-we-help-back.jpg');
+    background-image: url("../assests/images/how-we-help-back.jpg");
 
     // background-position: top;
     background-position: 0 10px;
@@ -149,10 +161,10 @@
       background-color: #212b51;
       transition-duration: 0.4s;
       transition-property: background-color, border-color;
-       width: 25%;
+      width: 25%;
       margin: 50px;
       height: 91%;
-      .title{
+      .title {
         font-family: serif;
       }
       .sub-title {
@@ -188,56 +200,60 @@
       margin-bottom: 0px;
     }
   }
-  
+
   #footer {
     background-color: #212b51;
-    background-image: url('../assests/images/footer-bg.png');
+    background-image: url("../assests/images/footer-bg.png");
     padding: 4rem 0 6rem 0;
     background-repeat: no-repeat;
-    .apply-now-container{
+    .apply-now-container {
       width: 40%;
       margin: 0 auto 0 40%;
-      .text-container{
+      .text-container {
         font-size: $font_xxxxxxxxxxxl;
         font-weight: 600;
         color: $white;
       }
-      .btn-container{
+      .btn-container {
         width: 33%;
         margin-top: 20px;
-        button{
+        button {
           background-color: $dark-green;
         }
       }
     }
-    .information{
-      width: 60%;
+    .information {
+      width: 70%;
       margin: auto;
       margin-top: 13%;
       color: $white;
-      .logo-info-container{
+      .MuiGrid-spacing-xs-3 > .MuiGrid-item{
+        padding: 0;
+        margin: 12px;
+      }
+      .logo-info-container {
         width: 70%;
-        .logo-title{
+        .logo-title {
           font-weight: 600;
         }
       }
-      .links-list-container{
+      .links-list-container {
         align-self: flex-start;
-        .title{
+        .title {
           font-weight: 600;
           font-size: $font_xl;
           margin-bottom: 20px;
         }
-        .item{
+        .item {
           margin-bottom: 5px;
-          .arrow{
+          .arrow {
             font-weight: 600;
           }
         }
-        .contact-us-container{
-          .row{
+        .contact-us-container {
+          .row {
             margin-bottom: 10px;
-            .email{
+            .email {
               color: $bordo;
               margin-left: 20px;
               font-weight: 600;
@@ -245,20 +261,20 @@
           }
         }
       }
-    
     }
-    .footer-text-container{
+    .footer-text-container {
       margin-top: 30px;
       border-top: solid 1px rgba(255, 255, 255, 0.05);
-      
-      .text{
+
+      .text {
         width: 60%;
         margin: auto;
         margin-top: 60px;
         color: $white;
       }
     }
-    h3,h4{
+    h3,
+    h4 {
       color: #ffffff;
     }
     .content {
@@ -277,13 +293,13 @@
     ul.plain {
       list-style: none;
       padding-left: 0;
-  }
-  ul.plain li {
-    margin-bottom: 1rem;
-}
-ul li {
-  padding-left: 0.325rem;
-}
+    }
+    ul.plain li {
+      margin-bottom: 1rem;
+    }
+    ul li {
+      padding-left: 0.325rem;
+    }
     .copyright {
       border-top: 1px solid;
       font-size: 0.8rem;
@@ -315,74 +331,152 @@ ul li {
       max-width: calc(100% - 6rem);
     }
   }
-  .apply-now-btn{
-    button{
-        background-color: #6cbf20;
+  .apply-now-btn {
+    button {
+      background-color: #6cbf20;
     }
   }
   .link-item {
     text-decoration: none !important;
     color: white !important;
   }
-  .mobile-menu-container{
+  .mobile-menu-container {
     display: none;
   }
 }
-@media only screen and (max-width: 900px) {
-    .home-container {
-
-      .mobile-menu-container{
-        display: unset;
-        .link-item{
-          color: $bordo!important;
+@media only screen and (max-width: 1220px) {
+  .header-container {
+    .log-in-out-container,
+    .apply-now-container {
+      display: none !important;
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .home-container {
+    .live-work {
+      .image-container {
+        .employes-img {
+          left: 10% !important;
+          width: 60% !important;
         }
       }
-      .menu-btn{
-        background-color: unset;
-        width: unset;
+    }
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .home-container {
+    .mobile-menu-container {
+      display: unset;
+      .link-item {
+        color: $bordo !important;
       }
-      .home-menu-grid{
-        display: none;
+      .menu-btn-logo-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        .logo-img {
+          button {
+            font-size: $font_xxxxxxxxxxxl;
+          }
+        }
+        > div {
+          align-self: center;
+        }
       }
-      .live-work{
-        .body{
-          font-size: 1rem!important;
-        }
-        .about-us-container {
-        height: 600px!important;
-        width:100%;
-        }
-        .image-container{
-          display: none;
-        }
+    }
+    .menu-btn {
+      background-color: unset;
+      width: unset;
+      .MuiSvgIcon-root {
+        font-size: 3.5rem;
+      }
+    }
+    .home-menu-grid {
+      display: none;
+    }
+    .live-work {
+      display: block !important;
+      .body {
+        font-size: 1rem !important;
       }
       .about-us-container {
-        // height: 200px;
-        height: auto;
-        background-image: unset;
-        .data-divider{
-          // height: 100%;
-        }
-        .text-container {
-          width: unset;
-          margin:10px;
-          padding: 10px;
+        height: 600px !important;
+        width: 100%;
+      }
+      .image-container {
+        width: 55% !important;
+        height: 510px !important;
+        margin: auto;
+        .employes-img {
+          left: 10% !important;
+          width: 25% !important;
         }
       }
-      #footer{
+    }
+    .about-us-container {
+      // height: 200px;
+      height: auto;
+      background-image: unset;
+      .data-divider {
+        // height: 100%;
+      }
+      .text-container {
+        width: unset;
+        margin: 10px;
         padding: 10px;
-        .inner{
-          width: unset;
-          max-width: unset;
-        }
-        padding: 10px;
-         .content section:last-child {
-          padding-left: 1rem;
+      }
+    }
+    #footer {
+      padding: 10px;
+      .inner {
+        width: unset;
+        max-width: unset;
+      }
+      padding: 10px;
+      .content section:last-child {
+        padding-left: 1rem;
       }
       .content section:first-child {
         width: 50%;
         padding-right: 1rem;
-    }
+      }
+      .apply-now-container{
+        width: 100%;
+        margin: 0;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        .text-container{
+          font-size: $font_xxxxl;
+        }
+        .btn-container{
+          text-align: center;
+          width: 100%;
+          button{
+            width: 50%;
+          }
+        }
+      }
+      .information{
+        width: 100%;
+        padding: 0 10px;
       }
     }
+  }
+  .info-container {
+    margin: 0 !important;
+    .info-section {
+      > div {
+        margin: 0 0 !important;
+        > div {
+          margin: 0 5px !important;
+        }
+      }
+      .MuiGrid-item {
+        padding: 0 !important;
+      }
+    }
+  }
 }
+

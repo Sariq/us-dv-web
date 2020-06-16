@@ -148,7 +148,19 @@ const sliderData = [
     },
 ]
 class MainPage extends React.Component {
-
+    state={
+        hideNav: false
+    }
+    componentDidMount() {
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+    resize() {
+        let currentHideNav = (window.innerWidth <= 1300);
+        if (currentHideNav !== this.state.hideNav) {
+            this.setState({hideNav: currentHideNav});
+        }
+    }
     goTo = (page) => {
         alert(page)
         //this.props.history.push(page);
@@ -177,7 +189,7 @@ class MainPage extends React.Component {
                                         All you need for a green card in one place.
                                 </div>
                                     <Grid container className="btns-container">
-                                        <Link style={{ marginTop: '25px' }} className="link-item apply-now-btn" to="/register">
+                                        <Link  className="link-item apply-now-btn" to="/register">
                                             <Button
                                                 aria-controls="customized-menu"
                                                 aria-haspopup="true"
@@ -187,7 +199,7 @@ class MainPage extends React.Component {
                                                 Apply Now
                                 </Button>
                                         </Link>
-                                        <Link style={{ marginTop: '25px' }} className="link-item contact-us-btn" to="/register">
+                                        <Link className="link-item contact-us-btn" to="/register">
                                             <Button
                                                 aria-controls="customized-menu"
                                                 aria-haspopup="true"
@@ -288,9 +300,9 @@ class MainPage extends React.Component {
                                 naturalSlideWidth={100}
                                 naturalSlideHeight={125}
                                 totalSlides={3}
-                                visibleSlides={3}
+                                visibleSlides={this.state.hideNav ? 1 : 3}
                             >
-                                <ButtonBack className="back-btn">{"<"}</ButtonBack>
+                                { !this.state.hideNav && <ButtonBack className="back-btn">{"<"}</ButtonBack>}
                                 <div className="slider-items-container">
                                 <Slider className="slider-items">
                                    {sliderData.map(slide => ( <Slide className="slide-item" index={0}>
@@ -322,7 +334,7 @@ class MainPage extends React.Component {
                                     </div>
                                 </div>
 
-                                <ButtonNext className="next-btn">></ButtonNext>
+                               { !this.state.hideNav && <ButtonNext className="next-btn">></ButtonNext> }
                             </CarouselProvider>
                         </div>
 

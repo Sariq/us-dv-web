@@ -1,9 +1,9 @@
 @import "../../variables";
 
 .main-page-container {
-    a{
-        text-decoration: none;
-    }
+  a {
+    text-decoration: none;
+  }
   .wrapper {
     padding: 1rem 0 6rem 0;
     position: relative;
@@ -18,13 +18,13 @@
     text-align: center;
     margin-bottom: 4rem;
   }
-  .goto-faq{
+  .goto-faq {
     font-weight: bolder;
     text-decoration: underline;
     cursor: pointer;
   }
-  .consultation-section{
-    background-image: url('../../assests/images/home-back.jpg');
+  .consultation-section {
+    background-image: url("../../assests/images/home-back.jpg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -32,89 +32,88 @@
     width: 100%;
     color: $white;
     font-weight: bold;
-    .layer{
+    .layer {
       background-color: rgba(185, 15, 255, 0.2);
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
     }
-    .us-dv-text-container{
+    .us-dv-text-container {
       height: 25%;
       margin: 10%;
-      .text{
+      .text {
         font-size: $font_xl;
       }
-      .prof{
+      .prof {
         font-weight: 400;
         margin-bottom: 20px;
       }
-      .need{
+      .need {
         font-weight: 600;
       }
-      .us-dv-header-text{
+      .us-dv-header-text {
         font-weight: 600;
 
         font-size: $font_xxxxxxxxxxxxxxxxl;
-        .usa-dv-text{
+        .usa-dv-text {
           font-weight: 600;
 
           font-size: $font_xxxxxxxxxxxxxxxxxxl;
           font-family: Poppins-SemiBold;
         }
       }
-      .btns-container{
+      .btns-container {
         margin-top: 55px;
-        .link-item{
-          padding-right: 30px;
-          width:200px;
-          &.apply-now-btn{
-            button{
+        .link-item {
+          padding: 0 30px;
+          width: 35%;
+          padding-left: 0;
+          max-width: 200px;
+          &.apply-now-btn {
+            button {
               background-color: $dark-green;
             }
           }
-          &.contact-us-btn{
-            button{
+          &.contact-us-btn {
+            button {
               background-color: $dark-red;
             }
           }
         }
       }
-     
     }
 
-    .us-dv-header{
-      font-size: 65px!important;
+    .us-dv-header {
+      font-size: 65px !important;
       font-family: serif;
       font-weight: bolder;
     }
-    .text{
+    .text {
       font-size: 3rem;
-
     }
-  } 
-  .icon-container{
-    image{
+  }
+  .icon-container {
+    image {
       height: 65px;
       width: 65px;
       border-radius: 28px;
     }
-    
   }
-  .how-do-we-help{
+  .how-do-we-help {
     background-color: $light-gray;
-    .description-container{
-      margin:auto;
-      width:30%;
+    .description-container {
+      margin: auto;
+      width: 30%;
       text-align: center;
 
-      .title{
+      .title {
         font-weight: 600;
         font-size: $font_xxxxxxxxxxxxxxxxxl;
         padding-top: 70px;
         margin-bottom: 20px;
       }
-      .body{
+      .body {
         font-weight: 400;
         line-height: 2rem;
       }
@@ -125,12 +124,12 @@
     margin-top: 50px;
     padding-bottom: 100px;
     text-align: center;
-      .card-container{
-        width: 470px;
-        .customer-care{
-          border-bottom: solid 2px $bordo;
-        }
+    .card-container {
+      width: 470px;
+      .customer-care {
+        border-bottom: solid 2px $bordo;
       }
+    }
     .text {
       margin-top: 10px;
       font-size: $font_xxl;
@@ -141,7 +140,7 @@
       font-size: $font_l;
       opacity: 0.6;
       line-height: 1.5rem;
-      font-family: 'Rubik', sans-serif;
+      font-family: "Rubik", sans-serif;
       font-weight: 400;
     }
     .more-info {
@@ -160,7 +159,7 @@
       margin: auto;
       margin-bottom: 25px;
       margin-top: 25px;
-      .icon-img{
+      .icon-img {
         height: 72px;
         width: 70px;
       }
@@ -173,100 +172,106 @@
 
   .live-work {
     // background-color: $light-gray;
-    background: linear-gradient(to right,  $light-gray 0%,$light-gray 35%,white 35%,white 100%);
+    background: linear-gradient(to right, $light-gray 0%, $light-gray 35%, white 35%, white 100%);
     padding: 5% 20% 0 20%;
     display: flex;
-    .text-container{
+    .text-container {
       padding-left: 50px;
-      .link-item{ 
-        &.contact-us-btn{
-          button{
+      .link-item {
+        &.contact-us-btn {
+          button {
             background-color: $bordo;
             width: 30%;
           }
         }
       }
-      .title{
+      .title {
         font-size: $font_xxxxxxxxxxxxxxl;
         font-weight: 600;
       }
-      .body{
+      .body {
         font-size: $font_xxl;
         line-height: 2rem;
         opacity: 0.8;
         font-weight: 400;
       }
     }
-    .image-container{
-      width: 330%;
-      height: 510px;  
-      .passport-image{
+    .image-container {
+      // width: 330%;
+      height: 510px;
+      .passport-image {
         height: 100%;
       }
-      .employes-img{
+      .employes-img {
         position: absolute;
         margin-top: -150px;
-        left: 270px;
+        left: 15%;
         width: 19%;
       }
-      img{
+      img {
         width: 100%;
         height: 100%;
         border-radius: 5px;
-      }  
+      }
     }
-
   }
-  .our-success-stories{
+  .our-success-stories {
     margin-top: 150px;
-    .title-container{
+    .title-container {
       text-align: center;
-      .title{
+      .title {
         font-size: $font_xxxxxxxxxxxxxxl;
         font-weight: 600;
         margin-bottom: 20px;
       }
-      .sub-title{
+      .sub-title {
         margin: 0 36%;
         line-height: 1.5rem;
         font-weight: 400;
       }
     }
-    .our-success-stories-slider{
+    .our-success-stories-slider {
       padding-top: 50px;
       padding-bottom: 70px;
       display: flex;
       width: 70%;
       margin: auto;
-      .slider-items-container{
+      .slider-items-container {
         width: 100%;
-        .current-page{
-          margin-top: 40px;
+        .current-page {
+          // margin-top: 40px;
           display: flex;
           justify-content: center;
-         .circle{
-          border: solid 4px $bordo;
-          border-radius: 10px;
-          margin: 0 5px;
-          width: 5px;
-          height: 5px;
-          opacity: 0.2;
-          &.active{
-            opacity: 1;
+          .circle {
+            border: solid 4px $bordo;
+            border-radius: 10px;
+            margin: 0 5px;
+            width: 5px;
+            height: 5px;
+            opacity: 0.2;
+            &.active {
+              opacity: 1;
+            }
           }
-         }
         }
       }
-      .slider-items{
+      .slider-items {
         width: 100%;
-        
-        .slide-item{
-          height: 635px;
-          padding:unset!important;
+        height: 100%;
+        .slideInner___2mfX9{
+          position: relative;
+        }
+        .horizontalSlider___281Ls{
+          overflow: auto;
+        }
+        .slide-item {
+          height: 100%;
+          padding: unset !important;
           margin: 10px 0;
         }
       }
-      .back-btn, .next-btn{
+      .back-btn,
+      .next-btn {
         width: 50px;
         height: 40px;
         align-self: center;
@@ -276,50 +281,45 @@
         background-color: white;
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.09);
         font-size: $font_xl;
-        margin: 0 80px;
-        &:hover{
-          color: white!important;
-          background-color: $bordo!important;
+        margin: 0 2%;
+        &:hover {
+          color: white !important;
+          background-color: $bordo !important;
         }
       }
-
-      
     }
-    .testimonials{
+    .testimonials {
       height: 100%;
       .content {
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.09);
         margin: auto;
         width: 90%;
-        height: 95%;
         padding: 10px 10px;
-        .image{
+        .image {
           padding: 10px;
-          img{
+          img {
             width: 60px;
             border-radius: 30px;
           }
-         
         }
       }
-      .divider{
+      .divider {
         height: 1px;
-        margin:15px 0 0 10px;
-        
-        background: linear-gradient(to right,  $bordo 0%,$bordo 15%,#e4e4e4 15%,#e4e4e4 100%);
+        margin: 15px 0 0 10px;
+
+        background: linear-gradient(to right, $bordo 0%, $bordo 15%, #e4e4e4 15%, #e4e4e4 100%);
       }
-      .agent-info{
+      .agent-info {
         padding: 10px;
         margin-top: 15px;
-        .agent-name{
+        .agent-name {
           color: $bordo;
         }
-        .agent-title{
-          color:#666D81;
+        .agent-title {
+          color: #666d81;
         }
-       
       }
-      .quote{
+      .quote {
         margin-left: 10px;
         background-color: $bordo;
         height: 25px;
@@ -331,48 +331,112 @@
         margin-top: 5px;
         color: white;
       }
-  
-    } 
+    }
     .blockquote {
       border-left-color: rgba(0, 0, 0, 0.25);
-      color: #666D81;
+      color: #666d81;
       line-height: 1.5rem;
       padding: 10px;
     }
   }
 }
 
-
-@media only screen and (max-width: 900px) {
-    .main-page-container {
-        .wrapper{
-            padding: 0;
-        }
-        .inner{
-            width: 100%;
-            max-width: unset;
-            padding: 10px;
-        }
-        .testimonials {
-            display: block;
-            .content{
-                padding: 0.1rem;
-            }
-        }
-        .blockquote{
-            border-left: 0;
-        }
-        .about-us-container{
-            .text-container{
-                height: auto;
-            }
-        }
-        .home-container{
-            .about-us-container{
-                height: auto;
-            }
-        }
-
+@media only screen and (max-width: 1000px) {
+  .main-page-container {
+    .wrapper {
+      padding: 0;
     }
-
+    .inner {
+      width: 100%;
+      max-width: unset;
+      padding: 10px;
+    }
+    .testimonials {
+      display: block;
+      .content {
+        padding: 0.1rem;
+      }
+    }
+    .blockquote {
+      border-left: 0;
+    }
+    .about-us-container {
+      .text-container {
+        height: auto;
+      }
+    }
+    .home-container {
+      .about-us-container {
+        height: auto;
+      }
+    }
+    .consultation-section {
+      height: 370px;
+      .us-dv-text-container {
+        margin: 4%;
+        height: auto;
+        text-align: center;
+        .MuiGrid-container {
+          justify-content: center;
+        }
+        .btns-container {
+          .link-item {
+            padding: 0 30px;
+            width: 34%;
+            margin-top: 25px;
+          }
+        }
+      }
+    }
+    .how-do-we-help {
+      .description-container {
+        width: 100%;
+        margin-top: 20px;
+        .title {
+          font-size: $font_xxxxxxxxxl;
+        }
+        .body {
+          margin: 0 10%;
+          line-height: 1.5rem;
+        }
+      }
+    }
+    .categories-cards-container {
+      padding-bottom: 0;
+    }
+    .live-work {
+      padding: 5% 7% 0 5%;
+      .text-container {
+        padding: 0;
+        .link-item.contact-us-btn button {
+          width: 45%;
+        }
+        .title {
+          font-size: $font_xxxxxxxxxl;
+        }
+      }
+    }
+    .our-success-stories {
+      margin-top: 10px;
+        .title-container {
+          .title {
+            font-size: $font_xxxxxxxxxl;
+          }
+          .sub-title{
+            margin: 0 5%;
+          }
+      }
+      .testimonials{
+        .content{
+        }
+      }
+       
+      .our-success-stories-slider{
+        width: 95%;
+        .back-btn, .next-btn{
+          margin: 0 10px;
+        }
+      } 
+    }
+  }
 }

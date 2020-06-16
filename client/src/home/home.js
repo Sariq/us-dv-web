@@ -40,6 +40,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 //const logo = require('../assests/images/us-dv-logo.svg');
+const logoImage = require('../assests/images/us-dv-logo.png');
 
 const logoWhiteImage = require('../assests/images/us-dv-logo-white.png');
 
@@ -101,7 +102,7 @@ const useStyles = (theme => ({
         backgroundColor: '#272533'
     },
     appBarShift: {
-        width: `calc(100% - ${drawerWidth}px)`,
+        //width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.easeOut,
@@ -196,66 +197,60 @@ class Home extends React.Component {
                         <div className="header-container">
                             <div className="info-container">
                                 <Container className="info-section">
-                                    <Grid container spacing={3}>
-                                        <Grid container item sm={12} direction="row">
-                                            <Grid container sm={4} direction="row" alignItems="center" item>
-                                                <Grid item>
-                                                    <PhoneIcon fontSize="small" />
-                                                </Grid>
-                                                <Grid item>
-                                                    1-888-123-45678
-                                                        </Grid>
-                                            </Grid>
-                                            <Grid container sm={4} direction="row" alignItems="center" item>
-                                                <Grid item>
-                                                    <MailOutlineIcon />
-                                                </Grid>
-                                                <Grid item>
-                                                    info@demolink.org
-                                                        </Grid>
-                                            </Grid>
-                                            <Grid container sm={4} direction="row" alignItems="center" item>
-                                                <Grid item>
-                                                    <AccessTimeIcon />
-                                                </Grid>
-                                                <Grid item>
-                                                    08.00 - 18.00
-                                                        </Grid>
 
-                                            </Grid>
-                                        </Grid>
+                                    <div container sm={4} xs={4} direction="row" alignItems="center" item>
+                                        <div item>
+                                            <PhoneIcon fontSize="small" />
+                                        </div>
+                                        <div item>
+                                            1-888-123-45678
+                                                        </div>
+                                    </div>
+                                    <div container sm={4} xs={4} direction="row" alignItems="center" item>
+                                        <div item>
+                                            <MailOutlineIcon />
+                                        </div>
+                                        <div item>
+                                            info@demolink.org
+                                                        </div>
+                                    </div>
+                                    <div container sm={4} xs={4} direction="row" alignItems="center" item>
+                                        <div item>
+                                            <AccessTimeIcon />
+                                        </div>
+                                        <div item>
+                                            08.00 - 18.00
+                                                        </div>
 
-                                    </Grid>
+                                    </div>
+
 
                                 </Container>
                             </div>
                             <div className="log-in-out-container">
                                 <Container className="log-in-out-section">
-                                    <Grid container>
-                                        <Grid container item justify="flex-start" sm={12} direction="row">
-                                            <Grid spacing={1} container sm={12} direction="row" alignItems="center" item>
-                                                <Grid item>
-                                                    <PersonAddIcon />
-                                                </Grid>
-                                                <Grid item>
-                                                    <Link className="link-item contact-us-btn" to="/register">
-                                                        Sign up
+
+                                    <div item>
+                                        <PersonAddIcon />
+                                    </div>
+                                    <div item>
+                                        <Link className="link-item contact-us-btn" to="/register">
+                                            Sign up
                                                     </Link>
-                                                </Grid>
-                                                <Grid className={"divider"} item>
-                                                    /
-                                                </Grid>
-                                                <Grid item>
-                                                    <LockIcon />
-                                                </Grid>
-                                                <Grid item>
-                                                    <Link className="link-item contact-us-btn" to="/login-page">
-                                                        Login
+                                    </div>
+                                    <div className={"divider"} item>
+                                        /
+                                                </div>
+                                    <div item>
+                                        <LockIcon />
+                                    </div>
+                                    <div item>
+                                        <Link className="link-item contact-us-btn" to="/login-page">
+                                            Login
                                                     </Link>
-                                                </Grid>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
+                                    </div>
+
+
                                 </Container>
                             </div>
                             <div className="apply-now-container">
@@ -278,13 +273,12 @@ class Home extends React.Component {
                         </div>
 
                         <div className="mobile-menu-container">
-                            <AppBar
-                                position="fixed"
-                                className={clsx(classes.appBar, {
-                                    [classes.appBarShift]: this.state.open,
-                                })}
-                            >
-                                <Toolbar>
+                            <div className="menu-btn-logo-container">
+                                <div>
+                                    <img  src={logoImage} alt="" />
+                                </div>
+
+                                <div>
                                     <IconButton
                                         color="inherit"
                                         aria-label="open drawer"
@@ -295,11 +289,8 @@ class Home extends React.Component {
 
                                         <MenuIcon />
                                     </IconButton>
-                                    <Typography variant="h6" noWrap>
-                                        US DV
-                                 </Typography>
-                                </Toolbar>
-                            </AppBar>
+                                </div>
+                            </div>
                             <Drawer
                                 className={classes.drawer}
                                 variant="persistent"
@@ -424,7 +415,7 @@ class Home extends React.Component {
                         </div>
                         <div className="information">
                             <Grid spacing={3} container direction="row" alignItems="center" item>
-                                <Grid sm={4} item>
+                                <Grid sm={3} item>
                                     <div>
                                         <img src={logoWhiteImage} alt="" />
                                     </div>
@@ -470,7 +461,7 @@ class Home extends React.Component {
                                         </div>
                                     </div>
                                 </Grid>
-                                <Grid sm={4} item className="links-list-container">
+                                <Grid sm={3} item className="links-list-container">
                                     <div className="contact-us-container">
                                         <div className="title">
                                             Contact Us
@@ -489,7 +480,7 @@ class Home extends React.Component {
                         </div>
                         <div className="footer-text-container">
                             <div className="text">
-                            © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use. USA
+                                © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use. USA
                             </div>
                         </div>
                         {/* <div className="inner">
