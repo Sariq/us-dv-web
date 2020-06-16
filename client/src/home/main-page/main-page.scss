@@ -181,7 +181,7 @@
         &.contact-us-btn {
           button {
             background-color: $bordo;
-            width: 30%;
+            width: 200px;
           }
         }
       }
@@ -341,8 +341,21 @@
   }
 }
 
+
+@media only screen and (max-width: 500px) {
+  .consultation-section .us-dv-text-container .btns-container{
+    margin-top: 0!important;
+    .link-item {
+      padding: 0 15px!important;
+  }
+}
+}
+
 @media only screen and (max-width: 1000px) {
   .main-page-container {
+    button{
+      border-radius: 20px;
+    }
     .wrapper {
       padding: 0;
     }
@@ -403,6 +416,7 @@
     }
     .categories-cards-container {
       padding-bottom: 0;
+      max-width: 90%;
     }
     .live-work {
       padding: 5% 7% 0 5%;
@@ -432,11 +446,13 @@
       }
        
       .our-success-stories-slider{
+        padding-top: 20px;
         width: 95%;
         .back-btn, .next-btn{
           margin: 0 10px;
         }
       } 
     }
+
   }
 }

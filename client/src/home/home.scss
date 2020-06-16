@@ -356,10 +356,27 @@
   .home-container {
     .live-work {
       .image-container {
+        width: 85% !important;
+      height: 510px !important;
+      margin: 0!important;
+      margin-left: 18%!important;;
         .employes-img {
-          left: 10% !important;
-          width: 60% !important;
+          left: 5% !important;
+          width: 30% !important;
         }
+      }
+      .text-container{
+        margin-top: 40px!important;
+      }
+    }
+  }
+  #footer {
+    padding: 0!important;
+    .apply-now-container{
+      width: 100%!important;
+      background-color: #a00632;
+      .btn-container{
+        padding-bottom: 10px;
       }
     }
   }
@@ -396,21 +413,26 @@
       display: none;
     }
     .live-work {
+      padding: 5% 5% 0 10%!important;
       display: block !important;
       .body {
         font-size: 1rem !important;
+      }
+      .text-container{
+        margin-top: 60px;
       }
       .about-us-container {
         height: 600px !important;
         width: 100%;
       }
       .image-container {
-        width: 55% !important;
+        width: 85% !important;
         height: 510px !important;
         margin: auto;
         .employes-img {
           left: 10% !important;
           width: 25% !important;
+          min-width: 200px;
         }
       }
     }
@@ -454,6 +476,7 @@
           text-align: center;
           width: 100%;
           button{
+            border-radius: 30px;
             width: 50%;
           }
         }
