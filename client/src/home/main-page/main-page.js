@@ -32,9 +32,9 @@ const resubmissionIcon = require('../../assests/images/resubmission-icon.png');
 const personalIcon = require('../../assests/images/personal-icon.png');
 const supportDays = require('../../assests/images/365-days-icon.png');
 const howWeHelpImg = require('../../assests/images/how-we-help-back.jpg');
-const agent1 = require('../../assests/images/pic01.jpg');
-const agent2 = require('../../assests/images/pic02.jpg');
-const agent3= require('../../assests/images/pic03.jpg');
+const agent1 = require('../../assests/images/agent3.png');
+const agent2 = require('../../assests/images/agent2.png');
+const agent3= require('../../assests/images/agent1.png');
 
 
 function Copyright() {
@@ -260,6 +260,7 @@ class MainPage extends React.Component {
                         <div className="live-work">
                             <div className="image-container">
                                 <div className="passport-image">
+                                    <div className="vertical-us-dv">U S A - D V</div>
                                     <img src={passport} alt="" />
                                 </div>
                                 <div className="employes-img">
@@ -312,7 +313,7 @@ class MainPage extends React.Component {
                                                     <img src={slide.image} alt="" />
                                                 </div>
                                                 <div className="blockquote">
-                                                    <div>{slide.blockquote}</div>
+                                                    <div title={slide.blockquote}>{slide.blockquote}</div>
                                                 </div>
                                                 <div className="divider"></div>
                                                 <div className="author">
