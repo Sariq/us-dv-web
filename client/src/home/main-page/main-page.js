@@ -183,7 +183,7 @@ class MainPage extends React.Component {
                                         Professionals in the immigration sector with over 20 years of experience.
                                 </div>
                                     <div justify="flex-start" className="us-dv-header-text " >
-                                        <span className="usa-dv-text">USA-DV</span> <span>Organization</span>
+                                        <span className="usa-dv-text">USA DV</span> <span className="usa-dv-org-text">Organization</span>
                                 </div>
                                     <div className="text need" >
                                         All you need for a green card in one place.
@@ -225,16 +225,7 @@ class MainPage extends React.Component {
                                                 Apply Now
                                 </Button>
                                         </Link>
-                                        <Link className="link-item contact-us-btn" to="/register">
-                                            <Button
-                                                aria-controls="customized-menu"
-                                                aria-haspopup="true"
-                                                variant="contained"
-                                                color="primary"
-                                            >
-                                                Contact Us
-                                </Button>
-                                        </Link>
+                                       
                                     </Grid>}
                         </Grid>
                         <div className="how-do-we-help">

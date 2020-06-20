@@ -1,7 +1,6 @@
 @import "../../variables";
 
 .main-page-container {
-
   a {
     text-decoration: none;
   }
@@ -36,7 +35,8 @@
     height: 600px;
 
     .layer {
-      background-color: rgba(185, 15, 255, 0.2);
+      //background-color: rgba(185, 15, 255, 0.2);
+      background-color: rgba(203, 77, 255, 0.2);
       top: 0;
       left: 0;
       width: 100%;
@@ -44,7 +44,7 @@
     }
     .us-dv-text-container {
       height: 25%;
-      margin: 10%;
+      margin: 4% 10% 10% 10%;
       .text {
         font-size: $font_xl;
       }
@@ -66,7 +66,6 @@
           font-family: Poppins-SemiBold;
         }
       }
-
     }
     .btns-container {
       margin-top: 55px;
@@ -107,7 +106,9 @@
     background-color: $light-gray;
     .description-container {
       margin: auto;
-      width: 50%;
+
+      max-width: 544px;
+
       text-align: center;
 
       .title {
@@ -204,7 +205,7 @@
     }
     .image-container {
       // width: 330%;
-      .vertical-us-dv{
+      .vertical-us-dv {
         color: #f5f5f5;
         letter-spacing: 15px;
         font-size: 50px;
@@ -223,7 +224,7 @@
       .passport-image {
         height: 100%;
         display: flex;
-        width:90%
+        width: 90%;
       }
       .employes-img {
         position: absolute;
@@ -236,7 +237,6 @@
         height: 100%;
         border-radius: 5px;
         overflow: hidden;
-
       }
     }
   }
@@ -363,8 +363,18 @@
       color: #666d81;
       line-height: 1.5rem;
       padding: 10px;
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .5);
+        -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+      }
       > div {
-        overflow: hidden;
+
+        overflow: scroll;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 6; /* number of lines to show */
@@ -408,8 +418,6 @@
     .about-us-container {
       .text-container {
         height: auto;
-        
-
       }
     }
     .home-container {
@@ -420,21 +428,32 @@
     .consultation-section {
       height: 370px;
       background-size: cover;
+      
       .us-dv-text-container {
-        margin: 4%;
+        margin: 15% 4% 4% 4%;
         height: auto;
         text-align: center;
+        .prof {
+          font-size: 18px;
+        }
         .MuiGrid-container {
           justify-content: center;
         }
-      
+        .us-dv-header-text{
+          .usa-dv-text{
+            font-size: 36px!important;
+          }
+          .usa-dv-org-text{
+            font-size: 30px!important;
+          }
+        } 
       }
       .btns-container {
         justify-content: center;
         margin-top: 0px;
         .link-item {
           padding: 0 30px;
-          width: 34%;
+          width: 45%;
           margin-top: 25px;
         }
       }
@@ -454,7 +473,7 @@
     }
     .categories-cards-container {
       padding-bottom: 0;
-      max-width: 100%!important;
+      max-width: 100% !important;
     }
     .live-work {
       margin-top: 10%;
@@ -468,8 +487,8 @@
           font-size: $font_xxxxxxxxxl;
         }
       }
-      .image-container{
-        img{
+      .image-container {
+        img {
           overflow: unset;
         }
       }
