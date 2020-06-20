@@ -156,7 +156,7 @@ class MainPage extends React.Component {
         this.resize();
     }
     resize() {
-        let currentHideNav = (window.innerWidth <= 1300);
+        let currentHideNav = (window.innerWidth <= 1000);
         if (currentHideNav !== this.state.hideNav) {
             this.setState({hideNav: currentHideNav});
         }
@@ -183,12 +183,12 @@ class MainPage extends React.Component {
                                         Professionals in the immigration sector with over 20 years of experience.
                                 </div>
                                     <div justify="flex-start" className="us-dv-header-text " >
-                                        <span className="usa-dv-text">USA-DV</span> Organization
+                                        <span className="usa-dv-text">USA-DV</span> <span>Organization</span>
                                 </div>
                                     <div className="text need" >
                                         All you need for a green card in one place.
                                 </div>
-                                    <Grid container className="btns-container">
+                                { !this.state.hideNav && <Grid container className="btns-container">
                                         <Link  className="link-item apply-now-btn" to="/register">
                                             <Button
                                                 aria-controls="customized-menu"
@@ -209,11 +209,33 @@ class MainPage extends React.Component {
                                                 Contact Us
                                 </Button>
                                         </Link>
-                                    </Grid>
+                                    </Grid>}
 
 
                                 </div>
                             </div>
+                            { this.state.hideNav && <Grid container className="btns-container">
+                                        <Link  className="link-item apply-now-btn" to="/register">
+                                            <Button
+                                                aria-controls="customized-menu"
+                                                aria-haspopup="true"
+                                                variant="contained"
+                                                color="primary"
+                                            >
+                                                Apply Now
+                                </Button>
+                                        </Link>
+                                        <Link className="link-item contact-us-btn" to="/register">
+                                            <Button
+                                                aria-controls="customized-menu"
+                                                aria-haspopup="true"
+                                                variant="contained"
+                                                color="primary"
+                                            >
+                                                Contact Us
+                                </Button>
+                                        </Link>
+                                    </Grid>}
                         </Grid>
                         <div className="how-do-we-help">
                             <div className="description-container">
@@ -228,7 +250,7 @@ class MainPage extends React.Component {
                             </div>
                             <Container className="categories-cards-container" maxWidth="md">
                                 <div >
-                                    <Grid container spacing={6}>
+                                    <Grid container spacing={3}>
                                         {cards.map(card => (
                                             <Grid className="card-container" key={card.id} item xs={12} sm={6} md={4}>
                                                 <Card className={`${classes.card} ${card.class}`}>
@@ -260,7 +282,7 @@ class MainPage extends React.Component {
                         <div className="live-work">
                             <div className="image-container">
                                 <div className="passport-image">
-                                    <div className="vertical-us-dv">U S A - D V</div>
+                                    <div className="vertical-us-dv">U  S  A  -  D  V</div>
                                     <img src={passport} alt="" />
                                 </div>
                                 <div className="employes-img">

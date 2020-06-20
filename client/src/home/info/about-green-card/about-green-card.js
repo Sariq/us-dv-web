@@ -18,6 +18,8 @@ import { withStyles } from '@material-ui/core';
 import WorkIcon from '@material-ui/icons/Work';
 import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
 import "./about-green-card.scss";
+const passport = require('../../../assests/images/passport.jpg');
+const howWeHelpImg = require('../../../assests/images/how-we-help-back.jpg');
 
 
 
@@ -66,19 +68,33 @@ class AboutGreenCard extends React.Component {
                 <React.Fragment>
 
                     <main>
+                    <div className="live-work">
+                            <div className="image-container">
+                                <div className="passport-image">
+                                    <div className="vertical-us-dv">U  S  A  -  D  V</div>
+                                    <img src={passport} alt="" />
+                                </div>
+                                <div className="employes-img">
+                                    <img src={howWeHelpImg} alt="" />
+                                </div>
+                            </div>
+                            <div className="text-container">
+                                <div className="title">
+                                About the Green card 
+                                    </div>
+
+                                <div className="body">
+                                <div>The Immigration and Nationality Act (INA) of 1990 provided an alternative immigration structure to the United States, to the previous immigration procedures offered by the 1965 Immigration and Naturalization act, which focused on obtaining visas through employment and family members sponsorship.</div>
+                                </div>
+                            </div>
+
+                        </div>
                         <div className="about-us-container">
                             <div className="text-container">
-                                <h2 className="title">
-                                About the Green card 
-
-                                </h2>
-                                <div className="sub-title">
-                                History
-                                </div>
+                        
                                 <div className="body">
                           
 
-<p>The Immigration and Nationality Act (INA) of 1990 provided an alternative immigration structure to the United States, to the previous immigration procedures offered by the 1965 Immigration and Naturalization act, which focused on obtaining visas through employment and family members sponsorship.</p>
 
 <p>One of the main contributions on the INA is increasing the immigration rates by introducing the Diversity Visa program.</p>
 

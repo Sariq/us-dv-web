@@ -1,6 +1,7 @@
 @import "../../variables";
 
 .main-page-container {
+
   a {
     text-decoration: none;
   }
@@ -27,11 +28,13 @@
     background-image: url("../../assests/images/home-back.jpg");
     background-position: top;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 129%;
     height: 830px;
     width: 100%;
     color: $white;
     font-weight: bold;
+    height: 600px;
+
     .layer {
       background-color: rgba(185, 15, 255, 0.2);
       top: 0;
@@ -55,7 +58,7 @@
       .us-dv-header-text {
         font-weight: 600;
 
-        font-size: $font_xxxxxxxxxxxxxxxxl;
+        font-size: $font_xxxxxxxxxxxl;
         .usa-dv-text {
           font-weight: 600;
 
@@ -63,27 +66,27 @@
           font-family: Poppins-SemiBold;
         }
       }
-      .btns-container {
-        margin-top: 55px;
-        .link-item {
-          padding: 0 30px;
-          width: 35%;
-          padding-left: 0;
-          max-width: 200px;
-          &.apply-now-btn {
-            button {
-              background-color: $dark-green;
-            }
+
+    }
+    .btns-container {
+      margin-top: 55px;
+      .link-item {
+        padding: 0 30px;
+        width: 35%;
+        padding-left: 0;
+        max-width: 200px;
+        &.apply-now-btn {
+          button {
+            background-color: $dark-green;
           }
-          &.contact-us-btn {
-            button {
-              background-color: $dark-red;
-            }
+        }
+        &.contact-us-btn {
+          button {
+            background-color: $dark-red;
           }
         }
       }
     }
-
     .us-dv-header {
       font-size: 65px !important;
       font-family: serif;
@@ -120,7 +123,7 @@
     }
   }
   .categories-cards-container {
-    max-width: 61%;
+    // max-width: 61%;
     margin-top: 50px;
     padding-bottom: 100px;
     text-align: center;
@@ -171,14 +174,15 @@
   }
 
   .live-work {
+    padding-top: 80px;
     // background-color: $light-gray;
     background: linear-gradient(to right, $light-gray 0%, $light-gray 35%, white 35%, white 100%);
     // padding: 5% 15% 0 15%;
     width: 70%;
-    margin: auto;
+    padding: 5% 13% 0 13%;
     display: flex;
     .text-container {
-      padding-left: 50px;
+      // padding-left: 50px;
       .link-item {
         &.contact-us-btn {
           button {
@@ -200,21 +204,39 @@
     }
     .image-container {
       // width: 330%;
+      .vertical-us-dv{
+        color: #f5f5f5;
+        letter-spacing: 15px;
+        font-size: 50px;
+        writing-mode: tb-rl;
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(180deg);
+        white-space: nowrap;
+        display: block;
+        bottom: 0;
+        height: 70%;
+      }
       height: 510px;
       .passport-image {
         height: 100%;
         display: flex;
+        width:90%
       }
       .employes-img {
         position: absolute;
         margin-top: -150px;
-        left: 15%;
+        left: 14%;
         width: 19%;
       }
       img {
         width: 100%;
         height: 100%;
         border-radius: 5px;
+        overflow: hidden;
+
       }
     }
   }
@@ -386,6 +408,8 @@
     .about-us-container {
       .text-container {
         height: auto;
+        
+
       }
     }
     .home-container {
@@ -395,6 +419,7 @@
     }
     .consultation-section {
       height: 370px;
+      background-size: cover;
       .us-dv-text-container {
         margin: 4%;
         height: auto;
@@ -402,12 +427,15 @@
         .MuiGrid-container {
           justify-content: center;
         }
-        .btns-container {
-          .link-item {
-            padding: 0 30px;
-            width: 34%;
-            margin-top: 25px;
-          }
+      
+      }
+      .btns-container {
+        justify-content: center;
+        margin-top: 0px;
+        .link-item {
+          padding: 0 30px;
+          width: 34%;
+          margin-top: 25px;
         }
       }
     }
@@ -426,9 +454,10 @@
     }
     .categories-cards-container {
       padding-bottom: 0;
-      max-width: 90%;
+      max-width: 100%!important;
     }
     .live-work {
+      margin-top: 10%;
       padding: 5% 7% 0 5%;
       .text-container {
         padding: 0;
@@ -437,6 +466,11 @@
         }
         .title {
           font-size: $font_xxxxxxxxxl;
+        }
+      }
+      .image-container{
+        img{
+          overflow: unset;
         }
       }
     }

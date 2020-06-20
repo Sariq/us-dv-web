@@ -145,7 +145,6 @@
     height: 600px;
     //background-image: url(https://template66409.motopreview.com/mt-demo/66400/66409/mt-content/uploads/2018/05/mt-1477-home-parallax1.jpg);
     background-image: url("../assests/images/how-we-help-back.jpg");
-
     // background-position: top;
     background-position: 0 10px;
     background-repeat: no-repeat;
@@ -154,6 +153,7 @@
     width: 100%;
     position: relative;
     .text-container {
+      border-radius: 20px;
       color: white;
       text-align: left;
       position: absolute;
@@ -356,10 +356,10 @@
   .home-container {
     .live-work {
       .image-container {
-        width: 85% !important;
+        width: 100% !important;
       height: 510px !important;
       margin: 0!important;
-      margin-left: 18%!important;;
+     
         .employes-img {
           left: 5% !important;
           width: 30% !important;
@@ -426,7 +426,6 @@
         width: 100%;
       }
       .image-container {
-        width: 85% !important;
         height: 510px !important;
         margin: auto;
         .employes-img {
@@ -483,7 +482,11 @@
       }
       .information{
         width: 100%;
-        padding: 0 10px;
+        // padding: 0 10px;
+        // margin: 10px 10px;
+        >*{
+          padding: 0 10px;
+        }
       }
     }
   }

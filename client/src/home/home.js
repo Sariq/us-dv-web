@@ -162,9 +162,21 @@ const informationLinks = [
 ];
 
 class Home extends React.Component {
+  
+    componentDidMount() {
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+    resize() {
+        let currentHideNav = (window.innerWidth <= 1300);
+        if (currentHideNav !== this.state.hideNav) {
+            this.setState({hideNav: currentHideNav});
+        }
+    }
     state = {
         open: false,
-        subMenuOpen: false
+        subMenuOpen: false,
+        hideNav: false
     }
     handleSubItemClick = (data, forceCloseSubMenu) => {
         if (data.subItems) {
@@ -414,7 +426,7 @@ class Home extends React.Component {
                             </div>
                         </div>
                         <div className="information">
-                            <Grid spacing={3} container direction="row" alignItems="center" item>
+                            <Grid  container direction="row" alignItems="center" item>
                                 <Grid sm={3} item>
                                     <div>
                                         <img src={logoWhiteImage} alt="" />
@@ -478,11 +490,11 @@ class Home extends React.Component {
                                 </Grid>
                             </Grid>
                         </div>
-                        <div className="footer-text-container">
+                       {!this.state.hideNav && <div className="footer-text-container">
                             <div className="text">
                                 © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use. USA
                             </div>
-                        </div>
+                        </div>}
                         {/* <div className="inner">
                             <div className="content">
                                 <section>
