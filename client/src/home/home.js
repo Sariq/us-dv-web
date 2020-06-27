@@ -39,6 +39,7 @@ import clsx from 'clsx';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Footer from '../components/footer/footer'
 //const logo = require('../assests/images/us-dv-logo.svg');
 const logoImage = require('../assests/images/us-dv-logo.png');
 
@@ -408,7 +409,8 @@ class Home extends React.Component {
                     </footer> */}
 
                     {/* End footer */}
-                    <footer id="footer">
+                    <Footer hideNav={this.state.hideNav}/>
+                    {/* <footer id="footer">
                         <div className="apply-now-container">
                             <div className="text-container">
                                 Registration is open, So you
@@ -495,44 +497,7 @@ class Home extends React.Component {
                                 © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use. USA
                             </div>
                         </div>}
-                        {/* <div className="inner">
-                            <div className="content">
-                                <section>
-                                    <h3>Contact Info</h3>
-                                    <p>XXX (Building)
-        New York, NY 00000
-        United States
-        Phone : +1-000-000-0000
-        Whatsapp: : +1-000-000-0000
-        Email : csr@usa-dv.org
-
-</p>
-                                </section>
-                                <section>
-                                    <h4></h4>
-                                    <ul className="alt">
-                                        <li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#">Terms of Use</a></li>
-                                        <li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#">Privacy Policy</a></li>
-                                        <li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#">FAQ</a></li>
-
-                                    </ul>
-                                </section>
-                                <section>
-                                    <h4>Follow Us</h4>
-                                    <ul className="plain">
-                                        <li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#"><i className="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-                                        <li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#"><i className="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-                                        <li><a href="file:///C:/Users/Seree/Desktop/temp/index.html#"><i className="icon fa-instagram">&nbsp;</i>Google</a></li>
-                                        <li></li>
-                                    </ul>
-                                </section>
-                            </div>
-                            <div className="copyright">
-                                © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use.
-        USA-DV is owned and operated by (Company name).
-					</div>
-                        </div> */}
-                    </footer>
+                    </footer> */}
                 </React.Fragment>
             </div >
 

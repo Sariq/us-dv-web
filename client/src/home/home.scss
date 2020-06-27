@@ -345,6 +345,7 @@
   }
 }
 @media only screen and (max-width: 1220px) {
+  
   .header-container {
     .log-in-out-container,
     .apply-now-container {
@@ -354,6 +355,14 @@
 }
 @media only screen and (max-width: 500px) {
   .home-container {
+    .header-container {
+      font-size: 9px!important;
+      .info-container {
+        .MuiSvgIcon-root{
+          font-size: 1rem;
+        }
+      }
+    }
     .live-work {
       .image-container {
         width: 100% !important;
@@ -490,9 +499,11 @@
       }
     }
   }
+
   .info-container {
     margin: 0 !important;
     .info-section {
+      padding: 0;
       > div {
         margin: 0 0 !important;
         > div {

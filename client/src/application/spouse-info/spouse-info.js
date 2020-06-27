@@ -43,11 +43,12 @@ class SupouseInfo extends Component {
                     <div className="addressForm">
                         <Grid container spacing={5}>
                             <Grid container justify="flex-start" item xs={12} sm={6}>
-                                <FormControl className={`select-input ${classes.formControl}`}>
-                                    <InputLabel id="demo-simple-select-label">Passport Status</InputLabel>
+                                <FormControl variant="outlined" className={`select-input ${classes.formControl}`}>
+                                    <InputLabel id="passportStatus">Passport Status</InputLabel>
                                     <Select
                                         labelId="passportStatus"
                                         id="passportStatus"
+                                        label="passportStatus"
                                         value={this.props && this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].passportStatus}
                                         onChange={(event) => this.props.registrationStore.handleDataChange("passportStatus", event.target.value, this.props.obj, null , this.props.subObj )}
                                     >
@@ -59,6 +60,8 @@ class SupouseInfo extends Component {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                label="Outlined"
+                                variant="outlined"
                                     required
                                     error={this.props && this.props.registrationStore.errors.passportNumber}
                                     helperText={this.props && this.props.registrationStore.errors.passportNumber ? "Invalid input" : null}
@@ -76,11 +79,12 @@ class SupouseInfo extends Component {
                                 justify="flex-start" sm={12} >
 
                                 <Grid justify="flex-start" container item xs={12} sm={2}>
-                                    <FormControl className={classes.formControl}>
+                                    <FormControl variant="outlined" className={classes.formControl}>
                                         <InputLabel id="month">Month</InputLabel>
                                         <Select
                                             labelId="Month"
                                             id="Month"
+                                            label="Month"
                                             value={this.props && this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].month}
                                             onChange={(event) => this.props.registrationStore.handleDataChange("month", event.target.value, this.props.obj, null , this.props.subObj )}
                                         >
@@ -92,11 +96,12 @@ class SupouseInfo extends Component {
                                     </FormControl>
                                 </Grid>
                                 <Grid justify="flex-start" container item xs={12} sm={2}>
-                                    <FormControl className={classes.formControl}>
+                                    <FormControl variant="outlined" className={classes.formControl}>
                                         <InputLabel id="year">Year</InputLabel>
                                         <Select
                                             labelId="year"
                                             id="year"
+                                            label="year"
                                             value={this.props && this.props.registrationStore.applicationData[this.props.obj][this.props.subObj].year}
                                             onChange={(event) => this.props.registrationStore.handleDataChange("year", event.target.value, this.props.obj, null , this.props.subObj )}
                                         >

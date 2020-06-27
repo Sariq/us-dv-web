@@ -15,14 +15,14 @@ const useStyles = (theme => ({
         marginTop: theme.spacing(2),
     },
 }));
-@inject('registrationStore','AuthStore')
+@inject('registrationStore', 'AuthStore')
 @observer
 class AddressContact extends Component {
 
     onCountryChange = (value, fieldName) => {
-        this.props.registrationStore.handleDataChange(fieldName, value, this.props.obj, null , this.props.subObj)
+        this.props.registrationStore.handleDataChange(fieldName, value, this.props.obj, null, this.props.subObj)
     }
-    render(){
+    render() {
         const { classes } = this.props;
         return (
             <React.Fragment >
@@ -31,6 +31,8 @@ class AddressContact extends Component {
                         <Grid container spacing={5}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    label="outlined"
+                                    variant="outlined"
                                     required
                                     error={this.props && this.props.registrationStore.errors.email}
                                     helperText={this.props && this.props.registrationStore.errors.email ? "Invalid input" : null}
@@ -45,6 +47,8 @@ class AddressContact extends Component {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    label="outlined"
+                                    variant="outlined"
                                     required
                                     error={this.props && this.props.registrationStore.errors.additionalEmail}
                                     helperText={this.props && this.props.registrationStore.errors.additionalEmail ? "Invalid input" : null}
@@ -59,10 +63,12 @@ class AddressContact extends Component {
                             </Grid>
 
                             <Grid item xs={12} sm={6}>
-                            <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].cor} placeHolder="Country Of Residence" onChange={(value)=>this.onCountryChange(value, "cor")} />
+                                <CountrySelect selectedCountry={this.props.registrationStore.applicationData[this.props.obj] && this.props.registrationStore.applicationData[this.props.obj].cor} placeHolder="Country Of Residence" onChange={(value) => this.onCountryChange(value, "cor")} />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    label="outlined"
+                                    variant="outlined"
                                     required
                                     error={this.props && this.props.registrationStore.errors.cob}
                                     helperText={this.props && this.props.registrationStore.errors.cob ? "Invalid input" : null}
@@ -77,6 +83,8 @@ class AddressContact extends Component {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    label="outlined"
+                                    variant="outlined"
                                     required
                                     error={this.props && this.props.registrationStore.errors.street}
                                     helperText={this.props && this.props.registrationStore.errors.street ? "Invalid input" : null}
@@ -91,6 +99,8 @@ class AddressContact extends Component {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    label="outlined"
+                                    variant="outlined"
                                     required
                                     error={this.props && this.props.registrationStore.errors.houseNumber}
                                     helperText={this.props && this.props.registrationStore.errors.houseNumber ? "Invalid input" : null}
@@ -106,6 +116,8 @@ class AddressContact extends Component {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    label="outlined"
+                                    variant="outlined"
                                     required
                                     error={this.props && this.props.registrationStore.errors.postalCode}
                                     helperText={this.props && this.props.registrationStore.errors.postalCode ? "Invalid input" : null}
@@ -121,6 +133,8 @@ class AddressContact extends Component {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    label="outlined"
+                                    variant="outlined"
                                     required
                                     error={this.props && this.props.registrationStore.errors.poBox}
                                     helperText={this.props && this.props.registrationStore.errors.poBox ? "Invalid input" : null}
@@ -134,9 +148,9 @@ class AddressContact extends Component {
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                                
+
                                 <ReactPhoneInput
-                                
+
                                     value={this.props && this.props.registrationStore.applicationData[this.props.obj].phone}
                                     onChange={(value) => this.props.registrationStore.handleDataChange("phone", value, this.props.obj)}
                                     defaultCountry={'us'}

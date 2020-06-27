@@ -11,8 +11,41 @@ import LoginPage from "./loginPage/loginPage";
 import UsersList from "./users-list/users-list";
 import { Backdrop, Paper, MenuList, MenuItem, AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
-
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: '#212B51',
+    },
+    // secondary: {
+    //   // This is green.A700 as hex.
+    //  // main: '#11cb5f',
+    // },
+  },
+  overrides: {
+    // Style sheet name ⚛️
+    MuiOutlinedInput:{
+      root:{height: '40px'}
+    },
+    MuiFormLabel:{
+      root:{
+        padding: '1px 0',
+        lineHeight: 0,
+        borderRadius: '20px'
+      }
+    },
+    MuiButton: {
+      // Name of the rule
+      root: {
+        // Some CSS
+        borderRadius:10,
+      },
+    },
+  },
+});
 
 @inject('AuthStore')
 @observer
@@ -106,6 +139,7 @@ Layout.diplayName = 'Layout';
 class App extends Component {
   render() {
     return (
+      <ThemeProvider theme={theme}>
       <div className="App">
         <Router>
           <Switch>
@@ -118,6 +152,8 @@ class App extends Component {
           </Switch>
         </Router>
       </div>
+      </ThemeProvider>
+
     );
   }
 }

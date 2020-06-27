@@ -20,7 +20,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import EditIcon from '@material-ui/icons/Edit';
-import MobileSideMenu from '../components/mobile-side-menu/mobile-side-menu'
+import MobileSideMenu from '../components/mobile-side-menu/mobile-side-menu';
+import Footer from '../components/footer/footer';
 const useStyles = (theme => ({
     root: {
         width: '70%',
@@ -50,7 +51,7 @@ function getSteps() {
 @observer
 class VerticalLinearStepper extends Component {
     //steps = getSteps();
-    state = {cildrednUpdate : false};
+    state = { cildrednUpdate: false };
     initState = () => {
         this.props.registrationStore.activeObj = this.steps[0].obj;
         this.state.activeStep = 0;
@@ -88,7 +89,7 @@ class VerticalLinearStepper extends Component {
 
     };
     handleSave = () => {
-        this.props.registrationStore.sendApplication().then(()=>this.initSpouseAndChildrenSteps());
+        this.props.registrationStore.sendApplication().then(() => this.initSpouseAndChildrenSteps());
     };
 
     handleReset = () => {
@@ -124,22 +125,22 @@ class VerticalLinearStepper extends Component {
     ]
     initSpouseAndChildrenSteps = () => {
         if (this.props.registrationStore.applicationData.applicantInfo.basic.maritalStatus === "married") {
-            const result = this.steps.filter((step)=>{
+            const result = this.steps.filter((step) => {
                 return step.obj === "spouseInfo"
             });
-            if(!result || result.length === 0 ){
+            if (!result || result.length === 0) {
                 this.steps.push({
                     title: 'Spouse Info',
                     cmp: <ScrollableTabsButtonAuto
                         tabs={this.spouseTabs}
                     />,
                     obj: "spouseInfo",
-                    tabs:true
+                    tabs: true
                 })
             }
-            
-        }else{
-            const result = this.steps.filter((step)=>{
+
+        } else {
+            const result = this.steps.filter((step) => {
                 return step.obj !== "spouseInfo"
             });
             this.steps = result;
@@ -149,20 +150,20 @@ class VerticalLinearStepper extends Component {
 
         if (Number(this.props.registrationStore.applicationData.applicantInfo.basic.childrenNumber) > 0 && this.childrenTabs.length !== Number(this.props.registrationStore.applicationData.applicantInfo.basic.childrenNumber)) {
             const childrenLength = this.childrenTabs.length;
-            Array.from(new Array(Number(this.props.registrationStore.applicationData.applicantInfo.basic.childrenNumber) - this.childrenTabs.length), (v, i) => {           
-               console.log("xxxxx")
+            Array.from(new Array(Number(this.props.registrationStore.applicationData.applicantInfo.basic.childrenNumber) - this.childrenTabs.length), (v, i) => {
+                console.log("xxxxx")
                 this.childrenTabs.push({ title: `Child ${childrenLength + i + 1}`, cmp: <ChildrenInfo obj="childrenInfo" handleDataChange={(attr, val, index) => this.handleChildrenDataChange(attr, val, index)} props={this.props} index={i} /> })
             });
             this.steps.push({
                 title: 'Children Info', cmp: <ScrollableTabsButtonAuto
                     tabs={this.childrenTabs}
                     handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} />,
-                    obj: "childrenInfo",
-                    tabs:true
+                obj: "childrenInfo",
+                tabs: true
             })
             console.log(this.steps)
         }
-        this.setState({cildrednUpdate:true})
+        this.setState({ cildrednUpdate: true })
 
     }
     applicatTabs = [
@@ -173,7 +174,7 @@ class VerticalLinearStepper extends Component {
         { title: "Basic", cmp: <ApllicantInfo obj="spouseInfo" subObj="basic" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={0} />, obj: "spouseInfo", subObj: "basic" },
         { title: "Passport And Photo", cmp: <SupouseInfo obj="spouseInfo" subObj="passportAndPhoto" handleDataChange={(attr, val) => this.handleSpouseDataChange(attr, val)} props={this.props} index={1} />, obj: "spouseInfo", subObj: "passportAndPhoto" }
     ]
-  
+
     steps = [
         //{ title: 'Applicant Info', cmp: <ApllicantInfo obj="applicantInfo" />, obj:"applicantInfo" },
         {
@@ -181,7 +182,7 @@ class VerticalLinearStepper extends Component {
                 tabs={this.applicatTabs}
             />,
             obj: "applicantInfo",
-            tabs:true
+            tabs: true
         },
 
         { title: 'Address & Contact', cmp: <AddressContact obj="addressContact" handleDataChange={(attr, val) => this.handleAddressContactDataChange(attr, val)} props={this.props} />, obj: "addressContact" }
@@ -197,14 +198,14 @@ class VerticalLinearStepper extends Component {
 
     };
     disableNextStep = () => {
-        if(this.state.activeStep === this.steps.length - 1){
-            if(this.steps[this.state.activeStep].tabs === true ){
-                if(this.props.registrationStore.spouseInfoActiveTab === 1){
+        if (this.state.activeStep === this.steps.length - 1) {
+            if (this.steps[this.state.activeStep].tabs === true) {
+                if (this.props.registrationStore.spouseInfoActiveTab === 1) {
                     return true
-                }else{
+                } else {
                     return false;
                 }
-            }else{
+            } else {
                 return true
             }
         }
@@ -214,7 +215,7 @@ class VerticalLinearStepper extends Component {
     render() {
         const { classes } = this.props;
         console.log("RENDERRRRR")
-        if (!this.props.AuthStore.authData ||  this.props.registrationStore.isLoadingApplicationData || this.props.UsersStore.loadingUser || this.props.registrationStore.registerInProgress) {
+        if (!this.props.AuthStore.authData || this.props.registrationStore.isLoadingApplicationData || this.props.UsersStore.loadingUser || this.props.registrationStore.registerInProgress) {
             return (<Backdrop className={classes.backdrop} open={true}>
                 <CircularProgress color="inherit" />
             </Backdrop>)
@@ -226,66 +227,77 @@ class VerticalLinearStepper extends Component {
                         <CircularProgress color="inherit" />
                     </Backdrop>}
                     {/* {JSON.stringify(this.props.registrationStore.applicationData)} */}
-                    <MobileSideMenu/>
-
-                    <Stepper nonLinear activeStep={this.state.activeStep} >
-                        {this.steps.map((step, index) => (
-
-                            <Step onClick={() => this.handleStep(index)} key={step.title}>
-                                <StepLabel>{step.title}</StepLabel>
-
-                            </Step>
-                        ))}
-                    </Stepper>
-
+                    <div style={{display:"flex"}}>
+                    <MobileSideMenu />
+                    <div className="us-dv-text">USA - DV</div>
                     <div>
+                    <Paper>
+                        <Stepper className="stepper-container" nonLinear activeStep={this.state.activeStep} >
+                            {this.steps.map((step, index) => (
 
+                                <Step onClick={() => this.handleStep(index)} key={step.title}>
+                                    <StepLabel>{step.title}</StepLabel>
+
+                                </Step>
+                            ))}
+                        </Stepper>
+                    </Paper>
+                    <div>
                         <>
-                            <div>{this.getStepContent(this.state.activeStep).cmp}</div>
-                            <div className="actions-container">
-                                <div>
-                                    <Button
-                                        disabled={this.state.activeStep === 0}
-                                        onClick={this.handleBack}
-                                        className={classes.button}
-                                    >
-                                        Back
-                  </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={this.handleNext}
-                                        className={classes.button}
-                                    disabled={this.disableNextStep()}
-                                    >
-                                        Next
+                            <Paper className="tabs-paper">
+                                <div>{this.getStepContent(this.state.activeStep).cmp}</div>
+                                <div className="actions-container">
+                                    <div>
+                                        <Button
+                                            disabled={this.state.activeStep === 0}
+                                            onClick={this.handleBack}
+                                            className={classes.button}
+                                        >
+                                            Back
+                                     </Button>
+                                        <Button
+                                            variant="outlined" color="primary"
+                                            onClick={this.handleNext}
+                                            className={classes.button}
+                                            disabled={this.disableNextStep()}
+                                        >
+                                            Next
                                     </Button>
-                                    { (this.props.AuthStore.authData.user.admin || this.props.registrationStore.applicationData.applicationStatus !== "COMPLETED" ) && <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={this.handleSave}
-                                        className={classes.button}
+                                        {(this.props.AuthStore.authData.user.admin || this.props.registrationStore.applicationData.applicationStatus !== "COMPLETED") && <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={this.handleSave}
+                                            className={classes.button}
                                         //disabled={this.props.registrationStore.checkFormInValid}
-                                    >
-                                        Save
+                                        >
+                                            Save
                                     </Button>}
-                                </div>
+                                    </div>
 
-                            </div></>
+                                </div>
+                            </Paper>
+                        </>
 
 
                     </div>
+                    </div>
+     
+                    </div>
+
 
 
                     {this.state.activeStep === this.steps.length && (
-                        <Paper square elevation={0} className={classes.resetContainer}>
+                        <Paper elevation={0} className={classes.resetContainer}>
                             <Typography>All steps completed - you&apos;re finished</Typography>
                             <Button onClick={this.handleReset} className={classes.button}>
                                 Reset
           </Button>
                         </Paper>
                     )}
+
                 </div>
+                <Footer isApllication={true} hideNav={this.state.hideNav} />
+
             </>
         )
     };

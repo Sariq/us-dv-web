@@ -288,6 +288,7 @@ class MainPage extends React.Component {
                                 <div className="body">
                                     Every year at the 4th of July, the United States of America celebrates its independence, and for over 200 years, the country that was built by hard working pioneers and patriots seeking a better life, has been the destination for people from all over the world who also aim for a higher goal in terms of career, education, equality and most importantly freedom. As a result , conducted under the Immigration and Nationality Act (INA) of 1965 and administered by the Department of State, the DV lottery is held annually to provide 50,000 permanent resident visas to countries under-represented in the United States. <p>For further information please go to <span className="goto-faq">FAQ</span> </p>
                                 </div>
+                                <div className="contact-us-btn-container">
                                 <Link className="link-item contact-us-btn" to="/register">
                                     <Button
                                         aria-controls="customized-menu"
@@ -298,6 +299,8 @@ class MainPage extends React.Component {
                                         Contact Us
                                 </Button>
                                 </Link>
+                                </div>
+                                
                             </div>
 
                         </div>

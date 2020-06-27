@@ -48,7 +48,13 @@
 }
 
 .layout-container{
-  display: flex;
+  // display: flex;
+  #footer {
+    background-image: none!important;
+    .information{
+      margin-top: 0;
+    }
+}
   margin-top: 65px;
-
+  background-color: #F3F4F6;
 }

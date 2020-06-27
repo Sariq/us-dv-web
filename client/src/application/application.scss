@@ -1,21 +1,43 @@
-.application-stepper-container{
-    width : 60%;
-    margin: auto;
-
-    .MuiStepLabel-labelContainer{
-        text-align: left;
-        .MuiStepLabel-label {
-            font-weight: bolder;
-        }
+.application-stepper-container {
+  width: 60%;
+  margin: auto;
+ 
+  .MuiStepLabel-labelContainer {
+    text-align: left;
+    .MuiStepLabel-label {
+      font-weight: bolder;
     }
-    .actions-container{
-        text-align: right;
-        margin-top: 20px;
+  }
+  .actions-container {
+      padding: 0 10px;
+    text-align: right;
+    margin-top: 20px;
+    button:not(:first-child){
+        min-width: 120px;
+        margin-right: 20px;
+       
     }
-    
+    button{
+        font-family: 'Poppins', sans-serif!important;
+        font-weight: 600!important;
+    }
+  }
+  .us-dv-text{
+    position: absolute;
+    left: 9%;
+    color: #2A3557;
+    opacity: 0.1;
+    letter-spacing: 15px;
+    font-size: 100px;
+    writing-mode: tb-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    display: block;
+    height: 50%;
+  }
 }
-.header-container{
-.header{
+.header-container {
+  .header {
     background-color: #212b51;
     border-style: solid;
     border-color: #a10532;
@@ -28,21 +50,90 @@
     border-right: 0;
     color: white;
     border-left: 0;
-    position: 'relative';
-}
-.header-content-container{
+    position: "relative";
+  }
+  .header-content-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
-}
+  }
 }
 
 @media only screen and (max-width: 800px) {
-    .application-stepper-container{
-        width : 90%;
+  .application-stepper-container {
+    width: 90%;
+  }
+  .MuiStepper-horizontal {
+    flex-direction: column !important;
+    display: block !important;
+    
+  }
+}
+.MuiStepper-horizontal {
+    margin: 30px 0;
+}
+.MuiOutlinedInput-root {
+  border-radius: 10px;
+}
+.application-stepper-container{
+    padding-top: 1px;
+    .stepper-container{
+        padding : 40px;
+        font-family: 'Poppins', sans-serif!important;
+        font-weight: 600!important;
     }
-    .MuiStepper-horizontal{
-        flex-direction: column!important;
-        display: block!important;
+
+    .MuiStepIcon-root, .MuiStepLabel{
+        color: #212B51;
+        opacity: 0.5;
+        font-family: 'Poppins', sans-serif!important;
+        font-weight: 600!important;
+        cursor: pointer;
+    }
+    .MuiStepIcon-active, .MuiStepLabel-active{
+        cursor: pointer;
+        color: #212B51!important;
+        opacity: 1;
+        font-family: 'Poppins', sans-serif!important;
+        font-weight: 600!important;
+    }
+    .MuiPaper-root{
+        box-shadow: 0px 2px 1px -1px rgba(0,0,0,0), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12)!important;
+
+        .MuiPaper-root{
+            border-radius: 4px;
+        }
+        .MuiTabs-root{
+            //padding: 10px;
+        }
+        &.tabs-paper{
+            padding: 50px;
+            margin-bottom: 80px;
+        }
+        
+    }
+    .MuiTabs-root, .MuiAppBar-root {
+        border-radius: 10px;
+      }
+      .MuiAppBar-root{
+        width: 96%;
+        margin: auto;
+        background-color: #212B51;
+        
+        .MuiTab-wrapper{
+            font-family: 'Poppins', sans-serif!important;
+            font-weight: 600!important;
+            color: white;
+            opacity: 0.5;
+        }
+        .Mui-selected{
+        .MuiTab-wrapper{
+                color: white;
+                opacity: 1!important;
+            }
+        }
+       
     }
 }
+
+

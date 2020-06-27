@@ -1,8 +1,8 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
+import { TextField, Select, FormControl, MenuItem, InputLabel } from '@material-ui/core';
 
 // ISO 3166-1 alpha-2
 // ⚠️ No support for IE 11
@@ -24,44 +24,63 @@ const useStyles = makeStyles({
 
 export default function CountrySelect(props) {
   const classes = useStyles();
-  let defaultCountryIndex = countries[countries.findIndex((c)=> c.label === props.selectedCountry)];
+  let defaultCountryIndex = countries[countries.findIndex((c) => c.label === props.selectedCountry)];
   console.log("defaultCountryIndex")
-  if(defaultCountryIndex === undefined){
-    defaultCountryIndex = {};
-  }
+  console.log(defaultCountryIndex)
+  // if(defaultCountryIndex === undefined){
+  //   defaultCountryIndex = {};
+  // }
   // if(!defaultCountryIndex){
   //   return <div></div>
   // }
   return (
-    <Autocomplete
-      id="country-select-demo"
-      options={countries}
-      onChange={(event, newValue) => {
-          console.log(newValue)
-        props.onChange(newValue.label);
-      }}
-      value={defaultCountryIndex}
+    <FormControl variant="outlined" className={`select-input ${classes.formControl}`}>
+      <InputLabel id="countrySelect">{props.placeHolder ? props.placeHolder : "Choose a country"}</InputLabel>
+      <Select
+        labelId="countrySelect"
+        id="countrySelect"
+        label="countrySelect"
+        value={defaultCountryIndex ? defaultCountryIndex.label : ""}
+        onChange={(event) => props.onChange(event.target.value)}
+      >
+        {countries.map((country) =>
+          <MenuItem key={country.code} value={country.label}>{countryToFlag(country.code)} {country.label}</MenuItem>
+        )}
 
-      autoHighlight
-      getOptionLabel={option => option.label}
-      renderOption={option => (
-        <React.Fragment>
-          <span>{countryToFlag(option.code)}</span>
-          {option.label}
-        </React.Fragment>
-      )}
-      renderInput={params => (
-        <TextField
-        error ={props.isValid}
+      </Select>
+    </FormControl>
+    // <FormControl variant="outlined" >
+    // <Select
+    //   id="country-select-demo"
+    //   options={countries}
+    //   onChange={(event, newValue) => {
+    //       console.log(newValue)
+    //     props.onChange(newValue.label);
+    //   }}
+    //   value={defaultCountryIndex}
 
-          {...params}
-          label={props.placeHolder ? props.placeHolder : "Choose a country"}
-          inputProps={{
-            ...params.inputProps,
-          }}
-        />
-      )}
-    />
+    //   autoHighlight
+    //   getOptionLabel={option => option.label}
+    //   renderOption={option => (
+    //     <React.Fragment>
+    //       <span>{countryToFlag(option.code)}</span>
+    //       {option.label}
+    //     </React.Fragment>
+    //   )}
+    //   renderInput={params => (
+    //     <MenuItem value={"single"}>Single</MenuItem>
+    //     // <TextField
+    //     // error ={props.isValid}
+
+    //     //   {...params}
+    //     //   label={props.placeHolder ? props.placeHolder : "Choose a country"}
+    //     //   inputProps={{
+    //     //     ...params.inputProps,
+    //     //   }}
+    //     // />
+    //   )}
+    // />
+    // </FormControl>
   );
 }
 

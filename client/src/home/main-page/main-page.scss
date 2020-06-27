@@ -201,6 +201,21 @@
         line-height: 2rem;
         opacity: 0.8;
         font-weight: 400;
+        height: 373px;
+        overflow-y: auto;
+      }
+      .body::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
+
+      .body::-webkit-scrollbar:vertical {
+        width: 11px;
+      }
+
+      .body::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 2px solid white; /* should match background, can't be transparent */
+        background-color: rgba(0, 0, 0, 0.5);
       }
     }
     .image-container {
@@ -363,22 +378,23 @@
       color: #666d81;
       line-height: 1.5rem;
       padding: 10px;
-      &::-webkit-scrollbar {
-        -webkit-appearance: none;
-        width: 7px;
-      }
-      &::-webkit-scrollbar-thumb {
-        border-radius: 4px;
-        background-color: rgba(0, 0, 0, .5);
-        -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-      }
       > div {
+        overflow-y: auto;
+        height: 140px;
+      }
 
-        overflow: scroll;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 6; /* number of lines to show */
-        -webkit-box-orient: vertical;
+      >div::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
+
+      >div::-webkit-scrollbar:vertical {
+        width: 11px;
+      }
+
+      >div::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 2px solid white; /* should match background, can't be transparent */
+        background-color: rgba(0, 0, 0, 0.5);
       }
     }
   }
@@ -391,9 +407,18 @@
       padding: 0 15px !important;
     }
   }
+
+}
+@media only screen and (max-width: 1300px) {
+  .contact-us-btn-container{
+    margin-top: 10px;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
+  .contact-us-btn-container{
+    margin-top: 10px;
+  }
   .main-page-container {
     button {
       border-radius: 20px;
@@ -428,7 +453,7 @@
     .consultation-section {
       height: 370px;
       background-size: cover;
-      
+
       .us-dv-text-container {
         margin: 15% 4% 4% 4%;
         height: auto;
@@ -436,17 +461,20 @@
         .prof {
           font-size: 18px;
         }
+        .need {
+          font-size: 16px;
+        }
         .MuiGrid-container {
           justify-content: center;
         }
-        .us-dv-header-text{
-          .usa-dv-text{
-            font-size: 36px!important;
+        .us-dv-header-text {
+          .usa-dv-text {
+            font-size: 36px !important;
           }
-          .usa-dv-org-text{
-            font-size: 30px!important;
+          .usa-dv-org-text {
+            font-size: 30px !important;
           }
-        } 
+        }
       }
       .btns-container {
         justify-content: center;
