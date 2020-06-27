@@ -110,11 +110,11 @@ export default function Footer(props) {
                                 </Grid>
                             </Grid>
                         </div>
-                       {!props.hideNav && <div className="footer-text-container">
+                       <div className="footer-text-container">
                             <div className="text">
                                 © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use. USA
                             </div>
-                        </div>}
+                        </div>
                     </footer>
     );
 }
