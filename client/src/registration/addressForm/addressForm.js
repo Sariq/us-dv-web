@@ -35,7 +35,7 @@ class AddressForm extends Component {
     render() {
         const { classes } = this.props;
         console.log(this.props.registrationStore)
-        if(!this.props.registrationStore.registrationData || !this.props.registrationStore.registrationData.personalDetails){
+        if (!this.props.registrationStore.registrationData || !this.props.registrationStore.registrationData.personalDetails) {
             return <div></div>
         }
         return (
@@ -49,6 +49,8 @@ class AddressForm extends Component {
                     <Grid container spacing={5}>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                label="outlined"
+                                variant="outlined"
                                 required
                                 error={this.props.registrationStore.errors.firstName}
                                 id="firstName"
@@ -62,6 +64,8 @@ class AddressForm extends Component {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                label="outlined"
+                                variant="outlined"
                                 required
                                 error={this.props.registrationStore.errors.lastName}
                                 id="lastName"
@@ -75,6 +79,8 @@ class AddressForm extends Component {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                label="outlined"
+                                variant="outlined"
                                 required
                                 error={this.props.registrationStore.errors.email}
                                 id="Email"
@@ -82,14 +88,14 @@ class AddressForm extends Component {
                                 label="Email"
                                 fullWidth
                                 autoComplete="email"
-                                value={this.props.registrationStore.registrationData.personalDetails.email  || ""}
+                                value={this.props.registrationStore.registrationData.personalDetails.email || ""}
                                 onChange={(event) => this.props.registrationStore.handleRegisterDataChange("email", event.target.value, this.props.obj)}
                             />
                         </Grid>
 
                         <Grid item xs={12} sm={6}>
 
-                            <CountrySelect  selectedCountry={this.props.registrationStore.registrationData.personalDetails.cob} isValid={this.props.registrationStore.errors.cob} placeHolder={this.props.registrationStore.registrationData.personalDetails.cob} placeHolder="Country Of Birth" onChange={(value)=>this.onCountryChange(value, "cob")}  />
+                            <CountrySelect selectedCountry={this.props.registrationStore.registrationData.personalDetails.cob} isValid={this.props.registrationStore.errors.cob} placeHolder={this.props.registrationStore.registrationData.personalDetails.cob} placeHolder="Country Of Birth" onChange={(value) => this.onCountryChange(value, "cob")} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <ReactPhoneInput value={this.props && this.props.registrationStore.registrationData.personalDetails.phone} defaultCountry={'us'} onChange={this.handleOnChange} />
@@ -99,12 +105,13 @@ class AddressForm extends Component {
                     <Grid className="bd-container" container direction="row"
                         justify="flex-start" spacing={10}>
                         <Grid direction="row" justify="flex-start" container item xs={12} sm={2}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel id="demo-simple-select-label">Day</InputLabel>
+                            <FormControl variant="outlined" className={classes.formControl}>
+                                <InputLabel id="Day">Day</InputLabel>
                                 <Select
                                     labelId="Day"
                                     id="Day"
-                                    value={this.props.registrationStore.registrationData.personalDetails.day  || ""}
+                                    label="Day"
+                                    value={this.props.registrationStore.registrationData.personalDetails.day || ""}
                                     onChange={(event) => this.props.registrationStore.handleRegisterDataChange("day", event.target.value, this.props.obj)}
                                 >
                                     {Array.from(new Array(31), (v, i) =>
@@ -114,11 +121,12 @@ class AddressForm extends Component {
                             </FormControl>
                         </Grid>
                         <Grid justify="flex-start" container item xs={12} sm={2}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel id="month">Month</InputLabel>
+                            <FormControl variant="outlined" className={classes.formControl}>
+                                <InputLabel id="Month">Month</InputLabel>
                                 <Select
                                     labelId="Month"
-                                    value={this.props.registrationStore.registrationData.personalDetails.month  || ""}
+                                    label="Month"
+                                    value={this.props.registrationStore.registrationData.personalDetails.month || ""}
                                     onChange={(event) => this.props.registrationStore.handleRegisterDataChange("month", event.target.value, this.props.obj)}
                                 >
                                     {Array.from(new Array(12), (v, i) =>
@@ -129,11 +137,12 @@ class AddressForm extends Component {
                             </FormControl>
                         </Grid>
                         <Grid justify="flex-start" container item xs={12} sm={2}>
-                            <FormControl className={classes.formControl}>
+                            <FormControl variant="outlined" className={classes.formControl}>
                                 <InputLabel id="year">Year</InputLabel>
                                 <Select
                                     labelId="year"
                                     id="year"
+                                    label="year"
                                     value={this.props.registrationStore.registrationData.personalDetails.year || ""}
                                     onChange={(event) => this.props.registrationStore.handleRegisterDataChange("year", event.target.value, this.props.obj)}
                                 >

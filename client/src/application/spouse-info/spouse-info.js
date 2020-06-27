@@ -78,7 +78,7 @@ class SupouseInfo extends Component {
                             <Grid item className="bd-container" container direction="row"
                                 justify="flex-start" sm={12} >
 
-                                <Grid justify="flex-start" container item xs={12} sm={2}>
+                                <Grid justify="flex-start" container item xs={12} sm={3}>
                                     <FormControl variant="outlined" className={classes.formControl}>
                                         <InputLabel id="month">Month</InputLabel>
                                         <Select
@@ -95,7 +95,7 @@ class SupouseInfo extends Component {
                                         </Select>
                                     </FormControl>
                                 </Grid>
-                                <Grid justify="flex-start" container item xs={12} sm={2}>
+                                <Grid justify="flex-start" container item xs={12} sm={3}>
                                     <FormControl variant="outlined" className={classes.formControl}>
                                         <InputLabel id="year">Year</InputLabel>
                                         <Select
