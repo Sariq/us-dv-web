@@ -20,6 +20,7 @@ import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
 import "./about-green-card.scss";
 const passport = require('../../../assests/images/passport.jpg');
 const howWeHelpImg = require('../../../assests/images/how-we-help-back.jpg');
+const glassPassport = require('../../../assests/images/glass-passport.png');
 
 
 
@@ -76,8 +77,8 @@ class AboutGreenCard extends React.Component {
                                         <div className="vertical-us-dv">U  S  A  -  D  V</div>
                                         <img src={passport} alt="" />
                                     </div>
-                                    <div className="employes-img">
-                                        <img src={howWeHelpImg} alt="" />
+                                    <div className="employes-img glass-passport-image">
+                                        <img src={glassPassport} alt="" />
                                     </div>
                                 </div>
                                 <div className="text-container">
@@ -86,6 +87,11 @@ class AboutGreenCard extends React.Component {
                                     </div>
                                     <div className="body">
                                         <div>The Immigration and Nationality Act (INA) of 1990 provided an alternative immigration structure to the United States, to the previous immigration procedures offered by the 1965 Immigration and Naturalization act, which focused on obtaining visas through employment and family members sponsorship.</div>
+                                        <div>One of the main contributions on the INA is increasing the immigration rates by introducing the Diversity Visa program.
+
+At the moment there are over 10 million Green Card holders in the United States who are also eligible for citizenship.
+
+The DV program in conducted under the Department of state and the lottery system was specificly chosen to offer equal opportunity for citizens in countries under-represented in terms of immigration rates.</div>
                                     </div>
                                 </div>
                             </div>

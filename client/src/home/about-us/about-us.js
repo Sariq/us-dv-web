@@ -124,7 +124,7 @@ class AboutUs extends React.Component {
                                 </div>
                                 <div className="text-container">
                                     <div className="title">
-                                        About the Green card
+                                    Welcome to Voyage Agency.
                                     </div>
                                     <div className="body">
                                         <div>

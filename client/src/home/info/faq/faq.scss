@@ -1,5 +1,18 @@
 .faq-container {
+    .main-title{
+      width: 100%;
+      margin: auto;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 48px;
+      color: #212B51!important;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+    }
     .about-us-container {
+      padding-top: 40px;
+      margin-top: 0;
+      background-color: #F3F4F6;
         height: auto;
         background-image: unset;
         .text-container {
@@ -13,6 +26,36 @@
             margin-bottom: 10px;
           }
         }
+        .paper-container{
+          box-shadow: 0px 2px 1px -1px rgba(0,0,0,0), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12)!important;
+        }
+        .card-container{
+         
+          display: flex;
+          justify-content: space-between;
+          padding: 30px;
+          >div{
+            align-self: center;
+            display: flex;
+          }
+     
+        }
+        .card-content-container{
+          padding: 0 30px 30px 30px;
+
+          >div{
+            margin-bottom: 10px;
+          }
+    
+        }
+        .expand{
+          color: white;
+          background-color: #212b51;
+        }
       }
   }
-  
+  @media only screen and (max-width: 500px) {
+    .paper-container{
+      width: 97%!important;
+    }
+  }
