@@ -111,7 +111,13 @@ export default function HomeMenu(props) {
                     </Link>
                 </StyledMenu>
             </div>
-          
+            <div>
+                <Link className="link-item" >
+                    <Button>
+                        Contact Us
+                    </Button>
+                </Link>
+            </div>
         </div>
         </div>
     );
