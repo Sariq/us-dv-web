@@ -29,6 +29,7 @@ export default function Footer(props) {
 
     return (
         <footer id="footer">
+            <div className="footer-left">
                         {!props.isApllication &&  <div className="apply-now-container">
                             <div className="text-container">
                                 Registration is open, So you
@@ -114,6 +115,7 @@ export default function Footer(props) {
                             <div className="text">
                                 © USA-DV organization is a private entity, USA-DV is not a governmental agency nor is affiliated with the U.S. government. Using the services provided for the Diversity Visa Program online application in dependent on agreeing on the Terms of Use. USA
                             </div>
+                        </div>
                         </div>
                     </footer>
     );
