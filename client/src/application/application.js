@@ -228,7 +228,7 @@ class VerticalLinearStepper extends Component {
                     </Backdrop>}
                     {/* {JSON.stringify(this.props.registrationStore.applicationData)} */}
                     <div style={{display:"flex"}}>
-                    <MobileSideMenu />
+                    {this.props.AuthStore.authData.user.admin && <MobileSideMenu />}
                     <div className="us-dv-text">USA - DV</div>
                     <div>
                     <Paper>
